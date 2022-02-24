@@ -30,4 +30,8 @@ public class Outfit {
     public void setClothesItems(ArrayList<ClothesItem> clothesItems) {
         this.clothesItems = clothesItems;
     }
+
+    public boolean addClothesItem(ClothesItem newItem){
+        return clothesItems.add(newItem);
+    }
 }

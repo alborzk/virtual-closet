@@ -40,4 +40,8 @@ public class ClothesItem {
     public void setImg(String img) {
         this.img = img;
     }
+
+    public boolean addTag(Tag newTag){
+        return tags.add(newTag);
+    }
 }
