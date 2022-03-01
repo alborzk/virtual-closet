@@ -1,5 +1,8 @@
 package com.example.virtualcloset;
 import java.util.ArrayList;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 
 public class ClothesItem {
 
@@ -22,6 +25,9 @@ public class ClothesItem {
         this.name = name;
         this.tags = tags;
         this.img = img;
+    }
+
+    public ClothesItem(){
     }
 
     //Getters
@@ -52,5 +58,16 @@ public class ClothesItem {
 
     public boolean addTag(Tag newTag){
         return tags.add(newTag);
+    }
+
+    public void openDetails(){
+        Bundle bundle = new Bundle();
+        bundle.putString("name", getName());
+        bundle.putStringArrayList("tags", getTags());
+        bundle.putString("img", getImg());
+
+        DetailView detail = new DetailView();
+        detail.setArguments(bundle);
+
     }
 }

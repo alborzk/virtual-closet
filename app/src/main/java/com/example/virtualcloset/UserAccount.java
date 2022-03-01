@@ -49,8 +49,6 @@ public class UserAccount {
         return email;
     }
 
-    public ArrayList<Closet>
-
     public int getNumClosets(){
         return closets.size();
     }
