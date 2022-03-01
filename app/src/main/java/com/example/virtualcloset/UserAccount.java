@@ -16,6 +16,14 @@ public class UserAccount {
     ArrayList<Closet> closets;
 
     //Constructor
+    public UserAccount(int id, String username, String password, String email){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.closets = new ArrayList<Closet>();
+    }
+
     public UserAccount(int id, String username, String password, String email, ArrayList<Closet> closets){
         this.id = id;
         this.username = username;
@@ -40,6 +48,8 @@ public class UserAccount {
     public String getEmail() {
         return email;
     }
+
+    public ArrayList<Closet>
 
     public int getNumClosets(){
         return closets.size();

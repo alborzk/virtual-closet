@@ -10,6 +10,13 @@ public class ClothesItem {
     String img;
 
     //Constructor
+    public ClothesItem(int id, String name, String img){
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.tags = new ArrayList<Tag>();
+    }
+
     public ClothesItem(int id, String name, ArrayList<Tag> tags, String img){
         this.id = id;
         this.name = name;
