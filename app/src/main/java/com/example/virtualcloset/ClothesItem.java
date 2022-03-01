@@ -4,12 +4,14 @@ import java.util.ArrayList;
 public class ClothesItem {
 
     //Instance Variables
+    int id;
     String name;
     ArrayList<Tag> tags;
     String img;
 
     //Constructor
-    public ClothesItem(String name, ArrayList<Tag> tags, String img){
+    public ClothesItem(int id, String name, ArrayList<Tag> tags, String img){
+        this.id = id;
         this.name = name;
         this.tags = tags;
         this.img = img;
