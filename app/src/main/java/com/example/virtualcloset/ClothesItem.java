@@ -63,7 +63,7 @@ public class ClothesItem {
     public void openDetails(){
         Bundle bundle = new Bundle();
         bundle.putString("name", getName());
-        bundle.putStringArrayList("tags", getTags());
+        //bundle.putStringArrayList("tags", getTags()); commenting this out on signIn branch as it is causing errors. will resolve when we merge
         bundle.putString("img", getImg());
 
         DetailView detail = new DetailView();

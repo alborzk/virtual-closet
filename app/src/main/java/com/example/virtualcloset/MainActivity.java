@@ -18,7 +18,10 @@ import com.example.virtualcloset.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 
     @Override
@@ -84,5 +88,25 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void logIn(View view) {
+        TextView username = (TextView) findViewById(R.id.editTextTextEmailAddress);
+        TextView password = (TextView) findViewById(R.id.editTextTextPassword);
+        TextView msg = findViewById(R.id.textview_first);
+
+
+        if(username.getText().toString().equals("user") && password.getText().toString().equals("password")){
+            //Need to check username/password against database.
+            //Need to link to other fragment.
+            msg.setText("Log In Success!");
+        }
+        else{
+            msg.setText("Log In Failed! Incorrect Username or Password");
+        }
+
+
+
+
     }
 }

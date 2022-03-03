@@ -3,13 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.5229166666666667" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/content_main.xml" value="0.5229166666666667" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_first.xml" value="0.5229166666666667" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_second.xml" value="0.5229166666666667" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/grid.xml" value="0.5" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/grid_item.xml" value="0.33" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/menu/menu_main.xml" value="0.5229166666666667" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.2695035460992908" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/content_main.xml" value="0.2695035460992908" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/fragment_detail_view.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/fragment_first.xml" value="0.33" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/grid.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/grid_item.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/menu/menu_main.xml" value="0.36102564102564105" />
       </map>
     </option>
   </component>
