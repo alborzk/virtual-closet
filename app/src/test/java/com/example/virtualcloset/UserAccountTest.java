@@ -18,12 +18,14 @@ public class UserAccountTest {
     ArrayList<Closet> ClosetArray1;
     Closet c1;
     UserAccount newUser;
+    UserAccount newUser2;
 
     @Before
     public void setUp() throws Exception {
         ClosetArray1= new ArrayList<Closet>();
         ClosetArray1.add(c1);
         newUser = new UserAccount(9, "igumi", "0728", "umanitoba.ca", ClosetArray1);
+        newUser2 = new UserAccount(9, "hideonbush", "1234", "google.com");
     }
 
     @After
@@ -37,6 +39,15 @@ public class UserAccountTest {
         assertEquals("Password should match", "0728", newUser.getPassword());
         assertEquals("Email should match", "umanitoba.ca", newUser.getEmail());
         assertEquals("Each user's closet should match", 1, newUser.getNumClosets());
+    }
+
+    @Test
+    public void constructorTest2() {
+        assertEquals("id should match", 9, newUser2.getID());
+        assertEquals("Username should match", "hideonbush", newUser2.getUsername());
+        assertEquals("Password should match", "1234", newUser2.getPassword());
+        assertEquals("Email should match", "google.com", newUser2.getEmail());
+        assertEquals("Each user's closet should match", 0, newUser2.getNumClosets());
     }
 
     @Test
@@ -59,6 +70,10 @@ public class UserAccountTest {
         assertEquals("Email should match", "umanitoba.ca", newUser.getEmail());
     }
 
+    @Test
+    public void getCloset(){
+        assertEquals("return the ideal closet object", ClosetArray1,newUser.getClosets());
+    }
     @Test
     public void getNumClosets() {
         assertEquals("Each user's closet should match", 1, newUser.getNumClosets());
