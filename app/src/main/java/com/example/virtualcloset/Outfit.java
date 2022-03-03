@@ -4,11 +4,19 @@ import java.util.ArrayList;
 public class Outfit {
 
     //Instance Variables
+    int id;
     String name;
     ArrayList<ClothesItem> clothesItems;
 
     //Constructor
-    public Outfit(String name, ArrayList<ClothesItem> clothesItems){
+    public Outfit(int id, String name){
+        this.id = id;
+        this.name = name;
+        this.clothesItems = new ArrayList<ClothesItem>();
+    }
+
+    public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems){
+        this.id = id;
         this.name = name;
         this.clothesItems = clothesItems;
     }

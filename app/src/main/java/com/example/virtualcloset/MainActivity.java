@@ -18,10 +18,18 @@ import com.example.virtualcloset.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.GridView;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    GridView simpleGrid;
+    Database database = new Database();
+    ArrayList<ClothesItem> clothesItems = database.getClothesItems();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+//        simpleGrid = (GridView) findViewById(R.id.GridView); // init GridView
+//        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), clothesItems);
+//        simpleGrid.setAdapter(customAdapter);
 
         setSupportActionBar(binding.toolbar);
 
