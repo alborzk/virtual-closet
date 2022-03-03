@@ -93,7 +93,6 @@ public class UserAccountTest {
 
     @Test
     public void addCloset() {
-
         assertEquals("Each user's closet should match", true, newUser.addCloset(c1));
     }
 }
