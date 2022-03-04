@@ -54,12 +54,12 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        binding.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(DetailActivity.this,"Clothing editing available in a later iteration!",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        binding.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(DetailActivity.this,"Clothing editing available in a later iteration!",Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
 }
