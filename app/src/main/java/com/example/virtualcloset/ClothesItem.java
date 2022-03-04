@@ -1,5 +1,7 @@
 package com.example.virtualcloset;
+
 import java.util.ArrayList;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,24 +15,29 @@ public class ClothesItem {
     String img;
 
     //Constructor
-    public ClothesItem(int id, String name, String img){
+    public ClothesItem(int id, String name, String img) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.tags = new ArrayList<Tag>();
     }
 
-    public ClothesItem(int id, String name, ArrayList<Tag> tags, String img){
+    public ClothesItem(int id, String name, ArrayList<Tag> tags, String img) {
         this.id = id;
         this.name = name;
         this.tags = tags;
         this.img = img;
     }
 
-    public ClothesItem(){
+    public ClothesItem() {
     }
 
     //Getters
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -56,14 +63,14 @@ public class ClothesItem {
         this.img = img;
     }
 
-    public boolean addTag(Tag newTag){
+    public boolean addTag(Tag newTag) {
         return tags.add(newTag);
     }
 
-    public void openDetails(){
+    public void openDetails() {
         Bundle bundle = new Bundle();
         bundle.putString("name", getName());
-//        bundle.putStringArrayList("tags", getTags());
+        //bundle.putStringArrayList("tags", getTags());
         bundle.putString("img", getImg());
 
         DetailView detail = new DetailView();

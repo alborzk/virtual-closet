@@ -13,9 +13,11 @@ public class OutfitTest {
     ArrayList<ClothesItem> clothesItems2 = new ArrayList<ClothesItem>();
     ClothesItem item1;
     Outfit newOutfit;
+    Outfit newOutfit2;
     @Before
     public void setUp() throws Exception {
-        newOutfit = new Outfit("ESSENTIAL",clothesItems);
+        newOutfit = new Outfit(2,"ESSENTIAL",clothesItems);
+        newOutfit2 = new Outfit(3,"TY");
     }
 
     @After
@@ -25,8 +27,14 @@ public class OutfitTest {
 
     @Test
     public void constructorTest() {
+        assertEquals("outfit's id should match", 2, newOutfit.getID());
         assertEquals("Outfit's name should match", "ESSENTIAL",newOutfit.getName());
         assertEquals("Outfit's clothitems should match", clothesItems,newOutfit.getClothesItems());
+    }
+    @Test
+    public void constructorTest2() {
+        assertEquals("outfit's id should match", 3, newOutfit2.getID());
+        assertEquals("Outfit's name should match", "TY",newOutfit2.getName());
     }
 
     @Test

@@ -15,6 +15,8 @@ public class Outfit {
         this.clothesItems = new ArrayList<ClothesItem>();
     }
 
+
+
     public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems){
         this.id = id;
         this.name = name;
@@ -22,6 +24,10 @@ public class Outfit {
     }
 
     //Getters
+    public int getID() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
