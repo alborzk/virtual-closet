@@ -30,12 +30,9 @@ as well as using `git log --graph`.
 SOLID
 -----
 
-Find a SOLID violation in the project of group `(n%16)+1` (group 16 does group 1).
-Open an issue in their project with the violation,
-clearly explaining the SOLID violation - specifying the type, provide a link to that issue. Be sure
-your links in the issues are to **specific commits** (not to `main`, or `develop` as those will be changed).
+Looking through the project file from  [Group 11] (https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager). We found out there is a single responsibility principle violation in  ScoreActivity.class ScoreActivity includes adding and subtraction within this UI layer class.
 
-Provide a link to the issue you created here.
+[issue links](https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager/-/issues/19)
 
 Agile Planning
 --------------
