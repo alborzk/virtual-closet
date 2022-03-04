@@ -1,5 +1,6 @@
 package com.example.virtualcloset;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -9,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import androidx.navigation.NavController;
+import androidx.navigation.NavHost;
+import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -33,16 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        GridView simpleGrid;
-//        Database database = new Database();
-//        ArrayList<ClothesItem> clothesItems = database.getClothesItems();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-//        simpleGrid = (GridView) findViewById(R.id.gridtest); // init GridView
-//        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), clothesItems);
-//        simpleGrid.setAdapter(customAdapter);
 
         setSupportActionBar(binding.toolbar);
 
@@ -99,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
             //Need to check username/password against database.
             //Need to link to other fragment.
             msg.setText("Log In Success!");
+//            Intent intent = new Intent(this, ClosetActivity.class);
+//            startActivity(intent);
+
+//            FirstFragment frag = ((FirstFragment) getSupportFragmentManager().findFragmentByTag("FirstFragment"));
+//            NavHostFragment.findNavController(frag)
+//                    .navigate(R.id.action_FirstFragment_to_closetActivity);
         }
         else{
             msg.setText("Log In Failed! Incorrect Username or Password");
