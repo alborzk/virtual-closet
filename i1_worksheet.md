@@ -48,12 +48,12 @@ Agile Planning
 
 The four features, we planned to implement for iteration 1 were: ‘keep track of favourite clothing’, ‘label and organize clothing’, ‘create user account’, and ‘see clothing you own’. For both the ‘keep track of favourite clothing’ feature and the ‘label and organize clothing’ feature we were able to implement the features internally with our tag system, but we had to push the ability for users to label and favourite clothes to iteration 2 because we underestimated the time it would take to get the UI elements functioning. We also changed the description of the ‘create user account’ feature to instead prioritize logging in to an account. User’s can currently log in to a default account with ‘user’ and ‘password’, but we won’t be able to sign up for an account until iteration 2. The see clothing you own feature has been fully implemented so users can see a grid of all the clothes they own, as well as a detailed view of any individual item. 
 
-##Pushed User Stories
+### Pushed User Stories
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/2 
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/18
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/17
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/11 
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/7 
 
-##Changed Features
+### Changed Features
 -	https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/3
