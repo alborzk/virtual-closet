@@ -11,6 +11,13 @@ that was used complete the feature.
 
 Use one or two paragraphs which can have point-form within them.
 
+A major feature for this iteration was viewing the clothes currently in the closet. The feature issue is [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/12), and the relevant user story with dev tasks is [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/16).
+
+To achieve our goal for this feature, we would need to display information about the piece of clothing, like its tags and an image, as well as be able to navigate between the pages. 
+We started by creating the classes for DSOs (committed [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/0d249e77be41deac9950bfe66055804e9c6b221f) and [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/5be012121dc2e074d926d3ed0baaf35797ee1a26)). Then the developer tasks were divided up amongst group members, and this feature was generally split into the grid view page that would show all the clothes in a closet (committed [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/e3a391eb9f9a8de32c460cd8795fa98a4d44eea6) and [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/6ab2d7c9681372ab3d98caa18005295af9fa9994)), and the detail view page that showed one item of clothing and its traits (committed [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/f5bb73e782e75b6d7ac86c085a2025870fd64539)). A problem we encountered was that we initally tried to make each page a fragment. This led to issues with navigation and how elements would display, and required us to remake them as activities instead. Once this change was made, we finished by connecting the information in our fake database to other activities to display it (committed [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/commit/db5678cbf8caf6237dac66d3a5954bad200870ec)).
+
+[Here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/blob/main/app/src/test/java/com/example/virtualcloset/ClosetTest.java) are the tests for the closet.
+
 Exceptional code
 ----------------
 
