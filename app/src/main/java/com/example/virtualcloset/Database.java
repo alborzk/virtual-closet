@@ -6,10 +6,12 @@ public class Database {
 
     ArrayList<Tag> tags;
     ArrayList<ClothesItem> clothesItems;
+    ArrayList<UserAccount> accounts;
 
     public Database(){
         tags = new ArrayList<Tag>();
         clothesItems = new ArrayList<ClothesItem>();
+        accounts = new ArrayList<UserAccount>();
     }
 
     public void initializeTags(){
@@ -59,6 +61,11 @@ public class Database {
         clothesItems.add(new ClothesItem(10, "Black Vans Sneakers", new ArrayList<Tag>(), "..."));
     }
 
+    public void initializeAccounts(){
+        accounts.add(new UserAccount(1, "user", "password", "user@email.com"));
+        accounts.add(new UserAccount(2, "user2", "password", "user2@email.com"));
+    }
+
     public String[] getClothesItems() {
         initializeClothes();
         String[] str = new String[clothesItems.size()];
@@ -71,5 +78,10 @@ public class Database {
     public ArrayList<Tag> getTags() {
         initializeTags();
         return tags;
+    }
+
+    public ArrayList<UserAccount> getAccounts(){
+        initializeAccounts();
+        return accounts;
     }
 }
