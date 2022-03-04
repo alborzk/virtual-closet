@@ -30,13 +30,13 @@ public class ClothesItemTest {
         assertEquals("id should match",2,clothesItem.getId());
         assertEquals("name should be equal", "blue_skirt", clothesItem.getName());
         assertEquals("tags should be equal", tags, clothesItem.getTags());
-        assertEquals("image should be equal", "blue_skirt.png", clothesItem.getImg());
+        assertEquals("image should be equal", R.drawable.placeholder_1, clothesItem.getImg());
     }
     @Test
     public  void constructorTest2(){
         assertEquals("id should match",3,clothesItem2.getId());
         assertEquals("name should be equal", "green_shirt", clothesItem2.getName());
-        assertEquals("image should be equal", "img3.png", clothesItem2.getImg());
+        assertEquals("image should be equal", R.drawable.placeholder_2, clothesItem2.getImg());
     }
 
     // Test Getters
@@ -58,7 +58,7 @@ public class ClothesItemTest {
 
     @Test
     public void testGetImg() {
-        assertEquals("image should be equal", "blue_skirt.png", clothesItem.getImg());
+        assertEquals("image should be equal", R.drawable.placeholder_1, clothesItem.getImg());
     }
 
     // Test Setters
@@ -80,7 +80,7 @@ public class ClothesItemTest {
     @Test
     public void testSetImg() {
         clothesItem.setImg(R.drawable.placeholder_0);
-        assertEquals("image should be equal", "black_shoes.png", clothesItem.getImg());
+        assertEquals("image should be equal", R.drawable.placeholder_0, clothesItem.getImg());
     }
     
     // Test Methods

@@ -11,7 +11,7 @@ import org.junit.Test;
 public class GridAdapterTest {
     Context context;
     String[] clothesNames;
-    int image;
+    int[] image;
     GridAdapter grid1;
 
     @Before
