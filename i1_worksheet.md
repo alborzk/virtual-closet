@@ -39,7 +39,7 @@ branches from main afterwards and repeated the process.
 SOLID
 -----
 
-Looking through the project file from  [Group 11] (https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager). We found out there is a single responsibility principle violation in  ScoreActivity.class ScoreActivity includes adding and subtraction within this UI layer class.
+Looking through the project file from  [Group 11] (https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager),We found out there is a single responsibility principle violation in  ScoreActivity.class ScoreActivity includes adding and subtraction within this UI layer class.
 
 [issue links](https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager/-/issues/19)
 
