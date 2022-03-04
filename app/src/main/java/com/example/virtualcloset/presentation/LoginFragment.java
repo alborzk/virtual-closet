@@ -1,4 +1,4 @@
-package com.example.virtualcloset;
+package com.example.virtualcloset.presentation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.virtualcloset.R;
 import com.example.virtualcloset.databinding.FragmentFirstBinding;
 
 public class
-FirstFragment extends Fragment {
+LoginFragment extends Fragment {
 
     private FragmentFirstBinding binding;
 
@@ -41,21 +42,13 @@ FirstFragment extends Fragment {
                         //Need to check username/password against database.
                         //Need to link to other fragment.
                         msg.setText("Log In Success!");
-                        NavHostFragment.findNavController(FirstFragment.this)
+                        NavHostFragment.findNavController(LoginFragment.this)
                                 .navigate(R.id.action_FirstFragment_to_closetActivity);
                     }
                     else{
                         msg.setText("Log In Failed! Incorrect Username or Password");
                     }
             }
-
-//        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_closetActivity);
-//                }
-//            });
         });
     }
 

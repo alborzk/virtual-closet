@@ -79,12 +79,4 @@ public class UserAccount {
         return closets.add(newCloset);
     }
 
-//    public boolean verifyLogInRequest(String username, String password){
-//        boolean loginSuccess = false;
-//        if(this.getUsername().equals(username) && this.getPassword().equals(password)){
-//            loginSuccess = true;
-//        }
-//        return loginSuccess;
-//    }
-
 }

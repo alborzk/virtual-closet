@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import com.example.virtualcloset.presentation.DetailView;
 
 public class ClothesItem {
 

@@ -1,8 +1,9 @@
-package com.example.virtualcloset;
+package com.example.virtualcloset.presentation;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.virtualcloset.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,31 +85,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void logIn(View view) {
-        TextView username = (TextView) findViewById(R.id.editTextTextEmailAddress);
-        TextView password = (TextView) findViewById(R.id.editTextTextPassword);
-        TextView msg = findViewById(R.id.textview_first);
-
-
-        if(username.getText().toString().equals("user") && password.getText().toString().equals("password")){
-            //Need to check username/password against database.
-            //Need to link to other fragment.
-            msg.setText("Log In Success!");
-//            Intent intent = new Intent(this, ClosetActivity.class);
-//            startActivity(intent);
-
-//            FirstFragment frag = ((FirstFragment) getSupportFragmentManager().findFragmentByTag("FirstFragment"));
-//            NavHostFragment.findNavController(frag)
-//                    .navigate(R.id.action_FirstFragment_to_closetActivity);
-        }
-        else{
-            msg.setText("Log In Failed! Incorrect Username or Password");
-        }
-
-
-
-
     }
 }

@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.virtualcloset.FirstFragment"
+        android:name="com.example.virtualcloset.presentation.LoginFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_login">
 
         <action
             android:id="@+id/action_FirstFragment_to_closetActivity"
@@ -17,7 +17,7 @@
     </fragment>
     <activity
         android:id="@+id/closetActivity"
-        android:name="com.example.virtualcloset.ClosetActivity"
+        android:name="com.example.virtualcloset.presentation.ClosetActivity"
         android:label="activity_closet"
         tools:layout="@layout/activity_closet"/>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.virtualcloset;
+package com.example.virtualcloset.presentation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import java.util.ArrayList;
 //import android.R;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.virtualcloset.R;
 
 public class DetailView extends Fragment {
 
