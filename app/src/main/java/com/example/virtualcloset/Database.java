@@ -59,9 +59,13 @@ public class Database {
         clothesItems.add(new ClothesItem(10, "Black Vans Sneakers", new ArrayList<Tag>(), "..."));
     }
 
-    public ArrayList<ClothesItem> getClothesItems() {
+    public String[] getClothesItems() {
         initializeClothes();
-        return clothesItems;
+        String[] str = new String[clothesItems.size()];
+        for (int i = 0; i < clothesItems.size(); i++) {
+            str[i] = clothesItems.get(i).getName();
+        }
+        return str;
     }
 
     public ArrayList<Tag> getTags() {

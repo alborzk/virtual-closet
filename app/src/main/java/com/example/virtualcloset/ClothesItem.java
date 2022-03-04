@@ -63,11 +63,10 @@ public class ClothesItem {
     public void openDetails(){
         Bundle bundle = new Bundle();
         bundle.putString("name", getName());
-        bundle.putStringArrayList("tags", getTags());
+//        bundle.putStringArrayList("tags", getTags());
         bundle.putString("img", getImg());
 
         DetailView detail = new DetailView();
         detail.setArguments(bundle);
-
     }
 }

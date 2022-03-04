@@ -3,12 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.5229166666666667" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.233" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/placeholdder2.xml" value="0.1" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_closet.xml" value="0.39356884057971014" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main_closet.xml" value="0.31354166666666666" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/content_main.xml" value="0.5229166666666667" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_detail_view.xml" value="0.3734375" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_first.xml" value="0.5229166666666667" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_gridtest.xml" value="0.30434782608695654" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_gridview.xml" value="0.3795289855072464" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/fragment_second.xml" value="0.5229166666666667" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/grid.xml" value="0.5" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/grid_item.xml" value="0.33" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/gridtest.xml" value="0.30434782608695654" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/menu/menu_main.xml" value="0.5229166666666667" />
       </map>
     </option>
