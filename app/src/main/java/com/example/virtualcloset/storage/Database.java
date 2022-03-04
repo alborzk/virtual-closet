@@ -43,7 +43,7 @@ public class Database {
         clothesItems.add(new ClothesItem(4, "Brown Zara Tee", tags4, R.drawable.placeholder_3));
 
         ArrayList<Tag> tags5 = new ArrayList<Tag>();
-        tags5.add(new Tag("White","Color"));
+        tags5.add(new Tag("Grey","Color"));
         tags5.add(new Tag("T-Shirt","Type"));
         clothesItems.add(new ClothesItem(5, "Marvel Graphic Tee", tags5, R.drawable.placeholder_4));
 
