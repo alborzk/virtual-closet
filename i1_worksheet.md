@@ -4,13 +4,6 @@ Iteration 1 Worksheet
 Adding a feature
 -----------------
 
-Tell the story of how one of your features was added to the project.
-Provide links to the
-feature, user stories, and merge requests (if used), associated tests, and merge commit
-that was used complete the feature.
-
-Use one or two paragraphs which can have point-form within them.
-
 A major feature for this iteration was viewing the clothes currently in the closet. The feature issue is [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/12), and the relevant user story with dev tasks is [here](https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/issues/16).
 
 To achieve our goal for this feature, we would need to display information about the piece of clothing, like its tags and an image, as well as be able to navigate between the pages. 
@@ -39,7 +32,7 @@ branches from main afterwards and repeated the process.
 SOLID
 -----
 
-Looking through the project file from  [Group 11] (https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager). We found out there is a single responsibility principle violation in  ScoreActivity.class ScoreActivity includes adding and subtraction within this UI layer class.
+Looking through the project file from  [Group 10] (https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager). We found out there is a single responsibility principle violation in  ScoreActivity.class ScoreActivity includes adding and subtraction within this UI layer class.
 
 [issue links](https://code.cs.umanitoba.ca/winter-2022-a01/group-10/sport-box-score-manager/-/issues/19)
 
