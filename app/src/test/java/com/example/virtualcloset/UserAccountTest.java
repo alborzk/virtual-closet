@@ -25,7 +25,7 @@ public class UserAccountTest {
         ClosetArray1= new ArrayList<Closet>();
         ClosetArray1.add(c1);
         newUser = new UserAccount(9, "igumi", "0728", "umanitoba.ca", ClosetArray1);
-        newUser2 = new UserAccount(9, "hideonbush", "1234", "google.com");
+        newUser2 = new UserAccount(8, "hideonbush", "1234", "google.com");
     }
 
     @After
@@ -43,7 +43,7 @@ public class UserAccountTest {
 
     @Test
     public void constructorTest2() {
-        assertEquals("id should match", 9, newUser2.getID());
+        assertEquals("id should match", 8, newUser2.getID());
         assertEquals("Username should match", "hideonbush", newUser2.getUsername());
         assertEquals("Password should match", "1234", newUser2.getPassword());
         assertEquals("Email should match", "google.com", newUser2.getEmail());

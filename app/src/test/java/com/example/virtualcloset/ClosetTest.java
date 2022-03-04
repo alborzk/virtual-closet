@@ -17,7 +17,7 @@ public class ClosetTest {
     private ClothesItem clothesItem1;
     private ArrayList<Outfit> outfits;
     private Outfit outfit1;
-    
+
     @Before
     public void setUp() throws IOException {
         clothesItems = new ArrayList<ClothesItem>();
@@ -27,7 +27,15 @@ public class ClosetTest {
         this.closet = new Closet(2, clothesItems, outfits);
     }
 
-    // Test Getterrs
+    @Test
+    public void constructorTest() {
+        assertEquals("id should be equal", 2, closet.getID());
+        assertEquals("clothesItems should be equal", clothesItems, closet.getClothesItems());
+        assertEquals("outfits should be equal", outfits, closet.getOutfits());
+    }
+
+
+    // Test Getters
     @Test
     public void testGetID() {
         assertEquals("id should be equal", 2, closet.getID());
@@ -62,7 +70,7 @@ public class ClosetTest {
 
     @Test
     public void testSetClothesItems() {
-        ClothesItem clothesItem2;
+        ClothesItem clothesItem2=null;
         ArrayList<ClothesItem> clothesItems2 = new ArrayList<ClothesItem>();
         clothesItems2.add(clothesItem2);
         closet.setClothesItems(clothesItems2);
@@ -71,7 +79,7 @@ public class ClosetTest {
 
     @Test
     public void testSetOutfits() {
-        Outfit outfit2;
+        Outfit outfit2=null;
         ArrayList<Outfit> outfits2 = new ArrayList<Outfit>();
         outfits2.add(outfit2);
         closet.setOutfits(outfits2);
@@ -81,13 +89,13 @@ public class ClosetTest {
     // Test methods
     @Test
     public void testAddClothesItem() {
-        ClothesItem clothesItem3;
+        ClothesItem clothesItem3=null;
         assertEquals("should add a clothesItem", true, closet.addClothesItem(clothesItem3));
     }
 
     @Test
     public void testAddOutfit() {
-        Outfit outfit3;
+        Outfit outfit3=null;
         assertEquals("should add a outfit", true, closet.addOutfit(outfit3));
     }
 
