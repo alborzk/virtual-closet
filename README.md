@@ -10,3 +10,6 @@ The value of this project is in its function as an organizational tool, allowing
 The system is currently being designed as a mobile application, so people will be able to create, manage, or view their virtual closet, from anywhere they go. 
  
 The project will be considered successful based on two criteria. First, we will measure user activity on the app over a prolonged period of time. If our users develop a habit of using our app, that must mean we’ve provided a useful service. However, if they only try the app a few times, that must mean they prefer using existing solutions to our app. This usage statistic will help us understand the usefulness of the app to the average user. The second criteria we will measure is how robust our organizational tools are, based on surveys provided to our users. Because more dedicated users are the ones most likely to respond to surveys, this metric will show us how our expert users responded to our app.
+
+# Iteration 1 Worksheet
+https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/blob/main/i1_worksheet.md
