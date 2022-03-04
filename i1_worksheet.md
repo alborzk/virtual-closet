@@ -21,7 +21,7 @@ We started by creating the classes for DSOs (committed [here](https://code.cs.um
 Exceptional code
 ----------------
 
-In iteration1, we tested 5 object classes: Closet, ,ClothesItem, Outfit, Tag, and UserAccountTest. We tested their constructors, getters and setters. And there is no exceptional code yet, because those classes are not highly related to user interface. So we are going to test other methods from other classes and write exceptional code from next iteration.
+In iteration1, we tested 5 object classes: Closet, ClothesItem, Outfit, Tag, and UserAccountTest. We tested their constructors, getters and setters. And there is no exceptional code yet, because those classes are not highly related to user interface. So we are going to test other methods from other classes and write exceptional code from next iteration.
 
 Branching
 ----------
