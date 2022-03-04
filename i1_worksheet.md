@@ -21,11 +21,15 @@ in the code you are testing.
 Branching
 ----------
 
-Provide a link to where you describe your branching strategy.
+For our work on this project, we decided to use the Git Flow branching strategy, to our best efforts.
 
-Provide screen shot of a feature being added using your branching strategy
-successfully. The [GitLab Graph tool can do this](https://code.cs.umanitoba.ca/comp3350-summer2019/cook-eBook/-/network/develop),
-as well as using `git log --graph`.
+As seen in the screenshot below of our git log, each member of the group creating a new branch in order
+to work on the feature they were working on, and pushed changes to their own branch as they made progress.
+Every couple of days, our group members would then meet and merge changes into a "merge" branch, and then
+when everyone's changes had been merged, that "merge" branch would be merged into main. We then created new
+branches from main afterwards and repeated the process.
+
+![](app/src/main/res/drawable/gitflow.png)
 
 SOLID
 -----

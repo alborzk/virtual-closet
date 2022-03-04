@@ -1,19 +1,14 @@
 package com.example.virtualcloset.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
-import com.example.virtualcloset.R;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
 import com.example.virtualcloset.logic.GridAdapter;
 
