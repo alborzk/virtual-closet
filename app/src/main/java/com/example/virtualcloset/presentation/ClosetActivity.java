@@ -1,9 +1,17 @@
 package com.example.virtualcloset.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
@@ -20,11 +28,34 @@ public class ClosetActivity extends AppCompatActivity {
         binding = ActivityClosetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //
         Database database = new Database();
-        String[] clothesNames = database.getClothesItems();
-        GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, R.drawable.placehold);
+        DataManager dm = new DataManager(database);
+
+        String[] clothesNames = dm.getNames();
+        String[] allTags = dm.getTags();
+        int[] imgs = dm.getImgs();
+
+        GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, imgs);
 
         binding.gridView.setAdapter(gridAdapter);
+
+        binding.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+//                Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ClosetActivity.this, DetailActivity.class);
+                String name = clothesNames[position];
+                intent.putExtra("clothingName", name);
+                String tags = allTags[position];
+                intent.putExtra("itemTags", tags);
+                int img = imgs[position];
+                intent.putExtra("itemImg", img);
+                startActivity(intent);
+
+
+            }
+        });
     }
 }

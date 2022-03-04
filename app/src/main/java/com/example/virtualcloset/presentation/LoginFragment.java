@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -42,14 +43,16 @@ LoginFragment extends Fragment {
                     String user = database.getAccounts().get(0).getUsername();
                     String pass = database.getAccounts().get(0).getPassword();
 
-                    TextView msg = getView().findViewById(R.id.textview_first);
+//                    TextView msg = getView().findViewById(R.id.textview_first);
                     if(userInput.getText().toString().equals(user) && passInput.getText().toString().equals(pass)){
-                        msg.setText("Log In Success!");
+//                        msg.setText("Log In Success!");
+                        Toast.makeText(getContext().getApplicationContext(), "Log in success! Loading your closet...",Toast.LENGTH_SHORT).show();
                         NavHostFragment.findNavController(LoginFragment.this)
                                 .navigate(R.id.action_FirstFragment_to_closetActivity);
                     }
                     else{
-                        msg.setText("Log In Failed! Incorrect Username or Password");
+//                        msg.setText("Log In Failed! Incorrect Username or Password");
+                        Toast.makeText(getContext().getApplicationContext(), "Log in failed! Use values 'user' and 'password'.",Toast.LENGTH_SHORT).show();
                     }
             }
         });

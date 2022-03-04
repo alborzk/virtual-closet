@@ -22,8 +22,8 @@ public class ClothesItemTest {
     public void setUp() throws IOException {
         tags = new ArrayList<Tag>();
         tags.add(tag1);
-        this.clothesItem = new ClothesItem(2,"blue_skirt", tags, "blue_skirt.png");
-        this.clothesItem2 = new ClothesItem(3,"green_shirt","img3.png");
+        this.clothesItem = new ClothesItem(2,"blue_skirt", tags, R.drawable.placeholder_1);
+        this.clothesItem2 = new ClothesItem(3,"green_shirt", R.drawable.placeholder_2);
     }
     @Test
     public  void constructorTest(){
@@ -79,7 +79,7 @@ public class ClothesItemTest {
 
     @Test
     public void testSetImg() {
-        clothesItem.setImg("black_shoes.png");
+        clothesItem.setImg(R.drawable.placeholder_0);
         assertEquals("image should be equal", "black_shoes.png", clothesItem.getImg());
     }
     

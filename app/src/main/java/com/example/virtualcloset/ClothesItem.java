@@ -2,38 +2,30 @@ package com.example.virtualcloset;
 
 import java.util.ArrayList;
 
-import android.os.Bundle;
-
-import com.example.virtualcloset.presentation.DetailView;
-
 public class ClothesItem {
 
     //Instance Variables
     int id;
     String name;
     ArrayList<Tag> tags;
-    String img;
+    int img;
 
     //Constructor
-    public ClothesItem(int id, String name, String img) {
+    public ClothesItem(int id, String name, int img) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.tags = new ArrayList<Tag>();
     }
 
-    public ClothesItem(int id, String name, ArrayList<Tag> tags, String img) {
+    public ClothesItem(int id, String name, ArrayList<Tag> tags, int img) {
         this.id = id;
         this.name = name;
         this.tags = tags;
         this.img = img;
     }
 
-    public ClothesItem() {
-    }
-
     //Getters
-
     public int getId() {
         return id;
     }
@@ -46,7 +38,7 @@ public class ClothesItem {
         return tags;
     }
 
-    public String getImg() {
+    public int getImg() {
         return img;
     }
 
@@ -59,21 +51,11 @@ public class ClothesItem {
         this.tags = tags;
     }
 
-    public void setImg(String img) {
+    public void setImg(int img) {
         this.img = img;
     }
 
     public boolean addTag(Tag newTag) {
         return tags.add(newTag);
-    }
-
-    public void openDetails() {
-        Bundle bundle = new Bundle();
-        bundle.putString("name", getName());
-        //bundle.putStringArrayList("tags", getTags());
-        bundle.putString("img", getImg());
-
-        DetailView detail = new DetailView();
-        detail.setArguments(bundle);
     }
 }

@@ -14,11 +14,11 @@ public class GridAdapter extends BaseAdapter {
 
     Context context;
     String[] clothesNames;
-    int image;
+    int[] image;
 
     LayoutInflater inflater;
 
-    public GridAdapter(Context context, String[] clothesNames, int image) {
+    public GridAdapter(Context context, String[] clothesNames, int[] image) {
         this.context = context;
         this.clothesNames = clothesNames;
         this.image = image;
@@ -52,7 +52,7 @@ public class GridAdapter extends BaseAdapter {
         ImageView imageView = convertView.findViewById(R.id.grid_image);
         TextView textView = convertView.findViewById(R.id.item_name);
 
-        imageView.setImageResource(image);
+        imageView.setImageResource(image[position]);
         textView.setText(clothesNames[position]);
 
         return convertView;

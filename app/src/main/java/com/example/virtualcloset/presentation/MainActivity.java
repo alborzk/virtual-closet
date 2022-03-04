@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Database not configured: login using default values 'user' and 'password'", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Login using default values 'user' and 'password'", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
