@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1185" />
+        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1185" />
+        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/drawable/selector.xml" value="0.1465" />
+        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/layout/activity_closet.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.233" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/placeholdder2.xml" value="0.1" />

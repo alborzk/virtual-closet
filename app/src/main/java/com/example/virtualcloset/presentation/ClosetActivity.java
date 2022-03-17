@@ -49,7 +49,6 @@ public class ClosetActivity extends AppCompatActivity {
                 intent.putExtra("itemImg", img);
                 startActivity(intent);
 
-
             }
         });
     }
