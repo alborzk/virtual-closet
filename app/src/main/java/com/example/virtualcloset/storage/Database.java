@@ -31,7 +31,8 @@ public class Database {
     }
 
     public void initializeClothes(){
-
+        clothesList1=new ArrayList<ClothesItem>();
+        clothesList2=new ArrayList<ClothesItem>();
         ArrayList<Tag> tags1 = new ArrayList<Tag>();
         tags1.add(new Tag("Black","Color"));
         tags1.add(new Tag("Pants","Type"));
