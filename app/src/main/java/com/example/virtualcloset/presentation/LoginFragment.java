@@ -48,7 +48,7 @@ LoginFragment extends Fragment {
 //                        msg.setText("Log In Success!");
                         Toast.makeText(getContext().getApplicationContext(), "Log in success! Loading your closet...",Toast.LENGTH_SHORT).show();
                         NavHostFragment.findNavController(LoginFragment.this)
-                                .navigate(R.id.action_FirstFragment_to_outfitActivity);
+                                .navigate(R.id.action_FirstFragment_to_outfitListActivity);
                     }
                     else{
 //                        msg.setText("Log In Failed! Incorrect Username or Password");

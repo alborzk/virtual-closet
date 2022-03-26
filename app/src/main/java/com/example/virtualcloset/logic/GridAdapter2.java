@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.virtualcloset.R;
@@ -13,22 +12,18 @@ import com.example.virtualcloset.R;
 public class GridAdapter2 extends BaseAdapter {
 
     Context context;
-    String[] clothesNames;
-    int[] image;
-    int[] outfitid;
+    String[] outfitName;
 
     LayoutInflater inflater;
 
-    public GridAdapter2(Context context, String[] clothesNames, int[] outfitid, int[] image) {
+    public GridAdapter2(Context context, String[] outfitname) {
         this.context = context;
-        this.clothesNames = clothesNames;
-        this.image = image;
-        this.outfitid=outfitid;
+        this.outfitName=outfitname;
     }
 
     @Override
     public int getCount() {
-        return clothesNames.length;
+        return outfitName.length;
     }
 
     @Override
@@ -48,15 +43,12 @@ public class GridAdapter2 extends BaseAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.grid_item, null);
+            convertView = inflater.inflate(R.layout.grid_item_outfit, null);
         }
 
-        ImageView imageView = convertView.findViewById(R.id.grid_image);
-        TextView textView = convertView.findViewById(R.id.item_name);
+        TextView textView = convertView.findViewById(R.id.ouName);
 
-
-        imageView.setImageResource(image[position]);
-        textView.setText(clothesNames[position]);
+        textView.setText(outfitName[position]);
 
         return convertView;
     }

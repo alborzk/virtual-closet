@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.OutfitActivity">
+    tools:context=".presentation.OutfitItemActivity">
 
     <TextView
-        android:id="@+id/outfit_ID"
+        android:id="@+id/outfit_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Outfit ID"
