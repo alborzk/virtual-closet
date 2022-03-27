@@ -17,6 +17,11 @@ import com.example.virtualcloset.logic.GridAdapter2;
 import com.example.virtualcloset.logic.OufitDataManager;
 import com.example.virtualcloset.storage.Database;
 
+import androidx.annotation.NonNull;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class OutfitListActivity extends AppCompatActivity {
@@ -38,6 +43,28 @@ public class OutfitListActivity extends AppCompatActivity {
         binding.gridOutfitList.setAdapter(gridAdapter2);
 
 //        final Button button = (Button) findViewById(R.id.outlist_button);
+
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.navigation_outfits);
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.navigation_clothes:
+                        startActivity(new Intent(getApplicationContext(),ClosetActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_outfits:
+                        return true;
+                }
+                return false;
+            }
+        });
+
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,5 +83,7 @@ public class OutfitListActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

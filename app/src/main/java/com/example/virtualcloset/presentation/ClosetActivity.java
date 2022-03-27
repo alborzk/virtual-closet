@@ -1,17 +1,21 @@
 package com.example.virtualcloset.presentation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.example.virtualcloset.R;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
 import com.example.virtualcloset.logic.GridAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.Serializable;
 
@@ -36,6 +40,28 @@ public class ClosetActivity extends AppCompatActivity {
         GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, imgs);
 
         binding.gridView.setAdapter(gridAdapter);
+
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.navigation_clothes);
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.navigation_outfits:
+                        startActivity(new Intent(getApplicationContext(),OutfitListActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_clothes:
+                        return true;
+                }
+                return false;
+            }
+        });
+
 
         binding.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
