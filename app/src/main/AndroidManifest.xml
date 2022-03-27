@@ -13,6 +13,12 @@
             android:name=".presentation.AddClothingActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.OutfitListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.OutfitItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.DetailActivity"
             android:exported="false" />
         <activity

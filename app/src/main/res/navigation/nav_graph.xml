@@ -14,10 +14,18 @@
         <action
             android:id="@+id/action_FirstFragment_to_closetActivity"
             app:destination="@id/closetActivity"/>
+        <action
+            android:id="@+id/action_FirstFragment_to_outfitListActivity"
+            app:destination="@id/outfitListActivity" />
     </fragment>
     <activity
         android:id="@+id/closetActivity"
         android:name="com.example.virtualcloset.presentation.ClosetActivity"
         android:label="activity_closet"
         tools:layout="@layout/activity_closet"/>
+    <activity
+        android:id="@+id/outfitListActivity"
+        android:name="com.example.virtualcloset.presentation.OutfitListActivity"
+        android:label="activity_outfit_list"
+        tools:layout="@layout/activity_outfit_list" />
 </navigation>
