@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -11,6 +12,8 @@ import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
 import com.example.virtualcloset.logic.GridAdapter;
+
+import java.io.Serializable;
 
 
 public class ClosetActivity extends AppCompatActivity {
@@ -50,6 +53,17 @@ public class ClosetActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+            }
+        });
+
+        binding.addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClosetActivity.this, AddClothingActivity.class);
+//                intent.putExtra("db", database);
+//                DataManager dm2 = dm;
+//                intent.putExtra("d2", (Parcelable) dm2);
+                startActivity(intent);
             }
         });
     }

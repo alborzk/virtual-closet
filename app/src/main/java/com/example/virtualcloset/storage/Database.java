@@ -5,6 +5,7 @@ import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Database {
