@@ -35,7 +35,6 @@ public class DetailActivity extends AppCompatActivity {
         bName = intent.getExtras().getString("clothingName");
         bTags = intent.getExtras().getString("itemTags");
         bImg = intent.getExtras().getInt("itemImg");
-        System.out.println(bName);
 
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
         nameDisplay.setText(bName);
@@ -51,6 +50,22 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(DetailActivity.this, ClosetActivity.class);
                 startActivity(i);
+            }
+        });
+
+        binding.favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.favourite.isChecked()){
+                    //adding to favourites
+                    Tag fave = new Tag("favourite", "favourite");
+                    Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
+                } else {
+                    //removing from favourites
+                    Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                }
             }
         });
 
