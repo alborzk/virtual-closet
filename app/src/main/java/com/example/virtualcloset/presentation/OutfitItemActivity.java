@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -32,12 +33,12 @@ public class OutfitItemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         oID = intent.getExtras().getInt("outfitID");
         oName = intent.getExtras().getString("outfitName");
-        //clothesList = (ArrayList<ClothesItem>) intent.getExtras().get("clothesList");
 
 
-        String id = String.valueOf(oID);
+        String id = String.valueOf(oID + 1);
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.outfit_item_title);
-        nameDisplay.setText("#:" + id + " " + oName);
+        id = id + ":  " + oName;
+        nameDisplay.setText(id);
 
 
         Database database = new Database();
@@ -45,6 +46,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         ArrayList<ClothesItem> clothesList = dm.getClothesList(oID);
         String[] clothesNames = dm.getNames(clothesList);
         int[] imgs = dm.getImgs(clothesList);
+        String[] allTags = dm.getTags(clothesList);
 
         GridAdapter gridAdapter = new GridAdapter(OutfitItemActivity.this, clothesNames, imgs);
         binding.gridview2.setAdapter(gridAdapter);
@@ -54,6 +56,24 @@ public class OutfitItemActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(OutfitItemActivity.this, OutfitListActivity.class);
                 startActivity(i);
+            }
+        });
+        binding.gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+//                Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(OutfitItemActivity.this, DetailActivity.class);
+                String name = clothesNames[position];
+                intent.putExtra("clothingName", name);
+                String tags = allTags[position];
+                intent.putExtra("itemTags", tags);
+                int img = imgs[position];
+                intent.putExtra("itemImg", img);
+                startActivity(intent);
+
+
             }
         });
 

@@ -26,8 +26,8 @@ public class Database {
     }
 
     private void initializeOutfits() {
-        outfits.add(new Outfit(0,"OUTFIT1",clothesList1));
-        outfits.add(new Outfit(1,"OUTFIT2",clothesList2));
+        outfits.add(new Outfit(0,"WORK",clothesList1));
+        outfits.add(new Outfit(1,"CASUAL",clothesList2));
     }
 
     public void initializeClothes(){
