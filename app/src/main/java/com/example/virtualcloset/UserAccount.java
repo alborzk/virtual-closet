@@ -1,12 +1,13 @@
 package com.example.virtualcloset;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*Notes:
 - Not sure if email is necessary
 */
 
-public class UserAccount {
+public class UserAccount implements Serializable {
 
     //Instance Variables
     int id;

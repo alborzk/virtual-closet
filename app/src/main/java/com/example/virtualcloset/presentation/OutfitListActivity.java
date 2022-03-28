@@ -33,7 +33,8 @@ public class OutfitListActivity extends AppCompatActivity {
         binding = ActivityOutfitListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Database database = new Database();
+        Intent intent = this.getIntent();
+        Database database = (Database) intent.getSerializableExtra("db");
         OufitDataManager dm = new OufitDataManager(database);
 
         int[] outfitID=dm.getID();
@@ -55,7 +56,9 @@ public class OutfitListActivity extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.navigation_clothes:
-                        startActivity(new Intent(getApplicationContext(),ClosetActivity.class));
+                        Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
+                        intent.putExtra("db", database);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_outfits:

@@ -30,7 +30,8 @@ public class OutfitItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Intent intent = getIntent();
+        Intent intent = this.getIntent();
+        Database database = (Database) intent.getSerializableExtra("db");
         oID = intent.getExtras().getInt("outfitID");
         oName = intent.getExtras().getString("outfitName");
 
@@ -41,7 +42,6 @@ public class OutfitItemActivity extends AppCompatActivity {
         nameDisplay.setText(id);
 
 
-        Database database = new Database();
         OufitDataManager dm = new OufitDataManager(database);
         ArrayList<ClothesItem> clothesList = dm.getClothesList(oID);
         String[] clothesNames = dm.getNames(clothesList);

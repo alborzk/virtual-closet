@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
+import com.example.virtualcloset.storage.Database;
+
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
@@ -31,7 +33,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Intent intent = getIntent();
+
+        Intent intent = this.getIntent();
+        Database database = (Database) intent.getSerializableExtra("db");
+
         bName = intent.getExtras().getString("clothingName");
         bTags = intent.getExtras().getString("itemTags");
         bImg = intent.getExtras().getInt("itemImg");
@@ -48,8 +53,9 @@ public class DetailActivity extends AppCompatActivity {
         binding.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DetailActivity.this, ClosetActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
+                intent.putExtra("db", database);
+                startActivity(intent);
             }
         });
 

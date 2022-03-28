@@ -1,11 +1,12 @@
 package com.example.virtualcloset;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*Notes:
 - int ID or String name to keep track of closets?
 */
 
-public class Closet {
+public class Closet implements Serializable {
 
     //Instance Variables
     int id;

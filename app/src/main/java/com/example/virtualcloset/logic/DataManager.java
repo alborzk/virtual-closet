@@ -3,9 +3,10 @@ package com.example.virtualcloset.logic;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.storage.Database;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DataManager {
+public class DataManager implements Serializable {
 
     public Database db;
     ArrayList<ClothesItem> clothesItems;

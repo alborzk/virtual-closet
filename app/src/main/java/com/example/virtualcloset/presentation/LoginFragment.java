@@ -1,5 +1,6 @@
 package com.example.virtualcloset.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +48,11 @@ LoginFragment extends Fragment {
                     if(userInput.getText().toString().equals(user) && passInput.getText().toString().equals(pass)){
 //                        msg.setText("Log In Success!");
                         Toast.makeText(getContext().getApplicationContext(), "Log in success! Loading your closet...",Toast.LENGTH_SHORT).show();
-                        NavHostFragment.findNavController(LoginFragment.this)
-                                .navigate(R.id.action_FirstFragment_to_outfitListActivity);
+//                        NavHostFragment.findNavController(LoginFragment.this)
+//                                .navigate(R.id.action_FirstFragment_to_outfitListActivity);
+                        Intent intent = new Intent(getActivity(), ClosetActivity.class);
+                        intent.putExtra("db", database);
+                        startActivity(intent);
                     }
                     else{
 //                        msg.setText("Log In Failed! Incorrect Username or Password");

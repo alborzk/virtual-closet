@@ -30,7 +30,8 @@ public class ClosetActivity extends AppCompatActivity {
         binding = ActivityClosetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Database database = new Database();
+        Intent intent = this.getIntent();
+        Database database = (Database) intent.getSerializableExtra("db");
         DataManager dm = new DataManager(database);
 
         String[] clothesNames = dm.getNames();
@@ -41,18 +42,18 @@ public class ClosetActivity extends AppCompatActivity {
 
         binding.gridView.setAdapter(gridAdapter);
 
-        // Initialize and assign variable
+        // Navbar
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_clothes);
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId())
                 {
                     case R.id.navigation_outfits:
-                        startActivity(new Intent(getApplicationContext(),OutfitListActivity.class));
+                        Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
+                        intent.putExtra("db", database);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_clothes:
@@ -67,10 +68,11 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
+//              Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ClosetActivity.this, DetailActivity.class);
                 String name = clothesNames[position];
+                intent.putExtra("db", database);
                 intent.putExtra("clothingName", name);
                 String tags = allTags[position];
                 intent.putExtra("itemTags", tags);
@@ -85,9 +87,7 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ClosetActivity.this, AddClothingActivity.class);
-//                intent.putExtra("db", database);
-//                DataManager dm2 = dm;
-//                intent.putExtra("d2", (Parcelable) dm2);
+                intent.putExtra("db", database);
                 startActivity(intent);
             }
         });

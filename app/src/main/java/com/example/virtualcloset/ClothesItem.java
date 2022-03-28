@@ -1,8 +1,9 @@
 package com.example.virtualcloset;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClothesItem {
+public class ClothesItem implements Serializable {
 
     //Instance Variables
     int id;

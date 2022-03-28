@@ -20,16 +20,15 @@ import com.example.virtualcloset.storage.Database;
 public class AddClothingActivity extends AppCompatActivity {
 
     ActivityAddClothingBinding binding;
-    Intent intent = this.getIntent();
-//    Database db = (Database) intent.getSerializableExtra("db");
-    Database db = new Database();
-//    DataManager dm = intent.getParcelableExtra("dm");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddClothingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Intent intent = this.getIntent();
+        Database db = (Database) intent.getSerializableExtra("db");
 
         binding.doneAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,12 +37,9 @@ public class AddClothingActivity extends AppCompatActivity {
                 ImageView imgInput = (ImageView) findViewById(R.id.addImgDisplay);
                 imgInput.setTag(R.drawable.add_image);
                 ClothesItem newItem = new ClothesItem(db.getClothesItems().size()+1, nameInput.getText().toString(), (Integer) imgInput.getTag());
-                //add newItem to Closet
+                db.addItem(newItem);
                 Intent intent = new Intent(AddClothingActivity.this, ClosetActivity.class);
-//                Database db = database;
-//                intent.putExtra("db", (Parcelable) db);
-//                DataManager dm2 = dm;
-//                intent.putExtra("d2", (Parcelable) dm2);
+                intent.putExtra("db", db);
                 startActivity(intent);
             }
         });

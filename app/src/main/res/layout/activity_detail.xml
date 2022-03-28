@@ -40,7 +40,7 @@
       android:layout_marginStart="20dp"
       android:layout_marginTop="12dp"
       android:layout_marginEnd="20dp"
-      android:text="Casual Yellow T-Shirt"
+      android:text="tag 1  |  tag 2  |  tag 3"
       android:textSize="20sp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"

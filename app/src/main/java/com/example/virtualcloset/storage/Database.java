@@ -9,26 +9,63 @@ import com.example.virtualcloset.UserAccount;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Database {
+import android.os.Parcelable;
+import android.os.Parcel;
 
-    ArrayList<Tag> tags;
+public class Database implements Serializable{
+
+//    ArrayList<Tag> tags;
     ArrayList<ClothesItem> clothesItems;
 
     ArrayList<UserAccount> accounts;
     ArrayList<Outfit> outfits;
     ArrayList<ClothesItem> clothesList1;
     ArrayList<ClothesItem> clothesList2;
+
     public Database(){
         clothesItems = new ArrayList<ClothesItem>();
         accounts = new ArrayList<UserAccount>();
-        outfits= new ArrayList<Outfit>();
+        outfits = new ArrayList<Outfit>();
         initializeClothes();
         initializeOutfits();
     }
 
+//    public Database(Parcel source) {
+//        clothesItems = source.readArrayList(null);
+//        accounts = source.readArrayList(null);
+//        outfits = source.readArrayList(null);
+//    }
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    // Required method to write to Parcel
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeList(clothesItems);
+//        dest.writeList(accounts);
+//        dest.writeList(outfits);
+//    }
+//
+//    // Method to recreate a Database from a Parcel
+//    public static Creator<Database> CREATOR = new Creator<Database>() {
+//        @Override
+//        public Database createFromParcel(Parcel source) {
+//            return new Database(source);
+//        }
+//
+//        @Override
+//        public Database[] newArray(int size) {
+//            return new Database[size];
+//        }
+//    };
+
+
     private void initializeOutfits() {
-        outfits.add(new Outfit(0,"WORK",clothesList1));
-        outfits.add(new Outfit(1,"CASUAL",clothesList2));
+        outfits.add(new Outfit(0,"WORK", clothesList1));
+        outfits.add(new Outfit(1,"CASUAL", clothesList2));
     }
 
     public void initializeClothes(){
@@ -104,13 +141,16 @@ public class Database {
         return outfits;
     }
 
-    public ArrayList<Tag> getTags() {
-        return tags;
-    }
+//    public ArrayList<Tag> getTags() {
+//        return tags;
+//    }
 
     public ArrayList<UserAccount> getAccounts(){
         return accounts;
     }
 
+    public void addItem(ClothesItem item){
+        clothesItems.add(item);
+    }
 
 }
