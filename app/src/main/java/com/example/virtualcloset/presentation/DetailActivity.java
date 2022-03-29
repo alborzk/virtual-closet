@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
@@ -23,8 +24,9 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     ActivityDetailBinding binding;
+    private ClothesItem item;
     private String bName;
-    private String bTags;
+    private ArrayList<Tag> bTags;
     private int bImg;
 
 
@@ -36,19 +38,30 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
+        int index = intent.getExtras().getInt("index");
+        item = database.getClothesItems().get(index);
 
-        bName = intent.getExtras().getString("clothingName");
-        bTags = intent.getExtras().getString("itemTags");
-        bImg = intent.getExtras().getInt("itemImg");
+        bName = item.getName();
+        bTags = item.getTags();
+        bImg = item.getImg();
 
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
         nameDisplay.setText(bName);
 
         TextView tagDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
-        tagDisplay.setText(bTags);
+        tagDisplay.setText(bName); //*****************
 
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.imgDisplay);
         imgDisplay.setImageResource(bImg);
+
+        if(database.getClothesItems().get(index).fave){
+            //check if already a favourite and make heart filled
+            binding.favourite.setChecked(true);
+            binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
+        } else {
+            binding.favourite.setChecked(false);
+            binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
+        }
 
         binding.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,11 +77,12 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(binding.favourite.isChecked()){
                     //adding to favourites
-                    Tag fave = new Tag("favourite", "favourite");
+                    database.getClothesItems().get(index).fave = true;
                     Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
                 } else {
                     //removing from favourites
+                    database.getClothesItems().get(index).fave = false;
                     Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
                 }

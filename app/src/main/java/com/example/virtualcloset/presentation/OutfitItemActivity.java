@@ -65,12 +65,8 @@ public class OutfitItemActivity extends AppCompatActivity {
 //                Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(OutfitItemActivity.this, DetailActivity.class);
-                String name = clothesNames[position];
-                intent.putExtra("clothingName", name);
-                String tags = allTags[position];
-                intent.putExtra("itemTags", tags);
-                int img = imgs[position];
-                intent.putExtra("itemImg", img);
+                intent.putExtra("db", database);
+                intent.putExtra("index", position);
                 startActivity(intent);
 
 

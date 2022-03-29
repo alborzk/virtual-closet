@@ -10,6 +10,7 @@ public class ClothesItem implements Serializable {
     String name;
     ArrayList<Tag> tags;
     int img;
+    public boolean fave;
 
     //Constructor
     public ClothesItem(int id, String name, int img) {
@@ -17,6 +18,7 @@ public class ClothesItem implements Serializable {
         this.name = name;
         this.img = img;
         this.tags = new ArrayList<Tag>();
+        this.fave = false;
     }
 
     public ClothesItem(int id, String name, ArrayList<Tag> tags, int img) {
@@ -24,6 +26,7 @@ public class ClothesItem implements Serializable {
         this.name = name;
         this.tags = tags;
         this.img = img;
+        this.fave = false;
     }
 
     //Getters
