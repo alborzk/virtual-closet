@@ -6,19 +6,19 @@ import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
 
-public class OufitDataManager {
+public class OutfitDataManager {
 
     public Database db;
     ArrayList<Outfit> outfits;
     ArrayList<ClothesItem> clothesItems;
 
-    public OufitDataManager(Database db) {
+    public OutfitDataManager(Database db) {
         this.db = db;
         outfits = db.getOutfits();
     }
     //================OUTFITS
     public String[] getOutfitName() {
-        String name[] = new String[outfits.size()];
+        String[] name = new String[outfits.size()];
         for (int i = 0; i < outfits.size(); i++) {
             name[i] = outfits.get(i).getName();
         }

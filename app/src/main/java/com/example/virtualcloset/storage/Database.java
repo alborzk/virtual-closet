@@ -16,7 +16,6 @@ public class Database implements Serializable{
 
 //    ArrayList<Tag> tags;
     ArrayList<ClothesItem> clothesItems;
-
     ArrayList<UserAccount> accounts;
     ArrayList<Outfit> outfits;
     ArrayList<ClothesItem> clothesList1;
