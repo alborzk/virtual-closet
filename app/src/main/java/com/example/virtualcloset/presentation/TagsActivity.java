@@ -46,10 +46,14 @@ public class TagsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText nameInput = (EditText) binding.getRoot().findViewById(R.id.addTagName);
                 String name = nameInput.getText().toString();
-                EditText typeInput = (EditText) binding.getRoot().findViewById(R.id.addTagType);
-                String type = typeInput.getText().toString();
+//                EditText typeInput = (EditText) binding.getRoot().findViewById(R.id.addTagType);
+//                String type = typeInput.getText().toString();
 
-                closet.addTag(curr.getId(), new Tag(name, type));
+                Integer currId = curr.getId();
+                Integer tagId = curr.getTags().size()-1;
+                String newIdString = currId.toString() + tagId.toString();
+                Integer newId = Integer.parseInt(newIdString);
+                closet.addTag(curr.getId(), new Tag(newId, name));
                 Toast.makeText(TagsActivity.this, "Added \"" + name + "\" Tag", Toast.LENGTH_SHORT).show();
             }
         });

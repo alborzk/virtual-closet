@@ -263,9 +263,9 @@ public class SQLDatabase implements IDatabase{
             while(resultTags.next()){
                 int currTagID = resultTags.getInt("tagID"); //gets the data from "tagID" field
                 String currTagName = resultTags.getString("tagName");
-                String currTagType = resultTags.getString("tagType");
+//                String currTagType = resultTags.getString("tagType");
 
-                Tag currTag = new Tag(currTagName, currTagType);//<--------------------------------------Need to add tagID here when we update tag object to include an ID
+                Tag currTag = new Tag(currTagID, currTagName);//<--------------------------------------Need to add tagID here when we update tag object to include an ID
                 tags.add(currTag);
             }
             statement.close();
@@ -354,8 +354,8 @@ public class SQLDatabase implements IDatabase{
             //Build the Tag objects for each item in the DB. Add them to the list
             resultTag.next();
             String tagName = resultTag.getString("tagName");
-            String tagType = resultTag.getString("tagType");
-            tag = new Tag(tagName, tagType); //<---------------------------NEED TO ADD tagID HERE
+//            String tagType = resultTag.getString("tagType");
+            tag = new Tag(tagID, tagName); //<---------------------------NEED TO ADD tagID HERE
 
             preparedStatement.close();
             resultTag.close();

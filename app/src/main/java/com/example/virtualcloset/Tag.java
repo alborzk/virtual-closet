@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Tag implements Serializable {
 
     //Instance Variables
+    int id;
     String name;
-    String type;
 
     //Constructor
-    public Tag(String name, String type){
+    public Tag(int id, String name){
+        this.id = id;
         this.name = name;
-        this.type = type;
     }
 
     //Getters
@@ -19,8 +19,8 @@ public class Tag implements Serializable {
         return name;
     }
 
-    public String getType() {
-        return type;
+    public int getId() {
+        return id;
     }
 
     //Setters
@@ -28,7 +28,7 @@ public class Tag implements Serializable {
         this.name = name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setId(int id) {
+        this.id = id;
     }
 }
