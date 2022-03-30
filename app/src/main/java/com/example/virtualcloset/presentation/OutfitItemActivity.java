@@ -15,7 +15,7 @@ import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
 import com.example.virtualcloset.logic.GridAdapter;
-import com.example.virtualcloset.logic.OufitDataManager;
+import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        //Getting DB
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
@@ -41,14 +41,14 @@ public class OutfitItemActivity extends AppCompatActivity {
         oID = intent.getExtras().getInt("outfitID");
         oName = intent.getExtras().getString("outfitName");
 
-
+        //
         String id = String.valueOf(oID + 1);
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.outfit_item_title);
         id = id + ":  " + oName;
         nameDisplay.setText(id);
 
 
-        OufitDataManager dm = new OufitDataManager(database);
+        OutfitDataManager dm = new OutfitDataManager(database);
         ArrayList<ClothesItem> clothesList = dm.getClothesList(oID);
         String[] clothesNames = dm.getNames(clothesList);
         int[] imgs = dm.getImgs(clothesList);
@@ -60,8 +60,9 @@ public class OutfitItemActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.done_outfit);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent i = new Intent(OutfitItemActivity.this, OutfitListActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
+                intent.putExtra("db", database);
+                startActivity(intent);
             }
         });
         binding.gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,6 +78,7 @@ public class OutfitItemActivity extends AppCompatActivity {
                 intent.putExtra("itemTags", tags);
                 int img = imgs[position];
                 intent.putExtra("itemImg", img);
+                intent.putExtra("db", database);
                 startActivity(intent);
 
 
