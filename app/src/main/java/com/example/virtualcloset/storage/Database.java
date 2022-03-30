@@ -92,8 +92,8 @@ public class Database {
         tags10.add(new Tag("Spring","Season"));
         clothesItems.add(new ClothesItem(10, "Black Vans Sneakers", tags10, R.drawable.placeholder_9));
 
-        accounts.add(new UserAccount(1, "user", "password", "user@email.com"));
-        accounts.add(new UserAccount(2, "user2", "password", "user2@email.com"));
+        accounts.add(new UserAccount( "user", "password", "user@email.com"));
+        accounts.add(new UserAccount( "user2", "password", "user2@email.com"));
     }
 
     public ArrayList<ClothesItem> getClothesItems() {
