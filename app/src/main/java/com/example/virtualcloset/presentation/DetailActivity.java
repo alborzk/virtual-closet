@@ -1,22 +1,19 @@
 package com.example.virtualcloset.presentation;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
@@ -42,14 +39,16 @@ public class DetailActivity extends AppCompatActivity {
         item = database.getClothesItems().get(index);
 
         bName = item.getName();
-        bTags = item.getTags();
         bImg = item.getImg();
+        //bTags = (ArrayList<Tag>) intent.getSerializableExtra("dm");
+        DataManager dm = (DataManager) intent.getSerializableExtra("dm");
+        String allTags = dm.getTags()[index];
 
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
         nameDisplay.setText(bName);
 
         TextView tagDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
-        tagDisplay.setText(bName); //*****************
+        tagDisplay.setText(allTags);
 
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.imgDisplay);
         imgDisplay.setImageResource(bImg);
@@ -89,12 +88,15 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-//        binding.editButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(DetailActivity.this,"Clothing editing available in a later iteration!",Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        binding.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TagsActivity.class);
+                intent.putExtra("db", database);
+                intent.putExtra("index", index);
+                startActivity(intent);
+            }
+        });
     }
 
 }

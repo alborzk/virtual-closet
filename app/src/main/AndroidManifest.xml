@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualCloset">
         <activity
+            android:name=".presentation.TagsActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.AddClothingActivity"
             android:exported="false" />
         <activity

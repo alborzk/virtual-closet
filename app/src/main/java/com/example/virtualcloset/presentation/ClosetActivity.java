@@ -35,7 +35,7 @@ public class ClosetActivity extends AppCompatActivity {
         DataManager dm = new DataManager(database);
 
         String[] clothesNames = dm.getNames();
-        String[] allTags = dm.getTags();
+        //String[] allTags = dm.getTags();
         int[] imgs = dm.getImgs();
 
         GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, imgs);
@@ -73,6 +73,7 @@ public class ClosetActivity extends AppCompatActivity {
                 Intent intent = new Intent(ClosetActivity.this, DetailActivity.class);
                 intent.putExtra("db", database);
                 intent.putExtra("index", position);
+                intent.putExtra("dm", dm);
 
                 startActivity(intent);
 
