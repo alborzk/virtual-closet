@@ -22,4 +22,10 @@ public class SQLDatabaseTest {
     public void connectionTest(){
         assert(db.getConnection());
     }
+
+//    @Test
+//    public void queryTest(){
+//        db.getConnection();
+//        db.selectClothes();
+//    }
 }
