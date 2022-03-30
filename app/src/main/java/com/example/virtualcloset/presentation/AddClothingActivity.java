@@ -66,7 +66,7 @@ public class AddClothingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Add new item to database
-                ClothesItem newItem = new ClothesItem(closet.getClothesItems().size()+1, nameInput.getText().toString(), (Integer) imgInput.getTag());
+                ClothesItem newItem = new ClothesItem(closet.getClothesItems().size(), nameInput.getText().toString(), (Integer) imgInput.getTag());
                 closet.addClothesItem(newItem);
                 //Go to ClosetActivity
                 Intent intent = new Intent(AddClothingActivity.this, ClosetActivity.class);

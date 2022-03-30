@@ -21,10 +21,8 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     ActivityDetailBinding binding;
-    private ClothesItem item;
     private String bName;
-//    private ArrayList<Tag> bTags;
-//    private String bTags;
+    private String bTags;
     private int bImg;
 
 
@@ -37,24 +35,15 @@ public class DetailActivity extends AppCompatActivity {
         //Receive Database and Current Item
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
         ClothesItem curr = (ClothesItem) intent.getSerializableExtra("curr");
 
 //        //Initialize Variables from Current Item
-//        bName = curr.getName();
-//        bTags = curr.getTagsString();
-//        bImg = curr.getImg();
-
-        int index = intent.getExtras().getInt("index");
-        item = database.getClothesItems().get(index);
-
+        ClothesItem item = closet.getClothesItems().get(curr.getId());
         bName = item.getName();
+        bTags = item.getTagsString();
         bImg = item.getImg();
-        //bTags = (ArrayList<Tag>) intent.getSerializableExtra("dm");
-        DataManager dm = (DataManager) intent.getSerializableExtra("dm");
-        String allTags = dm.getTags()[index];
 
         //Set Up Name Display
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
@@ -62,14 +51,14 @@ public class DetailActivity extends AppCompatActivity {
 
         //Set Up Tags Display
         TextView tagDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
-        tagDisplay.setText(allTags);
+        tagDisplay.setText(bTags);
 
         //Set Up Image Display
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.imgDisplay);
         imgDisplay.setImageResource(bImg);
 
         //Check if already a favourite and make heart filled
-        if(database.getClothesItems().get(index).fave){
+        if(item.isFave()){
             binding.favourite.setChecked(true);
             binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
         } else {
@@ -95,16 +84,13 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(binding.favourite.isChecked()){
-                    //adding to favourites
-                    database.getClothesItems().get(index).fave = true;
                     Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
                 } else {
-                    //removing from favourites
-                    database.getClothesItems().get(index).fave = false;
                     Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
                 }
+                closet.setFavorite(curr.getId());
             }
         });
 
@@ -115,8 +101,7 @@ public class DetailActivity extends AppCompatActivity {
                 intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
-                intent.putExtra("dm", dm);
-                intent.putExtra("index", index);
+                intent.putExtra("curr", curr);
                 startActivity(intent);
             }
         });

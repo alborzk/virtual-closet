@@ -63,4 +63,12 @@ public class Closet implements Serializable {
         return outfits.add(newOutfit);
     }
 
+    public boolean setFavorite(int id){
+        return clothesItems.get(id).setFave();
+    }
+
+    public boolean addTag(int id, Tag tag){
+        return clothesItems.get(id).addTag(tag);
+    }
+
 }

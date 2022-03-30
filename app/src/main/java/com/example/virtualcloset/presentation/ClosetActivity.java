@@ -39,7 +39,6 @@ public class ClosetActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
-        DataManager dm = new DataManager(database);
         ClosetManager cm = new ClosetManager(closet);
 
         //Initialize GridAdapter
@@ -82,10 +81,6 @@ public class ClosetActivity extends AppCompatActivity {
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 intent.putExtra("curr", curr);
-
-                intent.putExtra("index", position);
-                intent.putExtra("dm", dm);
-
                 startActivity(intent);
             }
         });

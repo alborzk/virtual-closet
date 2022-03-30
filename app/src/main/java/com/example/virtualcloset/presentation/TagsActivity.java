@@ -21,8 +21,6 @@ import com.example.virtualcloset.storage.Database;
 
 public class TagsActivity extends AppCompatActivity {
     ActivityTagsBinding binding;
-    private ClothesItem item;
-    private String bName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +32,11 @@ public class TagsActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
-        int index = intent.getExtras().getInt("index");
-        DataManager dm = (DataManager) intent.getSerializableExtra("dm");
-        item = database.getClothesItems().get(index);
+        ClothesItem curr = (ClothesItem) intent.getSerializableExtra("curr");
 
         //display the name of the item
-        bName = item.getName();
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
-        nameDisplay.setText(bName);
+        nameDisplay.setText(curr.getName());
 
         //setting up grid of tags
 
@@ -54,7 +49,7 @@ public class TagsActivity extends AppCompatActivity {
                 EditText typeInput = (EditText) binding.getRoot().findViewById(R.id.addTagType);
                 String type = typeInput.getText().toString();
 
-                database.getClothesItems().get(index).addTag(new Tag(name, type));
+                closet.addTag(curr.getId(), new Tag(name, type));
                 Toast.makeText(TagsActivity.this, "Added \"" + name + "\" Tag", Toast.LENGTH_SHORT).show();
             }
         });
@@ -66,8 +61,7 @@ public class TagsActivity extends AppCompatActivity {
                 intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
-                intent.putExtra("dm", dm);
-                intent.putExtra("index", index);
+                intent.putExtra("curr", curr);
                 startActivity(intent);
             }
         });
