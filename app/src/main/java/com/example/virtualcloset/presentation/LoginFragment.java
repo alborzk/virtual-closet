@@ -98,7 +98,7 @@ LoginFragment extends Fragment {
             }
             else{
                 Toast.makeText(getContext().getApplicationContext(), "Welcome to your new closet, " + userInput + "! Click '+' to begin adding items.",Toast.LENGTH_SHORT).show();
-                UserAccount newAccount = new UserAccount(accounts.size()-1, userInput, passInput, "user@email.com");
+                UserAccount newAccount = new UserAccount(userInput, passInput, "user@email.com");
                 Closet newCloset = new Closet(0, new ArrayList<ClothesItem>(), new ArrayList<Outfit>());
                 newAccount.addCloset(newCloset);
                 database.getAccounts().add(newAccount);

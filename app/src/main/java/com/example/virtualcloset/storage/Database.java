@@ -31,7 +31,7 @@ public class Database implements Serializable{
 
     public void initializeDefaultAccount(){
         //Add default user account to accounts
-        accounts.add(new UserAccount(0, "user", "password", "user@email.com"));
+        accounts.add(new UserAccount("user", "password", "user@email.com"));
         UserAccount defaultAccount = accounts.get(0);
 
         //Set up default user account with a closet
