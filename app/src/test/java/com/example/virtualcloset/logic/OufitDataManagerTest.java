@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class OufitDataManagerTest {
+public class OutfitDataManagerTest {
     Database db = new Database();
     ArrayList<ClothesItem> clothesItems;
     OutfitDataManager newDM = new OutfitDataManager(db);
