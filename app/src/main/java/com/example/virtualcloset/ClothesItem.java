@@ -39,6 +39,14 @@ public class ClothesItem implements Serializable {
         return tags;
     }
 
+    public String getTagsString() {
+        String str = "|  ";
+        for(int j = 0; j < tags.size(); j++){
+            str = str + tags.get(j).getName() + "  |  ";
+        }
+        return str;
+    }
+
     public int getImg() {
         return img;
     }

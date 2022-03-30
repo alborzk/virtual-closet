@@ -8,8 +8,8 @@
     <string name="previous">Previous</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="loginbutton">Log in</string>
-    <string name="signupbutton">Sign up</string>
+    <string name="loginbutton">Log In</string>
+    <string name="signupbutton">Sign Up</string>
     <string name="backbutton">Back</string>
     <string name="hello_first_fragment">Virtual Closet</string>
 </resources>

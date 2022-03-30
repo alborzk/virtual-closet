@@ -76,6 +76,10 @@ public class UserAccount implements Serializable {
     }
 
     //Other Methods
+    public boolean newCloset(){
+        return closets.add(new Closet(closets.size()-1, new ArrayList<ClothesItem>(), new ArrayList<Outfit>()));
+    }
+
     public boolean addCloset(Closet newCloset){
         return closets.add(newCloset);
     }

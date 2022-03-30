@@ -8,38 +8,7 @@
     tools:context=".presentation.AddClothingActivity">
 
 
-    <ImageView
-        android:id="@+id/addImgDisplay"
-        android:layout_width="352dp"
-        android:layout_height="349dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/add_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/editTextAdd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Item Name"
-        android:inputType="text"
-        android:minHeight="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
-
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:id="@+id/tagDisplay"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="50dp"-->
@@ -53,13 +22,58 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/editTextName" />-->
 
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toLeftOf="@+id/guideline" />-->
+
+    <ImageView
+        android:id="@+id/addImgDisplay"
+        android:layout_width="588dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/add_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Item Name"
+        android:inputType="text"
+        android:minHeight="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
+
+    <Button
+        android:id="@+id/selectImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="256dp"
+        android:text="UPLOAD IMAGE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
+
     <Button
         android:id="@+id/doneAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
-        android:text="ADD"
+        android:text="DONE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/guideline"

@@ -9,8 +9,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
+import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitListBinding;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.logic.GridAdapter2;
@@ -35,6 +37,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
+        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
+        Closet closet = (Closet) intent.getSerializableExtra("closet");
         OufitDataManager dm = new OufitDataManager(database);
 
         int[] outfitID=dm.getID();
@@ -58,6 +62,8 @@ public class OutfitListActivity extends AppCompatActivity {
                     case R.id.navigation_clothes:
                         Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
                         intent.putExtra("db", database);
+                        intent.putExtra("acc", account);
+                        intent.putExtra("closet", closet);
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;

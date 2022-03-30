@@ -9,8 +9,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
+import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.logic.OufitDataManager;
@@ -30,8 +32,12 @@ public class OutfitItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
+        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
+        Closet closet = (Closet) intent.getSerializableExtra("closet");
+
         oID = intent.getExtras().getInt("outfitID");
         oName = intent.getExtras().getString("outfitName");
 
