@@ -80,6 +80,8 @@ public class OutfitListActivity extends AppCompatActivity {
                 intent.putExtra("outfitID", oid);
                 String name=outfitName[position];
                 intent.putExtra("outfitName",name);
+                intent.putExtra("acc", account);
+                intent.putExtra("closet", closet);
                 intent.putExtra("db", database);
 //
 //                intent.putExtra("clothesList",clothesItems);
