@@ -24,6 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     private String bName;
     private String bTags;
     private int bImg;
+    private int pageNum;
 
 
     @Override
@@ -38,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
         ClothesItem curr = (ClothesItem) intent.getSerializableExtra("curr");
+        pageNum=intent.getExtras().getInt("pageNum");
 
 //        //Initialize Variables from Current Item
         ClothesItem item = closet.getClothesItems().get(curr.getId());
@@ -71,11 +73,20 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Go to ClosetActivity
-                Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                startActivity(intent);
+                if(pageNum==1){
+                    Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
+//                intent.putExtra("db", database);
+                    intent.putExtra("acc", account);
+                    intent.putExtra("closet", closet);
+                    startActivity(intent);
+                }else if(pageNum==0){
+                    Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
+//                intent.putExtra("db", database);
+                    intent.putExtra("acc", account);
+                    intent.putExtra("closet", closet);
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -98,7 +109,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), TagsActivity.class);
-                intent.putExtra("db", database);
+//                intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 intent.putExtra("curr", curr);

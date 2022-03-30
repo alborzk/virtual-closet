@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
+import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.logic.OutfitDataManager;
@@ -33,29 +35,31 @@ public class OutfitItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //Getting DB
+        //Receive Database and Current Item
         Intent intent = this.getIntent();
-        Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
-        DataManager dataManager = new DataManager(database);
+        Outfit currOutfit= (Outfit) intent.getSerializableExtra("currOutfit");
 
-        oID = intent.getExtras().getInt("outfitID");
-        oName = intent.getExtras().getString("outfitName");
+        //        Database database = (Database) intent.getSerializableExtra("db");
+//        DataManager dataManager = new DataManager(database);
 
-        //
+        //Initialize Variables from Current Item
+        oID = currOutfit.getID();
+        oName = currOutfit.getName();
+
+        //Set Up title Display
         String id = String.valueOf(oID + 1);
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.outfit_item_title);
         id = id + ":  " + oName;
         nameDisplay.setText(id);
 
-
-        OutfitDataManager dm = new OutfitDataManager(database);
-        ArrayList<ClothesItem> clothesList = dm.getClothesList(oID);
-        String[] clothesNames = dm.getNames(clothesList);
-        int[] imgs = dm.getImgs(clothesList);
-        String[] allTags = dm.getTags(clothesList);
-
+        //Initialize GridAdapter for clothes in Outfit
+        ClosetManager cm= new ClosetManager(closet);
+        clothesList = currOutfit.getClothesItems();
+        String[] clothesNames = cm.getNames(clothesList);
+        int[] imgs = cm.getImgs(clothesList);
+        String[] allTags = cm.getTags(clothesList);
         GridAdapter gridAdapter = new GridAdapter(OutfitItemActivity.this, clothesNames, imgs);
         binding.gridview2.setAdapter(gridAdapter);
 
@@ -63,7 +67,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
-                intent.putExtra("db", database);
+//                intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 startActivity(intent);
@@ -82,13 +86,14 @@ public class OutfitItemActivity extends AppCompatActivity {
 //                intent.putExtra("itemTags", tags);
 //                int img = imgs[position];
 //                intent.putExtra("itemImg", img);
-                intent.putExtra("db", database);
+//                intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 intent.putExtra("curr", curr);
-                intent.putExtra("dm", dataManager);
+//                intent.putExtra("dm", dataManager);
                 intent.putExtra("index", position);
-
+                int pageNumber=0; // here page number refer to Outfit Page (0) or ClosetPage (1)
+                intent.putExtra("pageNum",pageNumber);
                 startActivity(intent);
 
 

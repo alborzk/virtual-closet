@@ -49,4 +49,13 @@ public class Outfit implements Serializable {
     public boolean addClothesItem(ClothesItem newItem){
         return clothesItems.add(newItem);
     }
+
+    public String[] getClothesNames() {
+        String[] str = new String[clothesItems.size()];
+        for (int i = 0; i < clothesItems.size(); i++) {
+            str[i] = clothesItems.get(i).getName();
+        }
+        return str;
+    }
+
 }

@@ -74,7 +74,7 @@ LoginFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), ClosetActivity.class);
                     intent.putExtra("acc", account);
                     intent.putExtra("closet", account.getClosets().get(0));
-                    intent.putExtra("db", database); //Database passed should be specific to the user, perhaps instead of passing database we pass userAccount?
+//                    intent.putExtra("db", database); //Database passed should be specific to the user, perhaps instead of passing database we pass userAccount?
                     startActivity(intent);
                 } else {
                     Toast.makeText(getContext().getApplicationContext(), "Log in failed! User/password combination not found.", Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ LoginFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ClosetActivity.class);
                 intent.putExtra("acc", newAccount);
                 intent.putExtra("closet", newCloset);
-                intent.putExtra("db", database); //Database passed should be specific to the user, perhaps instead of passing database we pass userAccount?
+//                intent.putExtra("db", database); //Database passed should be specific to the user, perhaps instead of passing database we pass userAccount?
                 startActivity(intent);
 
             }

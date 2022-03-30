@@ -9,9 +9,11 @@ import android.widget.AdapterView;
 
 import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitListBinding;
+import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.GridAdapter2;
 import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
@@ -30,25 +32,23 @@ public class OutfitListActivity extends AppCompatActivity {
         binding = ActivityOutfitListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Receive Database and Current Item
         Intent intent = this.getIntent();
-        Database database = (Database) intent.getSerializableExtra("db");
+//        Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
-        OutfitDataManager dm = new OutfitDataManager(database);
+        ClosetManager cm = new ClosetManager(closet);
+//        OutfitDataManager dm = new OutfitDataManager(database);
 
-        int[] outfitID=dm.getID();
-        String [] outfitName=dm.getOutfitName();
-
+        //Initialize GridAdapter
+        int[] outfitID=cm.getID();
+        String [] outfitName=cm.getOutfitName();
         GridAdapter2 gridAdapter2 = new GridAdapter2(OutfitListActivity.this, outfitName);
         binding.gridOutfitList.setAdapter(gridAdapter2);
 
-//        final Button button = (Button) findViewById(R.id.outlist_button);
-
-        // Initialize and assign variable
+        //Navigation Bar
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_outfits);
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -56,7 +56,6 @@ public class OutfitListActivity extends AppCompatActivity {
                 {
                     case R.id.navigation_clothes:
                         Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
-                        intent.putExtra("db", database);
                         intent.putExtra("acc", account);
                         intent.putExtra("closet", closet);
                         startActivity(intent);
@@ -69,6 +68,7 @@ public class OutfitListActivity extends AppCompatActivity {
             }
         });
 
+        //Clicking an item in the grid
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -76,13 +76,11 @@ public class OutfitListActivity extends AppCompatActivity {
                 //Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(OutfitListActivity.this, OutfitItemActivity.class);
-                int oid = outfitID[position];
-                intent.putExtra("outfitID", oid);
-                String name=outfitName[position];
-                intent.putExtra("outfitName",name);
+                Outfit currOutfit = closet.getOutfits().get(position);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
-                intent.putExtra("db", database);
+                intent.putExtra("currOutfit",currOutfit);
+//                intent.putExtra("db", database);
 //
 //                intent.putExtra("clothesList",clothesItems);
 

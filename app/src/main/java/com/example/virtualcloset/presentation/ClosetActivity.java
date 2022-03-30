@@ -22,6 +22,7 @@ import com.example.virtualcloset.logic.GridAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class ClosetActivity extends AppCompatActivity {
@@ -36,14 +37,14 @@ public class ClosetActivity extends AppCompatActivity {
 
         //Receive Database
         Intent intent = this.getIntent();
-        Database database = (Database) intent.getSerializableExtra("db");
+//        Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
         ClosetManager cm = new ClosetManager(closet);
-
+        ArrayList<ClothesItem>clothesItems= closet.getClothesItems();
         //Initialize GridAdapter
-        String[] clothesNames = cm.getNames();
-        int[] imgs = cm.getImgs();
+        String[] clothesNames = cm.getNames(clothesItems);
+        int[] imgs = cm.getImgs(clothesItems);
         GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, imgs);
         binding.gridView.setAdapter(gridAdapter);
 
@@ -57,9 +58,10 @@ public class ClosetActivity extends AppCompatActivity {
                 {
                     case R.id.navigation_outfits:
                         Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
-                        intent.putExtra("db", database);
+//                        intent.putExtra("db", database);
                         intent.putExtra("acc", account);
                         intent.putExtra("closet", closet);
+
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
@@ -77,10 +79,12 @@ public class ClosetActivity extends AppCompatActivity {
                 //Go to DetailActivity with current item
                 ClothesItem curr = closet.getClothesItems().get(position);
                 Intent intent = new Intent(ClosetActivity.this, DetailActivity.class);
-                intent.putExtra("db", database);
+//                intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 intent.putExtra("curr", curr);
+                int pageNumber=1; // here page number refer to Outfit Page (0) or ClosetPage (1)
+                intent.putExtra("pageNum",pageNumber);
                 startActivity(intent);
             }
         });
@@ -91,7 +95,7 @@ public class ClosetActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Go to AddClothingActivity
                 Intent intent = new Intent(ClosetActivity.this, AddClothingActivity.class);
-                intent.putExtra("db", database);
+//                intent.putExtra("db", database);
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 startActivity(intent);
