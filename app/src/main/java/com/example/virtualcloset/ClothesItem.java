@@ -10,6 +10,8 @@ public class ClothesItem implements Serializable {
     String name;
     ArrayList<Tag> tags;
     int img;
+    public boolean fave;
+    public int fav;
 
     //Constructor
     public ClothesItem(int id, String name, int img) {
@@ -17,6 +19,8 @@ public class ClothesItem implements Serializable {
         this.name = name;
         this.img = img;
         this.tags = new ArrayList<Tag>();
+        this.fave = false;
+        this.fav = 0;
     }
 
     public ClothesItem(int id, String name, ArrayList<Tag> tags, int img) {
@@ -24,6 +28,8 @@ public class ClothesItem implements Serializable {
         this.name = name;
         this.tags = tags;
         this.img = img;
+        this.fave = false;
+        this.fav = 0;
     }
 
     //Getters
@@ -51,6 +57,14 @@ public class ClothesItem implements Serializable {
         return img;
     }
 
+    public boolean isFave(){
+        return fave;
+    }
+
+    public int getFav(){
+        return fav;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
@@ -66,5 +80,18 @@ public class ClothesItem implements Serializable {
 
     public boolean addTag(Tag newTag) {
         return tags.add(newTag);
+    }
+
+    public boolean setFave(){
+        return fave=!fave;
+    }
+
+    public void setFav(){
+        if (fav == 0){
+            fav = 1;
+        }
+        else{
+            fav = 0;
+        }
     }
 }

@@ -14,6 +14,7 @@ import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
@@ -37,6 +38,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
         Closet closet = (Closet) intent.getSerializableExtra("closet");
+        DataManager dataManager = new DataManager(database);
 
         oID = intent.getExtras().getInt("outfitID");
         oName = intent.getExtras().getString("outfitName");
@@ -84,6 +86,9 @@ public class OutfitItemActivity extends AppCompatActivity {
                 intent.putExtra("acc", account);
                 intent.putExtra("closet", closet);
                 intent.putExtra("curr", curr);
+                intent.putExtra("dm", dataManager);
+                intent.putExtra("index", position);
+
                 startActivity(intent);
 
 
