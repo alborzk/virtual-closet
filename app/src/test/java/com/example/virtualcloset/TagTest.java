@@ -16,7 +16,9 @@ public class TagTest {
     Tag newTag;
     @Before
     public void setUp() throws Exception {
-        newTag = new Tag("Red", "Colour");
+//        newTag = new Tag("Red", "Colour");
+        newTag = new Tag(1, "Red");
+
     }
 
     @After
@@ -27,7 +29,7 @@ public class TagTest {
     public void constructorTest(){
 
         assert ("Red".equals(newTag.getName()));
-        assert ("Colour".equals(newTag.getType()));
+        //assert ("Colour".equals(newTag.getType()));
     }
 
 
@@ -36,10 +38,10 @@ public class TagTest {
         assert ("Red".equals(newTag.getName()));
     }
 
-    @Test
-    public void getType() {
-        assert ("Colour".equals(newTag.getType()));
-    }
+//    @Test
+//    public void getType() {
+//        assert ("Colour".equals(newTag.getType()));
+//    }
 
     @Test
     public void setName() {
@@ -47,9 +49,9 @@ public class TagTest {
         assert ("Shirt".equals(newTag.getName()));
     }
 
-    @Test
-    public void setType() {
-        newTag.setType("Categories");
-        assertEquals("These must equal", "Categories",newTag.getType());
-    }
+//    @Test
+//    public void setType() {
+//        newTag.setType("Categories");
+//        assertEquals("These must equal", "Categories",newTag.getType());
+//    }
 }

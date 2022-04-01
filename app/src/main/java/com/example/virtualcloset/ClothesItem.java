@@ -80,8 +80,13 @@ public class ClothesItem implements Serializable {
         return tags.add(newTag);
     }
 
-    public boolean setFave(){
-        return fave=!fave;
+    public boolean favorite(){
+        return fave = true;
     }
+
+    public boolean unFavorite(){
+        return fave = false;
+    }
+
 
 }

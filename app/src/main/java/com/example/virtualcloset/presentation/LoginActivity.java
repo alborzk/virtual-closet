@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Initializes a new database, with a default user account
     private Database initializeDatabase() {
-        Database database = new Database();
+        Database database = new Database(true);
 
         //Create a new default account
         UserAccount defaultAccount = new UserAccount("user", "password", "user@email.com");

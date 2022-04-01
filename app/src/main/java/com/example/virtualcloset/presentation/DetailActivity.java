@@ -104,13 +104,14 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(binding.favourite.isChecked()){
+                    item.favorite();
                     Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
                 } else {
+                    item.unFavorite();
                     Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
                 }
-                item.setFave();
             }
         });
 
