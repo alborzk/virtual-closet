@@ -51,7 +51,6 @@ public class AddClothingActivity extends AppCompatActivity {
         //Get Objects from IDs
         UserAccount account = db.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
-        ClosetManager cm = new ClosetManager(closet);
 
         //Set Up UI Widgets
 //        Button selectImg = findViewById(R.id.selectImageButton);

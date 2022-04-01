@@ -37,7 +37,6 @@ public class AccountActivity extends AppCompatActivity {
         //Get Objects from IDs
         UserAccount account = database.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
-        DataManager dm = new DataManager(database);
 
         //Get Variables from Account
         String name = account.getUsername();
