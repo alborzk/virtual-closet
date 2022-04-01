@@ -12,7 +12,6 @@ public class GridAdapter2Test {
 
     Context context;
     String[] outfitNames;
-    int[] image;
     GridAdapter2 grid2;
 
     @Before
@@ -20,10 +19,6 @@ public class GridAdapter2Test {
         outfitNames = new String[10];
         grid2 = new GridAdapter2(context, outfitNames);
         assertNotNull(grid2);
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 
     @Test
@@ -41,5 +36,9 @@ public class GridAdapter2Test {
     public void getItemId() {
         int randomId = (int) (Math.random() * 10);
         assertEquals("return itemId",0, grid2.getItemId(randomId));
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
 }

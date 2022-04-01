@@ -45,9 +45,6 @@ public class ClosetManagerTest {
         c.addOutfit(new Outfit(4, "WORK", clothesList1));
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
     @Test
     public void constructorTest() {
         assertNotNull(cm);
@@ -78,5 +75,9 @@ public class ClosetManagerTest {
         int[] cmClothesImgs = cm.getClothesImgs();
         assertEquals("the etrieved int[] and the actual arraylist should be same size", cmClothesImgs.length, clothesItems.size());
         assertEquals("the first cloth's img should match", R.drawable.placeholder_0, cmClothesImgs[0]);
+    }
+
+    @After
+    public void tearDown() {
     }
 }
