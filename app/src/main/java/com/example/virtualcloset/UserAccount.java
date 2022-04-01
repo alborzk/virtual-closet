@@ -10,23 +10,23 @@ import java.util.ArrayList;
 public class UserAccount implements Serializable {
 
     //Instance Variables
-    //int id;
+    int id;
     String username;
     String password;
     String email;
     ArrayList<Closet> closets;
 
     //Constructor
-    public UserAccount(String username, String password, String email){
-        //this.id = id;
+    public UserAccount(int id, String username, String password, String email){
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.closets = new ArrayList<Closet>();
     }
 
-    public UserAccount(String username, String password, String email, ArrayList<Closet> closets){
-        //this.id = id;
+    public UserAccount(int id, String username, String password, String email, ArrayList<Closet> closets){
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -34,9 +34,9 @@ public class UserAccount implements Serializable {
     }
 
     //Getters
-//    public int getID() {
-//        return id;
-//    }
+    public int getID() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -59,9 +59,9 @@ public class UserAccount implements Serializable {
     }
 
     //Setters
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -76,9 +76,6 @@ public class UserAccount implements Serializable {
     }
 
     //Other Methods
-    public boolean newCloset(){
-        return closets.add(new Closet(closets.size()-1, new ArrayList<ClothesItem>(), new ArrayList<Outfit>()));
-    }
 
     public boolean addCloset(Closet newCloset){
         return closets.add(newCloset);

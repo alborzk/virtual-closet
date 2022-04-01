@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 //If account exists, log in using it
                 if (account != null) {
                     Toast.makeText(getApplicationContext(), "Welcome back, " + account.getUsername() + "! Loading your closet...", Toast.LENGTH_SHORT).show();
-                    int aID = dm.findAID(userInput,passInput);
+                    int aID = account.getID();
                     //Go to ClosetActivity
                     Intent i1 = new Intent(getApplicationContext(), ClosetActivity.class);
                     i1.putExtra("aID", aID);
@@ -112,11 +112,11 @@ public class LoginActivity extends AppCompatActivity {
                 //If username/password unique and valid, sign up using it
                 else {
                     Toast.makeText(getApplicationContext(), "Welcome to your new closet, " + userInput + "! Click '+' to begin adding items.", Toast.LENGTH_SHORT).show();
-                    UserAccount newAccount = new UserAccount(userInput, passInput, "user@email.com");
+                    int aID = database.getNumAccounts();
+                    UserAccount newAccount = new UserAccount(aID, userInput, passInput, "user@email.com");
                     database.addAccount(newAccount);
                     Closet newCloset = new Closet(0, new ArrayList<ClothesItem>(), new ArrayList<Outfit>());
                     newAccount.addCloset(newCloset);
-                    int aID = dm.findAID(userInput,passInput);
 
                     //Go to ClosetActivity
                     Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
@@ -141,15 +141,15 @@ public class LoginActivity extends AppCompatActivity {
     //Initializes a new database, with a default user account
     private Database initializeDatabase() {
         Database database = new Database(true);
-
-        //Create a new default account
-        UserAccount defaultAccount = new UserAccount("user", "password", "user@email.com");
-        database.addAccount(defaultAccount);
-
-        //Set up default account with a closet
-        Closet defaultCloset = new Closet(0, new ArrayList<ClothesItem>(), new ArrayList<Outfit>());
-        defaultCloset.initializeDefaultCloset();
-        defaultAccount.addCloset(defaultCloset);
+//
+//        //Create a new default account
+//        UserAccount defaultAccount = new UserAccount(0, "user", "password", "user@email.com");
+//        database.addAccount(defaultAccount);
+//
+//        //Set up default account with a closet
+//        Closet defaultCloset = new Closet(0, new ArrayList<ClothesItem>(), new ArrayList<Outfit>());
+//        defaultCloset.initializeDefaultCloset();
+//        defaultAccount.addCloset(defaultCloset);
 
         return database;
     }

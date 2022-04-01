@@ -6,6 +6,7 @@ import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 //Will 'implement' the IDatabase interface
-public class SQLDatabase implements IDatabase{
+public class SQLDatabase implements Serializable, IDatabase{
     private static Connection con;
 
     public SQLDatabase(){
@@ -406,7 +407,7 @@ public class SQLDatabase implements IDatabase{
                 //<-------------------------------Right now accounts have a list of closets. this method I think will create a new account for each closet--------------
                 currAccountClosets.add(currCloset);
 
-                UserAccount currAccount = new UserAccount(currUsername, currPassword, currEmail, currAccountClosets); //add currUserID once merged
+                UserAccount currAccount = new UserAccount(currUserID, currUsername, currPassword, currEmail, currAccountClosets); //add currUserID once merged
                 accounts.add(currAccount);
             }
             statement.close();
@@ -448,7 +449,7 @@ public class SQLDatabase implements IDatabase{
             preparedStatement.setString(2, newAccount.getEmail());
             preparedStatement.setString(3, newAccount.getPassword());
             preparedStatement.setInt(4, newAccount.getClosets().get(0).getID()); //This assumes the user has one closet, only gets the first closet in the list
-            //preparedStatement.setInt(5, newAccount.getID());
+            preparedStatement.setInt(5, newAccount.getID());
 
             preparedStatement.executeUpdate();
 
