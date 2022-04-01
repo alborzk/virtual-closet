@@ -42,7 +42,7 @@ public class DataManager implements Serializable {
     public int[] getImgs(){
         int[] imgs = new int[clothesItems.size()];
         for (int i = 0; i < clothesItems.size(); i++) {
-            imgs[i] = clothesItems.get(i).getImg();
+            imgs[i] = clothesItems.get(i).getImg(); //Try testing this during runtime to see what this returns -> hardcode that into the SQL database
         }
         return imgs;
     }

@@ -35,7 +35,7 @@ public class SQLDatabase implements IDatabase{
         try{
             con = DriverManager.getConnection(jdbcURL);
             connectionEstablished = true;
-            System.out.println("Connection Established");
+            //System.out.println("Connection Established");
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -65,8 +65,13 @@ public class SQLDatabase implements IDatabase{
                 String currClothingName = resultClothes.getString("clothingName");
                 int currImg = resultClothes.getInt("clothingImg");//NOTE: many images are currently set to null in database. according to documentation, it sets the int to 0
                 ArrayList<Tag> currClothesTags = getTagsFromClothesID(currClothesID);
+                int currFav = resultClothes.getInt("fav");
 
                 ClothesItem currClothing = new ClothesItem(currClothesID, currClothingName, currClothesTags, currImg);
+                if(currFav == 1){
+                    //Fav is always set to 0 for newly constructed ClothesItems -> this will update that if necessary
+                    currClothing.setFav();
+                }
                 clothes.add(currClothing);
             }
             statement.close();
@@ -99,8 +104,13 @@ public class SQLDatabase implements IDatabase{
                 String currClothingName = resultClothes.getString("clothingName");
                 int currImg = resultClothes.getInt("clothingImg");//NOTE: many images are currently set to null in database. according to documentation, it sets the int to 0
                 ArrayList<Tag> currClothesTags = getTagsFromClothesID(currClothesID);
+                int currFav = resultClothes.getInt("fav");
 
                 ClothesItem currClothing = new ClothesItem(currClothesID, currClothingName, currClothesTags, currImg);
+                if(currFav == 1){
+                    //Fav is always set to 0 for newly constructed ClothesItems -> this will update that if necessary
+                    currClothing.setFav();
+                }
                 clothes.add(currClothing);
             }
             preparedStatement.close();
@@ -161,8 +171,13 @@ public class SQLDatabase implements IDatabase{
             String clothesName = resultClothes.getString("clothingName");
             int currImg = resultClothes.getInt("clothingImg");//NOTE: many images are currently set to null in database. according to documentation, it sets the int to 0
             ArrayList<Tag> currClothesTags = getTagsFromClothesID(clothesID);
+            int fav = resultClothes.getInt("fav");
 
             clothesItem = new ClothesItem(clothesID, clothesName, currClothesTags, currImg);
+            if(fav == 1){
+                //Fav is always set to 0 for newly constructed ClothesItems -> this will update that if necessary
+                clothesItem.setFav();
+            }
 
             preparedStatement.close();
             resultClothes.close();
@@ -265,7 +280,7 @@ public class SQLDatabase implements IDatabase{
                 String currTagName = resultTags.getString("tagName");
 //                String currTagType = resultTags.getString("tagType");
 
-                Tag currTag = new Tag(currTagID, currTagName);//<--------------------------------------Need to add tagID here when we update tag object to include an ID
+                Tag currTag = new Tag(currTagID, currTagName);
                 tags.add(currTag);
             }
             statement.close();
@@ -355,7 +370,7 @@ public class SQLDatabase implements IDatabase{
             resultTag.next();
             String tagName = resultTag.getString("tagName");
 //            String tagType = resultTag.getString("tagType");
-            tag = new Tag(tagID, tagName); //<---------------------------NEED TO ADD tagID HERE
+            tag = new Tag(tagID, tagName);
 
             preparedStatement.close();
             resultTag.close();
@@ -384,12 +399,14 @@ public class SQLDatabase implements IDatabase{
                 String currEmail = resultAccounts.getString("email");
                 String currPassword = resultAccounts.getString("password");
                 int currClosetID = resultAccounts.getInt("closetID");
+                int currUserID = resultAccounts.getInt("userID");
+
                 Closet currCloset = getClosetFromID(currClosetID);
                 ArrayList<Closet> currAccountClosets = new ArrayList<Closet>();
                 //<-------------------------------Right now accounts have a list of closets. this method I think will create a new account for each closet--------------
                 currAccountClosets.add(currCloset);
 
-                UserAccount currAccount = new UserAccount(currUsername, currPassword, currEmail, currAccountClosets);
+                UserAccount currAccount = new UserAccount(currUsername, currPassword, currEmail, currAccountClosets); //add currUserID once merged
                 accounts.add(currAccount);
             }
             statement.close();
@@ -425,12 +442,13 @@ public class SQLDatabase implements IDatabase{
         }
 
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO UserAccounts (username, email, password, closetID) VALUES (?,?,?,?)");
+            PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO UserAccounts (username, email, password, closetID, userID) VALUES (?,?,?,?,?)");
 
             preparedStatement.setString(1, newAccount.getUsername());
             preparedStatement.setString(2, newAccount.getEmail());
             preparedStatement.setString(3, newAccount.getPassword());
             preparedStatement.setInt(4, newAccount.getClosets().get(0).getID()); //This assumes the user has one closet, only gets the first closet in the list
+            //preparedStatement.setInt(5, newAccount.getID());
 
             preparedStatement.executeUpdate();
 
@@ -443,6 +461,8 @@ public class SQLDatabase implements IDatabase{
     /*
      * adds a passed ClothesItem and passed closetID into the the ClothesItems
      * table in the database, with appropriate closetID
+     * may want to update this method to read the tags from the item and add those
+     * to the database as well.
      */
     public void addClothesItem(ClothesItem newItem, int closetID){
         if(con == null){

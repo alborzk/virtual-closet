@@ -48,7 +48,7 @@ LoginFragment extends Fragment {
 
         //Initialize database
         Database database = new Database();
-        database.initializeDefaultAccount();
+        //database.initializeDefaultAccount(); //Moved to constructor
 
 //        //Get default username and password values
 //        String user = database.getAccounts().get(0).getUsername();

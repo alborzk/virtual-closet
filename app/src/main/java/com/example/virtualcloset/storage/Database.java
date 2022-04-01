@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import android.os.Parcelable;
 import android.os.Parcel;
 
-public class Database implements Serializable{
+public class Database implements Serializable, IDatabase{
 
     ArrayList<ClothesItem> clothesItems;
     ArrayList<UserAccount> accounts;
@@ -21,12 +21,22 @@ public class Database implements Serializable{
     ArrayList<ClothesItem> clothesList1;
     ArrayList<ClothesItem> clothesList2;
 
+    final boolean useSQL = false; //Change this to true if you want to change database usage
+    SQLDatabase sqlDatabase;
+
     public Database(){
         clothesItems = new ArrayList<ClothesItem>();
         accounts = new ArrayList<UserAccount>();
         outfits = new ArrayList<Outfit>();
         initializeClothes();
         initializeOutfits();
+
+        initializeDefaultAccount();
+
+        if(useSQL){
+            sqlDatabase = new SQLDatabase();
+        }
+
     }
 
     public void initializeDefaultAccount(){
@@ -43,7 +53,7 @@ public class Database implements Serializable{
         initializeDefaultClothes(defaultCloset);
     }
 
-    private void initializeDefaultOutfits(Closet closet) {
+    private void initializeDefaultOutfits(Closet closet) {//come back to this
         outfits = closet.getOutfits();
         outfits.add(new Outfit(0,"WORK", clothesList1));
         outfits.add(new Outfit(1,"CASUAL", clothesList2));
@@ -192,15 +202,36 @@ public class Database implements Serializable{
     }
 
     public ArrayList<ClothesItem> getClothesItems() {
-        return clothesItems;
+        ArrayList<ClothesItem> result;
+        if(useSQL){
+            result = sqlDatabase.getClothesItems();
+        }
+        else {
+            result = clothesItems;
+        }
+        return result;
     }
 
     public ArrayList<Outfit> getOutfits() {
-        return outfits;
+        ArrayList<Outfit> result;
+        if(useSQL){
+            result = sqlDatabase.getOutfits();
+        }
+        else {
+            result = outfits;
+        }
+        return result;
     }
 
     public ArrayList<UserAccount> getAccounts(){
-        return accounts;
+        ArrayList<UserAccount> result;
+        if(useSQL){
+            result = sqlDatabase.getAccounts();
+        }
+        else {
+            result = accounts;
+        }
+        return result;
     }
 
 }

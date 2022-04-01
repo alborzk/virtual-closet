@@ -26,13 +26,13 @@ public class OutfitDataManagerTest {
         dm=new OutfitDataManager(db);
         clothesList1=new ArrayList<ClothesItem>();
         ArrayList<Tag> tags1 = new ArrayList<Tag>();
-        tags1.add(new Tag("Black","Color"));
-        tags1.add(new Tag("Pants","Type"));
-        tags1.add(new Tag("Workout","Setting"));
+//        tags1.add(new Tag("Black","Color"));
+//        tags1.add(new Tag("Pants","Type"));
+//        tags1.add(new Tag("Workout","Setting"));
         clothesList1.add(new ClothesItem(1, "Gymshark Joggers", tags1, R.drawable.placeholder_0));
         ArrayList<Tag> tags2 = new ArrayList<Tag>();
-        tags2.add(new Tag("Blue","Color"));
-        tags2.add(new Tag("Pants","Type"));
+//        tags2.add(new Tag("Blue","Color"));
+//        tags2.add(new Tag("Pants","Type"));
         clothesList1.add(new ClothesItem(2, "Blue Levi's Jeans", tags2, R.drawable.placeholder_1));
 
     }
