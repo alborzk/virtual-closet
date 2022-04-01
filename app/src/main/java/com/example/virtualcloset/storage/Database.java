@@ -20,15 +20,68 @@ public class Database implements Serializable, IDatabase{
     ArrayList<Outfit> outfits;
     ArrayList<ClothesItem> clothesList1;
     ArrayList<ClothesItem> clothesList2;
-    final boolean useSQL = false; //Change this to true if you want to change database usage
+    boolean useSQL; //Change this to true if you want to change database usage
     SQLDatabase sqlDatabase;
 
     public Database(boolean useSQL){
         accounts = new ArrayList<UserAccount>();
+        this.useSQL = useSQL;
         if(useSQL){
-            sqlDatabase = new SQLDatabase();
+            this.sqlDatabase = new SQLDatabase();
         }
         initializeDefaultAccount();
+    }
+
+    public ArrayList<ClothesItem> getClothesItems() {
+        ArrayList<ClothesItem> result;
+        if(useSQL){
+            result = sqlDatabase.getClothesItems();
+        }
+        else {
+            result = clothesItems;
+        }
+        return result;
+    }
+
+    public ArrayList<Outfit> getOutfits() {
+        ArrayList<Outfit> result;
+        if(useSQL){
+            result = sqlDatabase.getOutfits();
+        }
+        else {
+            result = outfits;
+        }
+        return result;
+    }
+
+    public ArrayList<UserAccount> getAccounts(){
+        ArrayList<UserAccount> result;
+        if(useSQL){
+            result = sqlDatabase.getAccounts();
+        }
+        else {
+            result = accounts;
+        }
+        return result;
+    }
+
+    public boolean addAccount(UserAccount account){
+        return accounts.add(account);
+    }
+
+    public int getNumAccounts(){
+        int results = 0;
+        if(useSQL){
+            results = sqlDatabase.getAccounts().size();
+        }
+        else {
+            results = accounts.size();
+        }
+        return results;
+    }
+
+    public SQLDatabase getSqlDatabase() {
+        return sqlDatabase;
     }
 
     public void initializeDefaultAccount(){
@@ -131,53 +184,4 @@ public class Database implements Serializable, IDatabase{
         outfits.add(new Outfit(3,"Winter", clothesList4));
         outfits.get(3).setImg(clothesItems.get(8).getImg());
     }
-
-    public ArrayList<ClothesItem> getClothesItems() {
-        ArrayList<ClothesItem> result;
-        if(useSQL){
-            result = sqlDatabase.getClothesItems();
-        }
-        else {
-            result = clothesItems;
-        }
-        return result;
-    }
-
-    public ArrayList<Outfit> getOutfits() {
-        ArrayList<Outfit> result;
-        if(useSQL){
-            result = sqlDatabase.getOutfits();
-        }
-        else {
-            result = outfits;
-        }
-        return result;
-    }
-
-    public ArrayList<UserAccount> getAccounts(){
-        ArrayList<UserAccount> result;
-        if(useSQL){
-            result = sqlDatabase.getAccounts();
-        }
-        else {
-            result = accounts;
-        }
-        return result;
-    }
-
-    public boolean addAccount(UserAccount account){
-        return accounts.add(account);
-    }
-
-    public int getNumAccounts(){
-        int results = 0;
-        if(useSQL){
-            results = sqlDatabase.getAccounts().size();
-        }
-        else {
-            results = accounts.size();
-        }
-        return results;
-    }
-
 }

@@ -20,6 +20,7 @@ import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityLoginBinding;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
+import com.example.virtualcloset.storage.SQLDatabase;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -140,17 +141,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //Initializes a new database, with a default user account
     private Database initializeDatabase() {
-        Database database = new Database(true);
-//
-//        //Create a new default account
-//        UserAccount defaultAccount = new UserAccount(0, "user", "password", "user@email.com");
-//        database.addAccount(defaultAccount);
-//
-//        //Set up default account with a closet
-//        Closet defaultCloset = new Closet(0, new ArrayList<ClothesItem>(), new ArrayList<Outfit>());
-//        defaultCloset.initializeDefaultCloset();
-//        defaultAccount.addCloset(defaultCloset);
-
-        return database;
+        return new Database(false);
     }
 }
