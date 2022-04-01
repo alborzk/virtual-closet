@@ -3,8 +3,11 @@ package com.example.virtualcloset.logic;
 import static org.junit.Assert.*;
 
 import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.storage.Database;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,7 +15,12 @@ import java.util.ArrayList;
 public class OutfitDataManagerTest {
     Database db = new Database();
     ArrayList<ClothesItem> clothesItems;
-    OutfitDataManager newDM = new OutfitDataManager(db);
+    OutfitDataManager newDM;
+
+    @Before
+    public void setUp() throws Exception {
+        newDM = new OutfitDataManager(db);
+    }
 
     @Test
     public void testGetOutfitName() {
@@ -46,5 +54,9 @@ public class OutfitDataManagerTest {
 
     @Test
     public void testGetImgs() {
+    }
+
+    @After
+    public void tearDown() {
     }
 }
