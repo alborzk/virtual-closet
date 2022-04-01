@@ -16,9 +16,7 @@ import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
 import com.example.virtualcloset.logic.ClosetManager;
-import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.logic.GridAdapter;
-import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
@@ -46,9 +44,9 @@ public class OutfitItemActivity extends AppCompatActivity {
         //Get Objects from IDs
         UserAccount account = database.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
-        ClosetManager cm = new ClosetManager(closet);
         Outfit outfit = closet.getOutfits().get(curr);
-        clothesList = cm.getClothesList(curr);
+        ClosetManager cm = new ClosetManager(closet);
+        clothesList = outfit.getClothesItems();
         oName = outfit.getName();
 
         //Set Up UI Widgets

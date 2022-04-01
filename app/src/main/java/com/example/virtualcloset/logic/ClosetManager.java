@@ -59,18 +59,5 @@ public class ClosetManager implements Serializable {
         return imgs;
     }
 
-    public ArrayList<ClothesItem> getClothesList(int i){
-        ArrayList<Outfit> outfits = c.getOutfits();
-        return outfits.get(i).getClothesItems();
-    }
 
-    public void addClothesItem(String name, int img){
-        ClothesItem newItem = new ClothesItem(c.getNumClothes(), name, img);
-        c.addClothesItem(newItem);
-    }
-
-    public void addClothesItem(String name, ArrayList<Tag> tags, int img){
-        ClothesItem newItem = new ClothesItem(c.getNumClothes(), name, tags, img);
-        c.addClothesItem(newItem);
-    }
 }

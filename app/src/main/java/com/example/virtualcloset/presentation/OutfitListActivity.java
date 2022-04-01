@@ -8,14 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitListBinding;
 import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.GridAdapter;
-import com.example.virtualcloset.logic.GridAdapter2;
-import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
 
 import androidx.annotation.NonNull;

@@ -44,6 +44,13 @@ public class OutfitTest {
     }
 
     @Test
+    public void getImg() {
+        assertNotNull(newOutfit);
+        assertEquals("Outfit's img should match", R.drawable.placeholder_outfit,newOutfit.getImg());
+    }
+
+
+    @Test
     public void getClothesItems() {
         assertNotNull(newOutfit);
         assertEquals("Outfit's clothitems should match", clothesItems,newOutfit.getClothesItems());
@@ -57,6 +64,13 @@ public class OutfitTest {
     }
 
     @Test
+    public void setImg() {
+        assertNotNull(newOutfit);
+        newOutfit.setImg(R.drawable.placeholder_2);
+        assertEquals("Outfit's clothes item should match after set", R.drawable.placeholder_2,newOutfit.getClothesItems());
+    }
+
+    @Test
     public void setClothesItems() {
         assertNotNull(newOutfit);
         newOutfit.setClothesItems(clothesItems2);
@@ -67,4 +81,7 @@ public class OutfitTest {
     public void addClothesItem() {
         assertEquals("return true if addClothesItem pass", true, newOutfit.addClothesItem(item1));
     }
+
+    //Iteration 2
+
 }
