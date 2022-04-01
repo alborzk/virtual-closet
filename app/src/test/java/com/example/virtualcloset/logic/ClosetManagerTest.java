@@ -42,7 +42,7 @@ public class ClosetManagerTest {
         tags2.add(new Tag(21, "Pants"));
         c.addClothesItem(new ClothesItem(2, "Blue Levi's Jeans", tags2, R.drawable.placeholder_1));
         clothesList1.add(new ClothesItem(2, "Blue Levi's Jeans", tags2, R.drawable.placeholder_1));
-        c.addOutfit(new Outfit(4, "WORK", clothesList1));
+        outfits.add(new Outfit(4, "WORK", clothesList1));
     }
 
     @Test
@@ -58,8 +58,8 @@ public class ClosetManagerTest {
 
     @Test
     public void getOutfitImg() {
-        int[] cmOutfitsImgs = cm.getClothesImgs();
-        assertEquals("the etrieved int[] and the actual arraylist should be same size", cmOutfitsImgs.length, outfits.size());
+        int[] cmOutfitsImgs = cm.getOutfitsImgs();
+        assertEquals("the retrieved int[] and the actual arraylist should be same size", cmOutfitsImgs.length, outfits.size());
         assertEquals("the first cloth's img should match", R.drawable.placeholder_outfit, cmOutfitsImgs[0]);
     }
 

@@ -18,14 +18,11 @@ public class Database implements Serializable, IDatabase{
     ArrayList<ClothesItem> clothesItems;
     ArrayList<UserAccount> accounts;
     ArrayList<Outfit> outfits;
-    ArrayList<ClothesItem> clothesList1;
-    ArrayList<ClothesItem> clothesList2;
     boolean useSQL; //Change this to true if you want to change database usage
     SQLDatabase sqlDatabase;
 
     public Database(boolean useSQL){
         accounts = new ArrayList<UserAccount>();
-        this.useSQL = useSQL;
         if(useSQL){
             this.sqlDatabase = new SQLDatabase();
         }

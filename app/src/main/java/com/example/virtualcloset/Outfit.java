@@ -22,6 +22,7 @@ public class Outfit implements Serializable {
         this.id = id;
         this.name = name;
         this.clothesItems = clothesItems;
+        this.img = R.drawable.placeholder_outfit;
     }
 
     //Getters

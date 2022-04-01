@@ -32,20 +32,20 @@ public class DataManager implements Serializable {
         return account;
     }
 
-    //Finds and returns a UserAccount given a username/password combination and its ID
-    public int findAID(String userInput, String passInput){
-        ArrayList<UserAccount> accounts = db.getAccounts();
-        int aID = -1;
-        boolean accountFound = false;
-        for (int i = 0; i < accounts.size() && !accountFound; i++) {
-            UserAccount curr = accounts.get(i);
-            if ((curr.getUsername().equals(userInput) || curr.getEmail().equals(userInput)) && curr.getPassword().equals(passInput)) {
-                accountFound = true;
-                aID = i;
-            }
-        }
-        return aID;
-    }
+//    //Finds and returns a UserAccount given a username/password combination and its ID
+//    public int findAID(String userInput, String passInput){
+//        ArrayList<UserAccount> accounts = db.getAccounts();
+//        int aID = -1;
+//        boolean accountFound = false;
+//        for (int i = 0; i < accounts.size() && !accountFound; i++) {
+//            UserAccount curr = accounts.get(i);
+//            if ((curr.getUsername().equals(userInput) || curr.getEmail().equals(userInput)) && curr.getPassword().equals(passInput)) {
+//                accountFound = true;
+//                aID = i;
+//            }
+//        }
+//        return aID;
+//    }
 
     //Checks whether a UserAccount already exists in the system
     public boolean accountExists(String userInput) {

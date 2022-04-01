@@ -67,7 +67,7 @@ public class OutfitTest {
     public void setImg() {
         assertNotNull(newOutfit);
         newOutfit.setImg(R.drawable.placeholder_2);
-        assertEquals("Outfit's clothes item should match after set", R.drawable.placeholder_2,newOutfit.getClothesItems());
+        assertEquals("Outfit's clothes item should match after set", R.drawable.placeholder_2,newOutfit.getImg());
     }
 
     @Test

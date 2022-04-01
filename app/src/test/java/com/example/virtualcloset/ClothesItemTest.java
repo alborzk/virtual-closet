@@ -80,6 +80,11 @@ public class ClothesItemTest {
 
     @Test
     public void getTagsStr() {
+        ArrayList<Tag> tags2 = new ArrayList<Tag>();
+        tags2.add(new Tag(11, "Black"));
+        tags2.add(new Tag(12, "Pants"));
+        tags2.add(new Tag(13, "Workout"));
+        clothesItem.setTags(tags2);
         assertEquals("the first clothes tags should match", "|  Black  |  Pants  |  Workout  |  ", clothesItem.getTagsString());
     }
 
