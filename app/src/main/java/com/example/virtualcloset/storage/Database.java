@@ -21,18 +21,22 @@ public class Database implements Serializable{
     ArrayList<ClothesItem> clothesList1;
     ArrayList<ClothesItem> clothesList2;
 
+//    public Database(){
+//        clothesItems = new ArrayList<ClothesItem>();
+//        accounts = new ArrayList<UserAccount>();
+//        outfits = new ArrayList<Outfit>();
+//        initializeClothes();
+//        initializeOutfits();
+//    }
+
     public Database(){
-        clothesItems = new ArrayList<ClothesItem>();
         accounts = new ArrayList<UserAccount>();
-        outfits = new ArrayList<Outfit>();
-        initializeClothes();
-        initializeOutfits();
     }
 
     public void initializeDefaultAccount(){
         //Add default user account to accounts
-        accounts.add(new UserAccount("user", "password", "user@email.com"));
-        UserAccount defaultAccount = accounts.get(0);
+        UserAccount defaultAccount = new UserAccount("user", "password", "user@email.com");
+        accounts.add(defaultAccount);
 
         //Set up default user account with a closet
         defaultAccount.newCloset();
@@ -201,6 +205,18 @@ public class Database implements Serializable{
 
     public ArrayList<UserAccount> getAccounts(){
         return accounts;
+    }
+
+    public boolean addAccount(UserAccount account){
+        return accounts.add(account);
+    }
+
+    public boolean addClothesItem(int aID, int cID, ClothesItem i){
+        return accounts.get(aID).getClosets().get(cID).addClothesItem(i);
+    }
+
+    public int getNumAccounts(){
+        return accounts.size();
     }
 
 }

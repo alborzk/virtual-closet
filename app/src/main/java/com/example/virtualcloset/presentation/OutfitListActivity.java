@@ -12,6 +12,8 @@ import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitListBinding;
+import com.example.virtualcloset.logic.ClosetManager;
+import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.logic.GridAdapter2;
 import com.example.virtualcloset.logic.OutfitDataManager;
 import com.example.virtualcloset.storage.Database;
@@ -21,7 +23,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class OutfitListActivity extends AppCompatActivity {
+
     ActivityOutfitListBinding binding;
 
     @Override
@@ -30,64 +34,68 @@ public class OutfitListActivity extends AppCompatActivity {
         binding = ActivityOutfitListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
-        Closet closet = (Closet) intent.getSerializableExtra("closet");
-        OutfitDataManager dm = new OutfitDataManager(database);
+        int aID = (int) intent.getSerializableExtra("aID");
+        int cID = (int) intent.getSerializableExtra("cID");
 
-        int[] outfitID=dm.getID();
-        String [] outfitName=dm.getOutfitName();
+        //Get Objects from IDs
+        UserAccount account = database.getAccounts().get(aID);
+        Closet closet = account.getClosets().get(cID);
+        ClosetManager cm = new ClosetManager(closet);
 
-        GridAdapter2 gridAdapter2 = new GridAdapter2(OutfitListActivity.this, outfitName);
-        binding.gridOutfitList.setAdapter(gridAdapter2);
+        //Initialize GridAdapter
+        String[] outfitNames = cm.getOutfitsNames();
+        int[] outfitImgs = cm.getOutfitsImgs();
+        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), outfitNames, outfitImgs);
+        binding.gridOutfitList.setAdapter(gridAdapter);
 
-//        final Button button = (Button) findViewById(R.id.outlist_button);
-
-        // Initialize and assign variable
+        //Navigation Bar
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_outfits);
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId())
                 {
-                    case R.id.navigation_clothes:
-                        Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
-                        intent.putExtra("db", database);
-                        intent.putExtra("acc", account);
-                        intent.putExtra("closet", closet);
-                        startActivity(intent);
+                    //Go to LoginActivity
+                    case R.id.navigation_accounts:
+                        Intent i1 = new Intent(getApplicationContext(), AccountActivity.class);
+                        i1.putExtra("db", database);
+                        i1.putExtra("aID", aID);
+                        i1.putExtra("cID", cID);
+                        startActivity(i1);
                         overridePendingTransition(0,0);
                         return true;
+                    //Go to OutfitListActivity
                     case R.id.navigation_outfits:
+                        return true;
+                    //Go to ClosetActivity
+                    case R.id.navigation_clothes:
+                        Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
+                        i2.putExtra("db", database);
+                        i2.putExtra("aID", aID);
+                        i2.putExtra("cID", cID);
+                        startActivity(i2);
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
         });
 
+        //Click on an item in the Grid
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                //Toast.makeText(ClosetActivity.this,"You clicked on "+ clothesNames[position],Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(OutfitListActivity.this, OutfitItemActivity.class);
-                int oid = outfitID[position];
-                intent.putExtra("outfitID", oid);
-                String name=outfitName[position];
-                intent.putExtra("outfitName",name);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                intent.putExtra("db", database);
-//
-//                intent.putExtra("clothesList",clothesItems);
-
-                startActivity(intent);
-
+                Intent i3 = new Intent(OutfitListActivity.this, OutfitItemActivity.class);
+                i3.putExtra("db", database);
+                i3.putExtra("aID", aID);
+                i3.putExtra("cID", cID);
+                i3.putExtra("curr", position);
+                i3.putExtra("tab", 0);
+                startActivity(i3);
             }
         });
 

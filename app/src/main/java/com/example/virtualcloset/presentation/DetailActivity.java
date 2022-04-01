@@ -3,6 +3,8 @@ package com.example.virtualcloset.presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +15,6 @@ import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
-import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
@@ -21,10 +22,9 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
 
     ActivityDetailBinding binding;
-    private String bName;
-    private String bTags;
-    private int bImg;
-
+    private String name;
+    private String tags;
+    private int img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +32,42 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //Receive Database and Current Item
+        //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
-        Closet closet = (Closet) intent.getSerializableExtra("closet");
-        ClothesItem curr = (ClothesItem) intent.getSerializableExtra("curr");
+        int aID = (int) intent.getSerializableExtra("aID");
+        int cID = (int) intent.getSerializableExtra("cID");
+        int curr = (int) intent.getSerializableExtra("curr");
+        int tab = (int) intent.getSerializableExtra("tab");
 
-//        //Initialize Variables from Current Item
-        ClothesItem item = closet.getClothesItems().get(curr.getId());
-        bName = item.getName();
-        bTags = item.getTagsString();
-        bImg = item.getImg();
+        //Get Objects from IDs
+        UserAccount account = database.getAccounts().get(aID);
+        Closet closet = account.getClosets().get(cID);
+        ClothesItem item = closet.getClothesItems().get(curr);
+
+        //Initialize Variables from Current Item
+        name = item.getName();
+        tags = item.getTagsString();
+        img = item.getImg();
 
         //Set Up Name Display
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
-        nameDisplay.setText(bName);
+        nameDisplay.setText(name);
 
         //Set Up Tags Display
         TextView tagDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
-        tagDisplay.setText(bTags);
+        tagDisplay.setText(tags);
 
         //Set Up Image Display
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.imgDisplay);
-        imgDisplay.setImageResource(bImg);
+        imgDisplay.setImageResource(img);
+
+        //Get Other UI Widgets
+        Button doneButton = (Button) binding.getRoot().findViewById(R.id.doneButton);
+        Button backButton = (Button) binding.getRoot().findViewById(R.id.backButton);
+        Button editButton = (Button) binding.getRoot().findViewById(R.id.editButton);
+        Button addButton = (Button) binding.getRoot().findViewById(R.id.addButton);
+        EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
 
         //Check if already a favourite and make heart filled
         if(item.isFave()){
@@ -66,20 +78,28 @@ public class DetailActivity extends AppCompatActivity {
             binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
         }
 
-        //Clicking "Done" Button
+        //Click "Done" Button
         binding.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Go to ClosetActivity
-                Intent intent = new Intent(getApplicationContext(), ClosetActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                startActivity(intent);
+                //Determine which tab we came from
+                Class dest;
+                if (tab == 0){
+                    dest = OutfitListActivity.class;
+                }
+                else{
+                    dest = ClosetActivity.class;
+                }
+                //Go to Activity
+                Intent i1 = new Intent(getApplicationContext(), dest);
+                i1.putExtra("db", database);
+                i1.putExtra("aID", aID);
+                i1.putExtra("cID", cID);
+                startActivity(i1);
             }
         });
 
-        //Clicking "Favourite" Button
+        //Click "Favourite" Button
         binding.favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,19 +110,71 @@ public class DetailActivity extends AppCompatActivity {
                     Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
                     binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
                 }
-                closet.setFavorite(curr.getId());
+                item.setFave();
             }
         });
 
+        //Click "Edit" Button
         binding.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TagsActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                intent.putExtra("curr", curr);
-                startActivity(intent);
+                editButton.setVisibility(View.GONE);
+                doneButton.setVisibility(View.GONE);
+                backButton.setVisibility(View.VISIBLE);
+                editTags.setVisibility(View.VISIBLE);
+                addButton.setVisibility(View.VISIBLE);
+
+//                Intent i2 = new Intent(getApplicationContext(), TagsActivity.class);
+//                i2.putExtra("db", database);
+//                i2.putExtra("aID", aID);
+//                i2.putExtra("cID", cID);
+//                i2.putExtra("curr", curr);
+//                i2.putExtra("tab", tab);
+//                startActivity(i2);
+            }
+        });
+
+        //Click "Add" Button While Editing Tags
+        binding.addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get Tag Name
+                String tag = editTags.getText().toString();
+
+                //Get Tag IDuser
+                Integer currId = item.getId();
+                Integer tagId = item.getTags().size();
+                String newIdString = currId.toString() + tagId;
+                Integer newId = Integer.parseInt(newIdString);
+
+                //Add Tag to Item
+                if (tag.trim().length() > 0){
+                    item.addTag(new Tag(newId, tag));
+                    tagDisplay.setText(item.getTagsString());
+                    editTags.setText("");
+                    Toast.makeText(DetailActivity.this, "Added \"" + tag + "\" Tag", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(DetailActivity.this, "Couldn't add tag, input is empty!", Toast.LENGTH_SHORT).show();
+                }
+
+//                editButton.setVisibility(View.VISIBLE);
+//                doneButton.setVisibility(View.VISIBLE);
+//                backButton.setVisibility(View.GONE);
+//                editTags.setVisibility(View.GONE);
+//                addButton.setVisibility(View.GONE);
+            }
+        });
+
+        //Click "Back" Button While Editing Tags
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editButton.setVisibility(View.VISIBLE);
+                doneButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.GONE);
+                editTags.setVisibility(View.GONE);
+                addButton.setVisibility(View.GONE);
             }
         });
     }

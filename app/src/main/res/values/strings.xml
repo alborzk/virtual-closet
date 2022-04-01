@@ -12,4 +12,5 @@
     <string name="signupbutton">Sign Up</string>
     <string name="backbutton">Back</string>
     <string name="hello_first_fragment">Virtual Closet</string>
+    <string name="accountName">User</string>
 </resources>

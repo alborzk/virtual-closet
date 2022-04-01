@@ -25,47 +25,51 @@
     <!--        app:layout_constraintLeft_toLeftOf="parent"-->
 <!--        app:layout_constraintRight_toLeftOf="@+id/guideline" />-->
 
+    <!--    <Button-->
+<!--        android:id="@+id/selectImageButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginEnd="132dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:text="UPLOAD IMAGE"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.104"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
     <ImageView
         android:id="@+id/addImgDisplay"
-        android:layout_width="588dp"
-        android:layout_height="354dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/add_image"
+        app:layout_constraintBottom_toTopOf="@+id/tagDisplay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextAdd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="498dp"
+        android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="Item Name"
         android:inputType="text"
         android:minHeight="36dp"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/addTagButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
-
-    <Button
-        android:id="@+id/selectImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="256dp"
-        android:text="UPLOAD IMAGE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/doneAddButton"
@@ -78,6 +82,54 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tagDisplay"
+        android:layout_width="501dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="41dp"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImgDisplay" />
+
+    <EditText
+        android:id="@+id/editTags"
+        android:layout_width="357dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Tag Name"
+        android:inputType="text"
+        android:minHeight="36dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tagDisplay"
+        app:layout_constraintVertical_bias="0.447" />
+
+    <Button
+        android:id="@+id/addTagButton"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/editTags"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAdd" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

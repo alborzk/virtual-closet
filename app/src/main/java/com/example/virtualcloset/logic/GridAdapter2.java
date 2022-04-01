@@ -12,18 +12,18 @@ import com.example.virtualcloset.R;
 public class GridAdapter2 extends BaseAdapter {
 
     Context context;
-    String[] outfitName;
+    String[] outfitNames;
 
     LayoutInflater inflater;
 
-    public GridAdapter2(Context context, String[] outfitname) {
+    public GridAdapter2(Context context, String[] outfitNames) {
         this.context = context;
-        this.outfitName=outfitname;
+        this.outfitNames = outfitNames;
     }
 
     @Override
     public int getCount() {
-        return outfitName.length;
+        return outfitNames.length;
     }
 
     @Override
@@ -46,9 +46,8 @@ public class GridAdapter2 extends BaseAdapter {
             convertView = inflater.inflate(R.layout.grid_item_outfit, null);
         }
 
-        TextView textView = convertView.findViewById(R.id.ouName);
-
-        textView.setText(outfitName[position]);
+        TextView t = convertView.findViewById(R.id.ouName);
+        t.setText(outfitNames[position]);
 
         return convertView;
     }

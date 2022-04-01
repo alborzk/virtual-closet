@@ -1,49 +1,62 @@
 package com.example.virtualcloset.logic;
 
+import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.storage.Database;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DataManager implements Serializable {
 
     public Database db;
-    ArrayList<ClothesItem> clothesItems;
 
     public DataManager(Database db){
         this.db = db;
-        clothesItems = db.getClothesItems();
     }
 
-    public String[] getNames() {
-        String[] str = new String[clothesItems.size()];
-        for (int i = 0; i < clothesItems.size(); i++) {
-            str[i] = clothesItems.get(i).getName();
-        }
-        return str;
-    }
-
-    public String[] getTags() {
-        ClothesItem item;
-        String[] allTags = new String[clothesItems.size()];
-
-        for (int i = 0; i < clothesItems.size(); i++) {
-            item = clothesItems.get(i);
-            String str = "|  ";
-            for(int j = 0; j < item.getTags().size(); j++){
-                str = str + item.getTags().get(j).getName() + "  |  ";
+    //Finds and returns a UserAccount given a username/password combination and a list of accounts
+    public UserAccount findAccount(String userInput, String passInput){
+        ArrayList<UserAccount> accounts = db.getAccounts();
+        UserAccount account = null;
+        boolean accountFound = false;
+        for (int i = 0; i < accounts.size() && !accountFound; i++) {
+            UserAccount curr = accounts.get(i);
+            if ((curr.getUsername().equals(userInput) || curr.getEmail().equals(userInput)) && curr.getPassword().equals(passInput)) {
+                accountFound = true;
+                account = curr;
             }
-            allTags[i] = str;
         }
-        return allTags;
+        return account;
     }
 
-    public int[] getImgs(){
-        int[] imgs = new int[clothesItems.size()];
-        for (int i = 0; i < clothesItems.size(); i++) {
-            imgs[i] = clothesItems.get(i).getImg();
+    //Finds and returns a UserAccount given a username/password combination and its ID
+    public int findAID(String userInput, String passInput){
+        ArrayList<UserAccount> accounts = db.getAccounts();
+        int aID = -1;
+        boolean accountFound = false;
+        for (int i = 0; i < accounts.size() && !accountFound; i++) {
+            UserAccount curr = accounts.get(i);
+            if ((curr.getUsername().equals(userInput) || curr.getEmail().equals(userInput)) && curr.getPassword().equals(passInput)) {
+                accountFound = true;
+                aID = i;
+            }
         }
-        return imgs;
+        return aID;
+    }
+
+    //Checks whether a UserAccount already exists in the system
+    public boolean accountExists(String userInput) {
+        ArrayList<UserAccount> accounts = db.getAccounts();
+        boolean accountFound = false;
+        for (int i = 0; i < accounts.size() && !accountFound; i++) {
+            UserAccount curr = accounts.get(i);
+            if ((curr.getUsername().equals(userInput) || curr.getEmail().equals(userInput))) {
+                accountFound = true;
+            }
+        }
+        return accountFound;
     }
 }

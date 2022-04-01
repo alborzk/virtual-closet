@@ -3,29 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/loginActivity">
 
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.virtualcloset.presentation.LoginFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_login">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_closetActivity"
-            app:destination="@id/closetActivity"/>
-        <action
-            android:id="@+id/action_FirstFragment_to_outfitListActivity"
-            app:destination="@id/outfitListActivity" />
-    </fragment>
     <activity
-        android:id="@+id/closetActivity"
-        android:name="com.example.virtualcloset.presentation.ClosetActivity"
-        android:label="activity_closet"
-        tools:layout="@layout/activity_closet"/>
-    <activity
-        android:id="@+id/outfitListActivity"
-        android:name="com.example.virtualcloset.presentation.OutfitListActivity"
-        android:label="activity_outfit_list"
-        tools:layout="@layout/activity_outfit_list" />
+        android:id="@+id/loginActivity"
+        android:name="com.example.virtualcloset.presentation.LoginActivity"
+        android:label="LoginActivity" />
 </navigation>

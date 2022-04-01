@@ -19,7 +19,11 @@ import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.storage.Database;
 
+import java.util.ArrayList;
+
+
 public class TagsActivity extends AppCompatActivity {
+
     ActivityTagsBinding binding;
 
     @Override
@@ -28,45 +32,59 @@ public class TagsActivity extends AppCompatActivity {
         binding = ActivityTagsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
-        Closet closet = (Closet) intent.getSerializableExtra("closet");
-        ClothesItem curr = (ClothesItem) intent.getSerializableExtra("curr");
+        int aID = (int) intent.getSerializableExtra("aID");
+        int cID = (int) intent.getSerializableExtra("cID");
+        int curr = (int) intent.getSerializableExtra("curr");
+        int tab = (int) intent.getSerializableExtra("tab");
 
-        //display the name of the item
+        //Get Objects from IDs
+        UserAccount account = database.getAccounts().get(aID);
+        Closet closet = account.getClosets().get(cID);
+        ClothesItem item = closet.getClothesItems().get(curr);
+
+        //Display Item Name
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
-        nameDisplay.setText(curr.getName());
+        nameDisplay.setText(item.getName());
 
-        //setting up grid of tags
-
-        //add new tag
+        //Click "Add" Button
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText nameInput = (EditText) binding.getRoot().findViewById(R.id.addTagName);
-                String name = nameInput.getText().toString();
-//                EditText typeInput = (EditText) binding.getRoot().findViewById(R.id.addTagType);
-//                String type = typeInput.getText().toString();
+                //Get Tag Name
+                EditText tagInput = (EditText) binding.getRoot().findViewById(R.id.addTagName);
+                String tag = tagInput.getText().toString();
 
-                Integer currId = curr.getId();
-                Integer tagId = curr.getTags().size()-1;
-                String newIdString = currId.toString() + tagId.toString();
+                //Get Tag ID
+                Integer currId = item.getId();
+                Integer tagId = item.getTags().size();
+                String newIdString = currId.toString() + tagId;
                 Integer newId = Integer.parseInt(newIdString);
-                closet.addTag(curr.getId(), new Tag(newId, name));
-                Toast.makeText(TagsActivity.this, "Added \"" + name + "\" Tag", Toast.LENGTH_SHORT).show();
+
+                //Add Tag to Item
+                item.addTag(new Tag(newId, tag));
+                ArrayList<Tag> tags = item.getTags();
+                for (Tag t : tags){
+                    System.out.print(t.getId());
+                    System.out.println(t.getName());
+                }
+                Toast.makeText(TagsActivity.this, "Added \"" + tag + "\" Tag", Toast.LENGTH_SHORT).show();
             }
         });
 
+        //Click "Done" Button
         binding.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                intent.putExtra("curr", curr);
-                startActivity(intent);
+                Intent i1 = new Intent(getApplicationContext(), DetailActivity.class);
+                i1.putExtra("db", database);
+                i1.putExtra("aID", aID);
+                i1.putExtra("cID", cID);
+                i1.putExtra("curr", curr);
+                i1.putExtra("tab", tab);
+                startActivity(i1);
             }
         });
     }

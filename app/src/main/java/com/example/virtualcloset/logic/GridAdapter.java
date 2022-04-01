@@ -50,9 +50,9 @@ public class GridAdapter extends BaseAdapter {
         }
 
         ImageView imageView = convertView.findViewById(R.id.grid_image);
-        TextView textView = convertView.findViewById(R.id.item_name);
-
         imageView.setImageResource(image[position]);
+
+        TextView textView = convertView.findViewById(R.id.item_name);
         textView.setText(clothesNames[position]);
 
         return convertView;

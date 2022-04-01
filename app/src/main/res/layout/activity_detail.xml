@@ -47,37 +47,67 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />
 
-  <TextView
-      android:id="@+id/coloursTitle"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Complementary Colours"
-      app:layout_constraintHorizontal_bias="0.574"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toLeftOf="@+id/guideline"
-      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />
+  <!--  <TextView-->
+  <!--      android:id="@+id/coloursTitle"-->
+  <!--      android:layout_width="wrap_content"-->
+  <!--      android:layout_height="wrap_content"-->
+  <!--      android:layout_marginTop="16dp"-->
+  <!--      android:text="Complementary Colours"-->
+  <!--      app:layout_constraintHorizontal_bias="0.574"-->
+  <!--      app:layout_constraintLeft_toLeftOf="parent"-->
+  <!--      app:layout_constraintRight_toLeftOf="@+id/guideline"-->
+  <!--      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />-->
 
-  <TextView
-      android:id="@+id/outfitsTitle"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:text="Outfits"
-      app:layout_constraintHorizontal_bias="0.484"
-      app:layout_constraintLeft_toRightOf="@+id/guideline"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />
+  <!--  <TextView-->
+  <!--      android:id="@+id/outfitsTitle"-->
+  <!--      android:layout_width="wrap_content"-->
+  <!--      android:layout_height="wrap_content"-->
+  <!--      android:layout_marginTop="16dp"-->
+  <!--      android:text="Outfits"-->
+  <!--      app:layout_constraintHorizontal_bias="0.484"-->
+  <!--      app:layout_constraintLeft_toRightOf="@+id/guideline"-->
+  <!--      app:layout_constraintRight_toRightOf="parent"-->
+  <!--      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />-->
 
-<!--  <Button-->
-<!--      android:id="@+id/favoriteButton"-->
-<!--      android:layout_width="wrap_content"-->
-<!--      android:layout_height="wrap_content"-->
-<!--      android:layout_marginBottom="20dp"-->
-<!--      android:text="FAVORITE"-->
-<!--      app:layout_constraintBottom_toBottomOf="parent"-->
-<!--      app:layout_constraintLeft_toLeftOf="parent"-->
-<!--      app:layout_constraintRight_toLeftOf="@+id/guideline" />-->
+  <EditText
+      android:id="@+id/editTags"
+      android:layout_width="357dp"
+      android:layout_height="57dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="Tag Name"
+      android:inputType="text"
+      android:minHeight="36dp"
+      android:textSize="20dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.136"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tagDisplay"
+      app:layout_constraintVertical_bias="0.958"
+      tools:visibility="visible" />
+
+  <Button
+      android:id="@+id/addButton"
+      android:layout_width="54dp"
+      android:layout_height="54dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="120dp"
+      android:layout_marginBottom="8dp"
+      android:background="@drawable/add"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.527"
+      app:layout_constraintLeft_toRightOf="@id/editTags"
+      app:layout_constraintRight_toLeftOf="@id/backButton"
+      app:layout_constraintTop_toBottomOf="@id/tagDisplay"
+      app:layout_constraintVertical_bias="0.945"
+      tools:visibility="visible" />
 
   <Button
       android:id="@+id/doneButton"
@@ -86,8 +116,21 @@
       android:layout_marginBottom="20dp"
       android:text="DONE"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toRightOf="@+id/guideline"
+      app:layout_constraintHorizontal_bias="0.561"
+      app:layout_constraintLeft_toRightOf="@id/guideline"
       app:layout_constraintRight_toRightOf="parent" />
+
+  <Button
+      android:id="@+id/backButton"
+      android:layout_width="54dp"
+      android:layout_height="54dp"
+      android:layout_marginStart="212dp"
+      android:layout_marginBottom="24dp"
+      android:background="@drawable/undo"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/guideline"
+      tools:visibility="visible" />
 
   <Button
       android:id="@+id/editButton"
@@ -97,27 +140,28 @@
       android:text="EDIT"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@+id/guideline"
+      app:layout_constraintHorizontal_bias="0.483"
       app:layout_constraintLeft_toRightOf="@+id/guideline"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintStart_toStartOf="parent" />
 
   <ToggleButton
       android:id="@+id/favourite"
-      android:layout_width="50dp"
-      android:layout_height="48dp"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
       android:layout_margin="10dp"
       android:layout_marginTop="24dp"
       android:layout_marginEnd="30dp"
       android:layout_marginBottom="24dp"
-      app:layout_constraintBottom_toTopOf="@+id/tagDisplay"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.475"
-      app:layout_constraintStart_toEndOf="@+id/nameDisplay"
-      app:layout_constraintTop_toBottomOf="@+id/imgDisplay"
-
       android:background="@drawable/ic_baseline_favorite_border_24"
       android:textOff=""
-      android:textOn="" />
+      android:textOn=""
+      app:layout_constraintBottom_toTopOf="@+id/tagDisplay"
+      app:layout_constraintEnd_toEndOf="parent"
+
+      app:layout_constraintHorizontal_bias="0.475"
+      app:layout_constraintStart_toEndOf="@+id/nameDisplay"
+      app:layout_constraintTop_toBottomOf="@+id/imgDisplay" />
 
   <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guideline"

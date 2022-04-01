@@ -5,23 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.logic.ClosetManager;
-import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.io.Serializable;
 
 
 public class ClosetActivity extends AppCompatActivity {
@@ -34,17 +29,21 @@ public class ClosetActivity extends AppCompatActivity {
         binding = ActivityClosetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //Receive Database
+        //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-        UserAccount account = (UserAccount) intent.getSerializableExtra("acc");
-        Closet closet = (Closet) intent.getSerializableExtra("closet");
+        int aID = (int) intent.getSerializableExtra("aID");
+        int cID = (int) intent.getSerializableExtra("cID");
+
+        //Get Objects from IDs
+        UserAccount account = database.getAccounts().get(aID);
+        Closet closet = account.getClosets().get(cID);
         ClosetManager cm = new ClosetManager(closet);
 
-        //Initialize GridAdapter
-        String[] clothesNames = cm.getNames();
-        int[] imgs = cm.getImgs();
-        GridAdapter gridAdapter = new GridAdapter(ClosetActivity.this,clothesNames, imgs);
+        //Initialize GridView using GridAdapter
+        String[] clothesNames = cm.getClothesNames();
+        int[] imgs = cm.getClothesImgs();
+        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), clothesNames, imgs);
         binding.gridView.setAdapter(gridAdapter);
 
         //Navigation Bar
@@ -55,14 +54,25 @@ public class ClosetActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId())
                 {
-                    case R.id.navigation_outfits:
-                        Intent intent = new Intent(getApplicationContext(), OutfitListActivity.class);
-                        intent.putExtra("db", database);
-                        intent.putExtra("acc", account);
-                        intent.putExtra("closet", closet);
-                        startActivity(intent);
+                    //Go to LoginActivity
+                    case R.id.navigation_accounts:
+                        Intent i1 = new Intent(getApplicationContext(), AccountActivity.class);
+                        i1.putExtra("db", database);
+                        i1.putExtra("aID", aID);
+                        i1.putExtra("cID", cID);
+                        startActivity(i1);
                         overridePendingTransition(0,0);
                         return true;
+                    //Go to OutfitListActivity
+                    case R.id.navigation_outfits:
+                        Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
+                        i2.putExtra("db", database);
+                        i2.putExtra("aID", aID);
+                        i2.putExtra("cID", cID);
+                        startActivity(i2);
+                        overridePendingTransition(0,0);
+                        return true;
+                    //Go to ClosetActivity
                     case R.id.navigation_clothes:
                         return true;
                 }
@@ -74,14 +84,14 @@ public class ClosetActivity extends AppCompatActivity {
         binding.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Go to DetailActivity with current item
-                ClothesItem curr = closet.getClothesItems().get(position);
-                Intent intent = new Intent(ClosetActivity.this, DetailActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                intent.putExtra("curr", curr);
-                startActivity(intent);
+                //Go to DetailActivity
+                Intent i3 = new Intent(getApplicationContext(), DetailActivity.class);
+                i3.putExtra("db", database);
+                i3.putExtra("aID", aID);
+                i3.putExtra("cID", cID);
+                i3.putExtra("curr", position);
+                i3.putExtra("tab", 1);
+                startActivity(i3);
             }
         });
 
@@ -90,11 +100,11 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Go to AddClothingActivity
-                Intent intent = new Intent(ClosetActivity.this, AddClothingActivity.class);
-                intent.putExtra("db", database);
-                intent.putExtra("acc", account);
-                intent.putExtra("closet", closet);
-                startActivity(intent);
+                Intent i4 = new Intent(getApplicationContext(), AddClothingActivity.class);
+                i4.putExtra("db", database);
+                i4.putExtra("aID", aID);
+                i4.putExtra("cID", cID);
+                startActivity(i4);
             }
         });
     }

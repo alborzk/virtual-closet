@@ -8,15 +8,15 @@ public class Outfit implements Serializable {
     int id;
     String name;
     ArrayList<ClothesItem> clothesItems;
+    int img;
 
     //Constructor
     public Outfit(int id, String name){
         this.id = id;
         this.name = name;
         this.clothesItems = new ArrayList<ClothesItem>();
+        this.img = R.drawable.placeholder_outfit;
     }
-
-
 
     public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems){
         this.id = id;
@@ -33,6 +33,10 @@ public class Outfit implements Serializable {
         return name;
     }
 
+    public int getImg() {
+        return img;
+    }
+
     public ArrayList<ClothesItem> getClothesItems() {
         return clothesItems;
     }
@@ -44,6 +48,10 @@ public class Outfit implements Serializable {
 
     public void setClothesItems(ArrayList<ClothesItem> clothesItems) {
         this.clothesItems = clothesItems;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public boolean addClothesItem(ClothesItem newItem){

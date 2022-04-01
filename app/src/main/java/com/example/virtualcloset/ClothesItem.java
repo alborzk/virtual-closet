@@ -1,5 +1,7 @@
 package com.example.virtualcloset;
 
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -10,8 +12,7 @@ public class ClothesItem implements Serializable {
     String name;
     ArrayList<Tag> tags;
     int img;
-    public boolean fave;
-    public int fav;
+    boolean fave;
 
     //Constructor
     public ClothesItem(int id, String name, int img) {
@@ -20,7 +21,6 @@ public class ClothesItem implements Serializable {
         this.img = img;
         this.tags = new ArrayList<Tag>();
         this.fave = false;
-        this.fav = 0;
     }
 
     public ClothesItem(int id, String name, ArrayList<Tag> tags, int img) {
@@ -29,7 +29,6 @@ public class ClothesItem implements Serializable {
         this.tags = tags;
         this.img = img;
         this.fave = false;
-        this.fav = 0;
     }
 
     //Getters
@@ -45,14 +44,6 @@ public class ClothesItem implements Serializable {
         return tags;
     }
 
-    public String getTagsString() {
-        String str = "|  ";
-        for(int j = 0; j < tags.size(); j++){
-            str = str + tags.get(j).getName() + "  |  ";
-        }
-        return str;
-    }
-
     public int getImg() {
         return img;
     }
@@ -61,8 +52,15 @@ public class ClothesItem implements Serializable {
         return fave;
     }
 
-    public int getFav(){
-        return fav;
+    public String getTagsString() {
+        String str = "";
+        if (tags.size() > 0){
+            str = "|  ";
+            for(int j = 0; j < tags.size(); j++){
+                str = str + tags.get(j).getName() + "  |  ";
+            }
+        }
+        return str;
     }
 
     //Setters
@@ -86,12 +84,4 @@ public class ClothesItem implements Serializable {
         return fave=!fave;
     }
 
-    public void setFav(){
-        if (fav == 0){
-            fav = 1;
-        }
-        else{
-            fav = 0;
-        }
-    }
 }

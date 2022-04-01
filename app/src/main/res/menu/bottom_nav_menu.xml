@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item-->
-<!--        android:id="@+id/navigation_home"-->
-<!--        android:icon="@android:drawable/ic_menu_directions"-->
-<!--        android:title="Home" />-->
+    <item
+        android:id="@+id/navigation_accounts"
+        android:icon="@drawable/navbar_accounts"
+        android:title="Account" />
 
     <item
         android:id="@+id/navigation_outfits"
-        android:icon="@drawable/icon_outfits"
+        android:icon="@drawable/navbar_outfits"
         android:title="Outfits" />
 
     <item

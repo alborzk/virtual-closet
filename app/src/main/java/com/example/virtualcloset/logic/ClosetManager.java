@@ -2,6 +2,8 @@ package com.example.virtualcloset.logic;
 
 import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.storage.Database;
 
 import java.io.Serializable;
@@ -10,14 +12,16 @@ import java.util.ArrayList;
 public class ClosetManager implements Serializable {
 
     public Closet c;
-    ArrayList<ClothesItem> clothesItems;
 
     public ClosetManager(Closet c){
         this.c = c;
-        clothesItems = c.getClothesItems();
     }
 
-    public String[] getNames() {
+    public String[] getClothesNames() {
+        return getClothesNames(c.getClothesItems());
+    }
+
+    public String[] getClothesNames(ArrayList<ClothesItem> clothesItems){
         String[] str = new String[clothesItems.size()];
         for (int i = 0; i < clothesItems.size(); i++) {
             str[i] = clothesItems.get(i).getName();
@@ -25,26 +29,48 @@ public class ClosetManager implements Serializable {
         return str;
     }
 
-    public String[] getTags() {
-        ClothesItem item;
-        String[] allTags = new String[clothesItems.size()];
-
-        for (int i = 0; i < clothesItems.size(); i++) {
-            item = clothesItems.get(i);
-            String str = "|  ";
-            for(int j = 0; j < item.getTags().size(); j++){
-                str = str + item.getTags().get(j).getName() + "  |  ";
-            }
-            allTags[i] = str;
-        }
-        return allTags;
+    public int[] getClothesImgs(){
+        return getClothesImgs(c.getClothesItems());
     }
 
-    public int[] getImgs(){
+    public int[] getClothesImgs(ArrayList<ClothesItem> clothesItems){
         int[] imgs = new int[clothesItems.size()];
         for (int i = 0; i < clothesItems.size(); i++) {
             imgs[i] = clothesItems.get(i).getImg();
         }
         return imgs;
+    }
+
+    public String[] getOutfitsNames() {
+        ArrayList<Outfit> outfits = c.getOutfits();
+        String[] str = new String[outfits.size()];
+        for (int i = 0; i < outfits.size(); i++) {
+            str[i] = outfits.get(i).getName();
+        }
+        return str;
+    }
+
+    public int[] getOutfitsImgs(){
+        ArrayList<Outfit> outfits = c.getOutfits();
+        int[] imgs = new int[outfits.size()];
+        for (int i = 0; i < outfits.size(); i++) {
+            imgs[i] = outfits.get(i).getImg();
+        }
+        return imgs;
+    }
+
+    public ArrayList<ClothesItem> getClothesList(int i){
+        ArrayList<Outfit> outfits = c.getOutfits();
+        return outfits.get(i).getClothesItems();
+    }
+
+    public void addClothesItem(String name, int img){
+        ClothesItem newItem = new ClothesItem(c.getNumClothes(), name, img);
+        c.addClothesItem(newItem);
+    }
+
+    public void addClothesItem(String name, ArrayList<Tag> tags, int img){
+        ClothesItem newItem = new ClothesItem(c.getNumClothes(), name, tags, img);
+        c.addClothesItem(newItem);
     }
 }

@@ -17,8 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/item_name"
+        android:gravity="center"
         android:text="Rose"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:layout_marginTop="6dp"/>
 
 </LinearLayout>
