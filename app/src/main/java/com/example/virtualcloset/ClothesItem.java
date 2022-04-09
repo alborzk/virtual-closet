@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClothesItem implements Serializable {
 
@@ -62,6 +63,13 @@ public class ClothesItem implements Serializable {
         }
         return str;
     }
+    public List getTagNames(){
+        List names = new ArrayList();
+        for(int j = 0; j < tags.size(); j++){
+            names.add(tags.get(j).getName());
+        }
+        return names;
+    }
 
     //Setters
     public void setName(String name) {
@@ -78,6 +86,17 @@ public class ClothesItem implements Serializable {
 
     public boolean addTag(Tag newTag) {
         return tags.add(newTag);
+    }
+
+    public boolean removeTag(Tag r){ return tags.remove(r);}
+
+    public Tag findTagByName(String name){
+        for(int j = 0; j < tags.size(); j++){
+            if(name.equalsIgnoreCase(tags.get(j).getName())){
+                return tags.get(j);
+            }
+        }
+        return null;
     }
 
     public boolean favorite(){

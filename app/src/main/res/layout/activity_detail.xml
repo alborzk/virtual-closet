@@ -48,17 +48,6 @@
       app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />
 
   <!--  <TextView-->
-  <!--      android:id="@+id/coloursTitle"-->
-  <!--      android:layout_width="wrap_content"-->
-  <!--      android:layout_height="wrap_content"-->
-  <!--      android:layout_marginTop="16dp"-->
-  <!--      android:text="Complementary Colours"-->
-  <!--      app:layout_constraintHorizontal_bias="0.574"-->
-  <!--      app:layout_constraintLeft_toLeftOf="parent"-->
-  <!--      app:layout_constraintRight_toLeftOf="@+id/guideline"-->
-  <!--      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />-->
-
-  <!--  <TextView-->
   <!--      android:id="@+id/outfitsTitle"-->
   <!--      android:layout_width="wrap_content"-->
   <!--      android:layout_height="wrap_content"-->
@@ -71,10 +60,9 @@
 
   <EditText
       android:id="@+id/editTags"
-      android:layout_width="357dp"
+      android:layout_width="300dp"
       android:layout_height="57dp"
-      android:layout_marginStart="8dp"
-      android:layout_marginEnd="8dp"
+      android:layout_marginStart="20dp"
       android:layout_marginBottom="8dp"
       android:autofillHints=""
       android:ems="10"
@@ -83,12 +71,10 @@
       android:minHeight="36dp"
       android:textSize="20dp"
       android:visibility="gone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.136"
+      app:layout_constraintBottom_toTopOf="@id/tagSpinner"
+      app:layout_constraintEnd_toStartOf="@id/addButton"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/tagDisplay"
-      app:layout_constraintVertical_bias="0.958"
       tools:visibility="visible" />
 
   <Button
@@ -96,15 +82,11 @@
       android:layout_width="54dp"
       android:layout_height="54dp"
       android:layout_marginTop="24dp"
-      android:layout_marginEnd="120dp"
       android:layout_marginBottom="8dp"
       android:background="@drawable/add"
       android:visibility="gone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.527"
-      app:layout_constraintLeft_toRightOf="@id/editTags"
-      app:layout_constraintRight_toLeftOf="@id/backButton"
+      app:layout_constraintBottom_toTopOf="@id/tagSpinner"
+      app:layout_constraintRight_toRightOf="@id/buttonGuide"
       app:layout_constraintTop_toBottomOf="@id/tagDisplay"
       app:layout_constraintVertical_bias="0.945"
       tools:visibility="visible" />
@@ -149,18 +131,14 @@
       android:id="@+id/favourite"
       android:layout_width="60dp"
       android:layout_height="60dp"
-      android:layout_margin="10dp"
       android:layout_marginTop="24dp"
-      android:layout_marginEnd="30dp"
       android:layout_marginBottom="24dp"
       android:background="@drawable/ic_baseline_favorite_border_24"
       android:textOff=""
       android:textOn=""
       app:layout_constraintBottom_toTopOf="@+id/tagDisplay"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintRight_toRightOf="@id/buttonGuide"
 
-      app:layout_constraintHorizontal_bias="0.475"
-      app:layout_constraintStart_toEndOf="@+id/nameDisplay"
       app:layout_constraintTop_toBottomOf="@+id/imgDisplay" />
 
   <androidx.constraintlayout.widget.Guideline
@@ -169,5 +147,36 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       app:layout_constraintGuide_percent="0.5" />
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/buttonGuide"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.9" />
+
+  <Spinner
+      android:id="@+id/tagSpinner"
+      android:layout_height="48dp"
+      android:layout_width="300dp"
+      android:spinnerMode="dropdown"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@id/editButton"
+      app:layout_constraintRight_toLeftOf="@id/removeButton"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/editTags"
+      android:layout_marginStart="20dp"
+      tools:visibility="visible" />
+  <Button
+      android:id="@+id/removeButton"
+      android:layout_width="54dp"
+      android:layout_height="54dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginBottom="8dp"
+      android:background="@drawable/add"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@id/doneButton"
+      app:layout_constraintRight_toRightOf="@id/buttonGuide"
+      app:layout_constraintTop_toBottomOf="@id/editTags"
+      tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

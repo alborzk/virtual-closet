@@ -3,9 +3,12 @@ package com.example.virtualcloset.presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.virtualcloset.Closet;
@@ -18,6 +21,7 @@ import com.example.virtualcloset.databinding.ActivityDetailBinding;
 import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -62,11 +66,18 @@ public class DetailActivity extends AppCompatActivity {
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.imgDisplay);
         imgDisplay.setImageResource(img);
 
+        //Set Up Tag Dropdown
+        Spinner tagSpinner = findViewById(R.id.tagSpinner);
+        List<Tag> tagNames = item.getTagNames();
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tagNames);
+        tagSpinner.setAdapter(adapter);
+
         //Get Other UI Widgets
         Button doneButton = (Button) binding.getRoot().findViewById(R.id.doneButton);
         Button backButton = (Button) binding.getRoot().findViewById(R.id.backButton);
         Button editButton = (Button) binding.getRoot().findViewById(R.id.editButton);
         Button addButton = (Button) binding.getRoot().findViewById(R.id.addButton);
+        Button removeButton = (Button) binding.getRoot().findViewById(R.id.removeButton);
         EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
 
         //Check if already a favourite and make heart filled
@@ -121,9 +132,11 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 editButton.setVisibility(View.GONE);
                 doneButton.setVisibility(View.GONE);
+                tagSpinner.setVisibility(View.VISIBLE);
                 backButton.setVisibility(View.VISIBLE);
                 editTags.setVisibility(View.VISIBLE);
                 addButton.setVisibility(View.VISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
 
 //                Intent i2 = new Intent(getApplicationContext(), TagsActivity.class);
 //                i2.putExtra("db", database);
@@ -150,10 +163,15 @@ public class DetailActivity extends AppCompatActivity {
 
                 //Add Tag to Item
                 if (tag.trim().length() > 0){
-                    item.addTag(new Tag(newId, tag));
-                    tagDisplay.setText(item.getTagsString());
-                    editTags.setText("");
-                    Toast.makeText(DetailActivity.this, "Added \"" + tag + "\" Tag", Toast.LENGTH_SHORT).show();
+                    if(item.findTagByName(tag) != null) {
+                        item.addTag(new Tag(newId, tag));
+                        tagDisplay.setText(item.getTagsString());
+                        editTags.setText("");
+                        Toast.makeText(DetailActivity.this, "Added \"" + tag + "\" Tag", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(DetailActivity.this, "Item already has the tag \"" + tag, Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(DetailActivity.this, "Couldn't add tag, input is empty!", Toast.LENGTH_SHORT).show();
@@ -167,17 +185,45 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click "Remove" Button While Editing Tags
+        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get Tag Name
+                String rName = tagSpinner.getSelectedItem().toString();
+
+                //Find The Tag And Remove It
+                Tag rTag = item.findTagByName(rName);
+                if (rTag != null){
+                    item.removeTag(rTag);
+
+                    //Update Interface
+                    tagDisplay.setText(item.getTagsString());
+                    tagSpinner.setSelection(0);
+                    tagNames.remove(rName);
+                    adapter.notifyDataSetChanged();
+
+                    Toast.makeText(DetailActivity.this, "Removed \"" + rTag.getName() + "\" Tag", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(DetailActivity.this, "Couldn't find a tag with that name!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         //Click "Back" Button While Editing Tags
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editButton.setVisibility(View.VISIBLE);
                 doneButton.setVisibility(View.VISIBLE);
+                tagSpinner.setVisibility(View.GONE);
                 backButton.setVisibility(View.GONE);
                 editTags.setVisibility(View.GONE);
                 addButton.setVisibility(View.GONE);
+                removeButton.setVisibility(View.GONE);
             }
         });
     }
-
 }
