@@ -87,6 +87,7 @@
       android:visibility="gone"
       app:layout_constraintBottom_toTopOf="@id/tagSpinner"
       app:layout_constraintRight_toRightOf="@id/buttonGuide"
+      app:layout_constraintLeft_toRightOf="@id/editTags"
       app:layout_constraintTop_toBottomOf="@id/tagDisplay"
       app:layout_constraintVertical_bias="0.945"
       tools:visibility="visible" />
@@ -156,15 +157,16 @@
 
   <Spinner
       android:id="@+id/tagSpinner"
-      android:layout_height="48dp"
       android:layout_width="300dp"
+      android:layout_height="57dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginBottom="8dp"
       android:spinnerMode="dropdown"
       android:visibility="gone"
-      app:layout_constraintBottom_toTopOf="@id/editButton"
-      app:layout_constraintRight_toLeftOf="@id/removeButton"
+      app:layout_constraintBottom_toTopOf="@id/backButton"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/editTags"
-      android:layout_marginStart="20dp"
+      app:layout_constraintEnd_toStartOf="@id/removeButton"
       tools:visibility="visible" />
   <Button
       android:id="@+id/removeButton"
@@ -172,10 +174,11 @@
       android:layout_height="54dp"
       android:layout_marginTop="24dp"
       android:layout_marginBottom="8dp"
-      android:background="@drawable/add"
+      android:background="@drawable/ic_baseline_remove_circle_24"
       android:visibility="gone"
-      app:layout_constraintBottom_toTopOf="@id/doneButton"
+      app:layout_constraintBottom_toTopOf="@id/backButton"
       app:layout_constraintRight_toRightOf="@id/buttonGuide"
+      app:layout_constraintLeft_toRightOf="@id/tagSpinner"
       app:layout_constraintTop_toBottomOf="@id/editTags"
       tools:visibility="visible" />
 

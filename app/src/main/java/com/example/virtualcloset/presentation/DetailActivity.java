@@ -3,7 +3,6 @@ package com.example.virtualcloset.presentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,6 @@ import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
 import com.example.virtualcloset.storage.Database;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -68,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
 
         //Set Up Tag Dropdown
         Spinner tagSpinner = findViewById(R.id.tagSpinner);
-        List<Tag> tagNames = item.getTagNames();
+        List<String> tagNames = item.getTagNames();
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tagNames);
         tagSpinner.setAdapter(adapter);
 
@@ -163,15 +161,18 @@ public class DetailActivity extends AppCompatActivity {
 
                 //Add Tag to Item
                 if (tag.trim().length() > 0){
-                    if(item.findTagByName(tag) != null) {
+                    //if(item.findTagByName(tag) != null) {
                         item.addTag(new Tag(newId, tag));
                         tagDisplay.setText(item.getTagsString());
                         editTags.setText("");
                         Toast.makeText(DetailActivity.this, "Added \"" + tag + "\" Tag", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(DetailActivity.this, "Item already has the tag \"" + tag, Toast.LENGTH_SHORT).show();
-                    }
+                        //Update Spinner
+                        tagNames.add(tag);
+                        adapter.notifyDataSetChanged();
+                    //}
+                    //else{
+                    //    Toast.makeText(DetailActivity.this, "Item already has the tag \"" + tag, Toast.LENGTH_SHORT).show();
+                    //}
                 }
                 else{
                     Toast.makeText(DetailActivity.this, "Couldn't add tag, input is empty!", Toast.LENGTH_SHORT).show();
