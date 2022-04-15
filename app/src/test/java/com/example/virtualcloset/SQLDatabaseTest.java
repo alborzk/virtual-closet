@@ -16,7 +16,7 @@ public class SQLDatabaseTest {
     @Before
     public void setUp() throws Exception{
         db = new SQLDatabase();
-        stub = new Database();
+        //stub = new Database();
     }
 
     @After

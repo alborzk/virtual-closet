@@ -15,7 +15,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class OutfitDataManagerTest {
-    Database db = new Database();
+    Database db = new Database(false);
     ArrayList<Outfit> outfits;
     ArrayList<ClothesItem> clothesList1=null;
     OutfitDataManager dm;

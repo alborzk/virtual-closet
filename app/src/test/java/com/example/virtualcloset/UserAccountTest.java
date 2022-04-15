@@ -24,8 +24,8 @@ public class UserAccountTest {
     public void setUp() throws Exception {
         ClosetArray1= new ArrayList<Closet>();
         ClosetArray1.add(c1);
-        newUser = new UserAccount("igumi", "0728", "umanitoba.ca", ClosetArray1);
-        newUser2 = new UserAccount( "hideonbush", "1234", "google.com");
+        newUser = new UserAccount(1, "igumi", "0728", "umanitoba.ca", ClosetArray1);
+        newUser2 = new UserAccount( 2, "hideonbush", "1234", "google.com");
     }
 
     @After
