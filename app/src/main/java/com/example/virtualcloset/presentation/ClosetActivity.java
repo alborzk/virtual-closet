@@ -94,19 +94,25 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(selection!=-1){
-                    UserAccount account = database.getAccounts().get(aID);
-                    Closet closet = account.getClosets().get(cID);
                     ClothesItem item = closet.getClothesItems().get(position);
                     Outfit outfit = closet.getOutfits().get(selection);
                     if(outfit.addClothesItem(item)){
-                        outfit.setImg(item.getImg());
                         Toast.makeText(ClosetActivity.this, "Added New clothes to a Outfit", Toast.LENGTH_SHORT).show();
                     };
-                    Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
-                    i2.putExtra("db", database);
-                    i2.putExtra("aID", aID);
-                    i2.putExtra("cID", cID);
-                    startActivity(i2);
+
+//                    Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
+//                    i2.putExtra("db", database);
+//                    i2.putExtra("aID", aID);
+//                    i2.putExtra("cID", cID);
+//                    startActivity(i2);
+                    //going back to OutfitItem page.
+                    Intent i3 = new Intent(getApplicationContext(), OutfitItemActivity.class);
+                    i3.putExtra("db", database);
+                    i3.putExtra("aID", aID);
+                    i3.putExtra("cID", cID);
+                    i3.putExtra("curr", selection);
+                    i3.putExtra("tab", 0);
+                    startActivity(i3);
                     overridePendingTransition(0,0);
                 }else{
                     //Go to DetailActivity

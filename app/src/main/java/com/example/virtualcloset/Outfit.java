@@ -15,14 +15,12 @@ public class Outfit implements Serializable {
         this.id = id;
         this.name = name;
         this.clothesItems = new ArrayList<ClothesItem>();
-        this.img = R.drawable.placeholder_outfit;
     }
 
     public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems){
         this.id = id;
         this.name = name;
         this.clothesItems = clothesItems;
-        this.img = R.drawable.placeholder_outfit;
     }
 
     //Getters
@@ -37,7 +35,8 @@ public class Outfit implements Serializable {
     public int getImg() {
         if(clothesItems.size()==0){
             this.img = R.drawable.placeholder_outfit;
-        }
+        }else
+            this.img=clothesItems.get(0).getImg();
         return img;
     }
 

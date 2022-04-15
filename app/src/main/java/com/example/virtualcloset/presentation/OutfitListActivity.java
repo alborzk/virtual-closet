@@ -94,7 +94,7 @@ public class OutfitListActivity extends AppCompatActivity {
         });
 
         //Click on an item in the Grid
-        clickOnGrid( database,  aID, cID );
+        clickOnGrid( database,  aID, cID);
 
         //click on addButton(+) on list page
         binding.outfitAddButton.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +118,9 @@ public class OutfitListActivity extends AppCompatActivity {
                     //=================================================================
                     //data base involved here
                     //=================================================================
-                    Outfit newOutfit = new Outfit(closet.getNumOutfits() + 1, outfitName);
-                    closet.getOutfits().add(newOutfit);
+                    //new outfit id== the last outfit id +1
+                    Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits()-1).getID() + 1, outfitName);
+                    closet.addOutfit(newOutfit);//
                     editTags.setText("");
                     GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
                     binding.gridOutfitList.setAdapter(gridAdapter);
@@ -127,7 +128,6 @@ public class OutfitListActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(OutfitListActivity.this, "Couldn't add New Outfit, input is empty!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         //click on removeButton (-)
@@ -163,7 +163,7 @@ public class OutfitListActivity extends AppCompatActivity {
                 outfitAddOne.setVisibility(View.GONE);
                 editTags.setVisibility(View.GONE);
                 outfitBackButton.setVisibility(View.GONE);
-
+                //delete[0] here determine if we are using backButton after deletion or addition
                 if(delete[0]==1){
                     Toast.makeText(OutfitListActivity.this, "DELETE MODE OFF!", Toast.LENGTH_SHORT).show();
                     //set listener back to default action

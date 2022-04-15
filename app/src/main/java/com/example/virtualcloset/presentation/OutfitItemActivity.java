@@ -82,7 +82,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         //click "add" Button
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //switch to ClosetActivity page to select a clothes
+//                switch to ClosetActivity page to select a clothes
                 Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
                 i2.putExtra("db", database);
                 i2.putExtra("aID", aID);
