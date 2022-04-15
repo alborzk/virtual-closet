@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     i1.putExtra("aID", aID);
                     i1.putExtra("cID", 0);
                     i1.putExtra("db", database);
+                    i1.putExtra("selection",-1);
                     startActivity(i1);
                 }
                 //If account doesn't exist, can't log in
@@ -124,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     i2.putExtra("aID", aID);
                     i2.putExtra("cID", 0);
                     i2.putExtra("db", database);
+                    i2.putExtra("selection",-1);
                     startActivity(i2);
 
                 }

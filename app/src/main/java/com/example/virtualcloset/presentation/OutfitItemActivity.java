@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
@@ -36,8 +37,8 @@ public class OutfitItemActivity extends AppCompatActivity {
         //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
-        int aID = (int) intent.getSerializableExtra("aID");
-        int cID = (int) intent.getSerializableExtra("cID");
+        int aID = (int) intent.getSerializableExtra("aID"); //account
+        int cID = (int) intent.getSerializableExtra("cID"); //closet Id
         int curr = intent.getExtras().getInt("curr");
         int tab = (int) intent.getSerializableExtra("tab");
 
@@ -50,7 +51,11 @@ public class OutfitItemActivity extends AppCompatActivity {
         oName = outfit.getName();
 
         //Set Up UI Widgets
-        final Button button = (Button) findViewById(R.id.done_outfit);
+        final Button doneButton = (Button) findViewById(R.id.done_outfit);
+        final Button addButton = (Button) findViewById(R.id.outfit_additem);
+        final Button deleteButton = (Button) findViewById(R.id.outfit_deleItem);
+        final Button backButton =(Button) findViewById(R.id.outfitItem_back);
+        backButton.setVisibility(View.GONE);
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.outfit_item_title);
 
         //Display Outfit Number & Name
@@ -65,7 +70,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         binding.gridview2.setAdapter(gridAdapter);
 
         //Click "Done" Button
-        button.setOnClickListener(new View.OnClickListener() {
+        doneButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
                 i2.putExtra("db", database);
@@ -74,8 +79,58 @@ public class OutfitItemActivity extends AppCompatActivity {
                 startActivity(i2);
             }
         });
+        //click "add" Button
+        addButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //switch to ClosetActivity page to select a clothes
+                Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
+                i2.putExtra("db", database);
+                i2.putExtra("aID", aID);
+                i2.putExtra("cID", cID);
+                i2.putExtra("selection",curr);
+                startActivity(i2);
+                overridePendingTransition(0, 0);
+            }
+        });
 
+        //click "delete" Button
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                addButton.setVisibility(View.GONE);
+                doneButton.setVisibility(View.GONE);
+                deleteButton.setVisibility(View.GONE);
+                backButton.setVisibility(View.VISIBLE);
+                Toast.makeText(OutfitItemActivity.this, "DELETE MODE ON!", Toast.LENGTH_SHORT).show();
+                binding.gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //delete clothes on that position
+                        clothesList.remove(position);
+                        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getClothesNames(clothesList),cm.getClothesImgs(clothesList));
+                        binding.gridview2.setAdapter(gridAdapter);
+                    }
+                });
+
+            }
+        });
+        //click on BackButton while deleting clothes
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addButton.setVisibility(View.VISIBLE);
+                doneButton.setVisibility(View.VISIBLE);
+                deleteButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.GONE);
+                Toast.makeText(OutfitItemActivity.this, "DELETE MODE OFF!", Toast.LENGTH_SHORT).show();
+                clickOnGrid( database, aID, cID);
+            }
+        });
         //Click on a ClothesItem
+         clickOnGrid( database, aID, cID);
+
+    }
+    void clickOnGrid(Database database, int aID,int cID){
         binding.gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,7 +148,6 @@ public class OutfitItemActivity extends AppCompatActivity {
                 startActivity(i3);
             }
         });
-
     }
 
 }

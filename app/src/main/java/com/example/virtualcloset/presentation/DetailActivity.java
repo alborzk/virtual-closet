@@ -95,6 +95,7 @@ public class DetailActivity extends AppCompatActivity {
                 i1.putExtra("db", database);
                 i1.putExtra("aID", aID);
                 i1.putExtra("cID", cID);
+                i1.putExtra("selection",-1);
                 startActivity(i1);
             }
         });
