@@ -9,9 +9,6 @@
         <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.32864583333333336" />
         <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/activity_outfit_item.xml" value="0.32864583333333336" />
         <entry key="..\:/Users/EV-02/Desktop/VirtualClosetProject/virtualcloset-A01/app/src/main/res/layout/activity_tags.xml" value="0.32864583333333336" />
-        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.326" />
-        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_remove_circle_24.xml" value="0.326" />
-        <entry key="..\:/Users/haruk/OneDrive/Desktop/virtualcloset-A01/app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="..\:/Users/haruk/OneDrive/Documents/comp sci/virtualcloset-A01/app/src/main/res/layout/activity_closet.xml" value="0.33" />
         <entry key="..\:/Users/haruk/OneDrive/Documents/comp sci/virtualcloset-A01/app/src/main/res/layout/activity_detail.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/haruk/OneDrive/Documents/comp sci/virtualcloset-A01/app/src/main/res/layout/activity_outfit_item.xml" value="0.2595108695652174" />
@@ -23,6 +20,7 @@
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.233" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.219" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.219" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_baseline_remove_circle_24.xml" value="0.4455" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/placeholdder2.xml" value="0.1" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/drawable/placeholder_0.xml" value="0.1" />
@@ -30,7 +28,7 @@
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_account.xml" value="0.33" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_add_clothing.xml" value="0.5" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_closet.xml" value="0.33" />
-        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_detail.xml" value="0.5" />
+        <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/virtualcloset-A01/app/src/main/res/layout/activity_main_closet.xml" value="0.31354166666666666" />

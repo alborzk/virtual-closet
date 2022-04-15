@@ -1,5 +1,7 @@
 package com.example.virtualcloset.presentation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.virtualcloset.Closet;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
@@ -76,6 +79,7 @@ public class DetailActivity extends AppCompatActivity {
         Button editButton = (Button) binding.getRoot().findViewById(R.id.editButton);
         Button addButton = (Button) binding.getRoot().findViewById(R.id.addButton);
         Button removeButton = (Button) binding.getRoot().findViewById(R.id.removeButton);
+        Button removeTagButton = (Button) binding.getRoot().findViewById(R.id.removeTagButton);
         EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
 
         //Check if already a favourite and make heart filled
@@ -135,6 +139,7 @@ public class DetailActivity extends AppCompatActivity {
                 editTags.setVisibility(View.VISIBLE);
                 addButton.setVisibility(View.VISIBLE);
                 removeButton.setVisibility(View.VISIBLE);
+                removeTagButton.setVisibility(View.VISIBLE);
 
 //                Intent i2 = new Intent(getApplicationContext(), TagsActivity.class);
 //                i2.putExtra("db", database);
@@ -146,7 +151,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Add" Button While Editing Tags
+        //Click "Add" Button While Editing
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,8 +191,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Remove" Button While Editing Tags
-        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+        //Click "Remove Tag" Button While Editing Tags
+        binding.removeTagButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Get Tag Name
@@ -212,6 +217,36 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click "Remove" Button While Editing
+        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "Removed " + item.getName() + " from your closet", Toast.LENGTH_SHORT).show();
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//                builder.setMessage("Are you sure you want to delete")
+//                        .setTitle("Delete")
+//                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                            }
+//                        })
+//                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                // CANCEL
+//                            }
+//                        });
+//                // Create the AlertDialog object and return it
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+//
+                closet.removeClothesItem(item);
+                Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
+                i2.putExtra("db", database);
+                i2.putExtra("aID", aID);
+                i2.putExtra("cID", cID);
+                startActivity(i2);
+            }
+        });
 
         //Click "Back" Button While Editing Tags
         binding.backButton.setOnClickListener(new View.OnClickListener() {
@@ -224,6 +259,7 @@ public class DetailActivity extends AppCompatActivity {
                 editTags.setVisibility(View.GONE);
                 addButton.setVisibility(View.GONE);
                 removeButton.setVisibility(View.GONE);
+                removeTagButton.setVisibility(View.GONE);
             }
         });
     }
