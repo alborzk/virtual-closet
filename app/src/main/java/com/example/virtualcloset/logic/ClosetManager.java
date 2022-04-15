@@ -8,6 +8,7 @@ import com.example.virtualcloset.storage.Database;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClosetManager implements Serializable {
 
@@ -59,5 +60,20 @@ public class ClosetManager implements Serializable {
         return imgs;
     }
 
+    //returns a list of all unique tags from the entire closet
+    public List<String> getAllTags(ArrayList<ClothesItem> clothesItems){
+        List<String> allTags = new ArrayList<>();
+
+        for (int i = 0; i < clothesItems.size(); i++) {
+            List<String> currTags = clothesItems.get(i).getTagNames();
+            for(int j = 0; j < currTags.size(); j++){
+                String t = currTags.get(j);
+                if(!allTags.contains(t)){
+                    allTags.add(t);
+                }
+            }
+        }
+        return allTags;
+    }
 
 }

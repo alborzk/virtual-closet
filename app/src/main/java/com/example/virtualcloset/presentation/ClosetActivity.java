@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.R;
@@ -17,6 +19,8 @@ import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 
 public class ClosetActivity extends AppCompatActivity {
@@ -45,6 +49,13 @@ public class ClosetActivity extends AppCompatActivity {
         int[] imgs = cm.getClothesImgs();
         GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), clothesNames, imgs);
         binding.gridView.setAdapter(gridAdapter);
+
+        //Set Up Tag Selection Dropdown
+        Spinner tagFilter = findViewById(R.id.tagFilter);
+        List<String> allUniqueTags = cm.getAllTags(closet.getClothesItems());
+        allUniqueTags.add(0, "All Clothing");
+        ArrayAdapter spinAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, allUniqueTags);
+        tagFilter.setAdapter(spinAdapter);
 
         //Navigation Bar
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);

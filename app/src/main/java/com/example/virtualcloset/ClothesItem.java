@@ -64,7 +64,7 @@ public class ClothesItem implements Serializable {
         return str;
     }
     public List getTagNames(){
-        List names = new ArrayList();
+        List<String> names = new ArrayList();
         for(int j = 0; j < tags.size(); j++){
             names.add(tags.get(j).getName());
         }
