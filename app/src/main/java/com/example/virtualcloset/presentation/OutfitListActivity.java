@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitListBinding;
@@ -16,9 +17,14 @@ import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.storage.Database;
 
 import androidx.annotation.NonNull;
+
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class OutfitListActivity extends AppCompatActivity {
@@ -30,7 +36,6 @@ public class OutfitListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
@@ -48,14 +53,19 @@ public class OutfitListActivity extends AppCompatActivity {
         GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), outfitNames, outfitImgs);
         binding.gridOutfitList.setAdapter(gridAdapter);
 
+        //Get Other UI Widgets
+        final FloatingActionButton outfitDeleteButton = findViewById(R.id.outfit_delete_button);
+        final FloatingActionButton outfitAddButton = findViewById(R.id.outfit_add_button);
+        final Button outfitAddOne = (Button) findViewById(R.id.add_one_outfit);
+        final Button outfitBackButton = (Button) findViewById(R.id.outfit_backButton);
+        final EditText editTags = (EditText) findViewById(R.id.editOutfit);
         //Navigation Bar
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_outfits);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     //Go to LoginActivity
                     case R.id.navigation_accounts:
                         Intent i1 = new Intent(getApplicationContext(), AccountActivity.class);
@@ -63,7 +73,7 @@ public class OutfitListActivity extends AppCompatActivity {
                         i1.putExtra("aID", aID);
                         i1.putExtra("cID", cID);
                         startActivity(i1);
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     //Go to OutfitListActivity
                     case R.id.navigation_outfits:
@@ -74,8 +84,9 @@ public class OutfitListActivity extends AppCompatActivity {
                         i2.putExtra("db", database);
                         i2.putExtra("aID", aID);
                         i2.putExtra("cID", cID);
+                        i2.putExtra("selection",-1);
                         startActivity(i2);
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
@@ -83,6 +94,89 @@ public class OutfitListActivity extends AppCompatActivity {
         });
 
         //Click on an item in the Grid
+        clickOnGrid( database,  aID, cID );
+
+        //click on addButton(+) on list page
+        binding.outfitAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                outfitDeleteButton.setVisibility(View.GONE);
+                outfitAddButton.setVisibility(View.GONE);
+                outfitAddOne.setVisibility(View.VISIBLE);
+                editTags.setVisibility(View.VISIBLE);
+                outfitBackButton.setVisibility(View.VISIBLE);
+
+            }
+        });
+        //click on add_one_outfit while in add mode
+        binding.addOneOutfit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String outfitName = editTags.getText().toString();
+
+                if (outfitName.trim().length() > 0) {
+                    //=================================================================
+                    //data base involved here
+                    //=================================================================
+                    Outfit newOutfit = new Outfit(closet.getNumOutfits() + 1, outfitName);
+                    closet.getOutfits().add(newOutfit);
+                    editTags.setText("");
+                    GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
+                    binding.gridOutfitList.setAdapter(gridAdapter);
+                    Toast.makeText(OutfitListActivity.this, "Added New Outfit: " + outfitName, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(OutfitListActivity.this, "Couldn't add New Outfit, input is empty!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        //click on removeButton (-)
+        final int[] delete = {0}; //determine if in delete mode.
+        binding.outfitDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                outfitDeleteButton.setVisibility(View.GONE);
+                outfitAddButton.setVisibility(View.GONE);
+                outfitBackButton.setVisibility(View.VISIBLE);
+                Toast.makeText(OutfitListActivity.this, "DELETE MODE ON!", Toast.LENGTH_SHORT).show();
+                delete[0] =1;
+                //delete the item selected on grid
+                binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //need to update here.
+                        closet.getOutfits().remove(position);
+                        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
+                        binding.gridOutfitList.setAdapter(gridAdapter);
+                    }
+                });
+
+
+            }
+        });
+        //click on backButton while in add mode.
+        binding.outfitBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                outfitDeleteButton.setVisibility(View.VISIBLE);
+                outfitAddButton.setVisibility(View.VISIBLE);
+                outfitAddOne.setVisibility(View.GONE);
+                editTags.setVisibility(View.GONE);
+                outfitBackButton.setVisibility(View.GONE);
+
+                if(delete[0]==1){
+                    Toast.makeText(OutfitListActivity.this, "DELETE MODE OFF!", Toast.LENGTH_SHORT).show();
+                    //set listener back to default action
+                    clickOnGrid( database,  aID, cID );
+                    delete[0]=0;
+                }
+
+            }
+        });
+
+
+    }
+    void clickOnGrid(Database database, int aID,int cID ){
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,7 +189,5 @@ public class OutfitListActivity extends AppCompatActivity {
                 startActivity(i3);
             }
         });
-
-
     }
 }
