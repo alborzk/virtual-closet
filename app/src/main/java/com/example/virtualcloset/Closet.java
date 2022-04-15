@@ -62,4 +62,17 @@ public class Closet implements Serializable {
     public boolean addOutfit(Outfit newOutfit){
         return outfits.add(newOutfit);
     }
+
+    public boolean removeClothesItem(ClothesItem toRemove){
+        for (Outfit o : outfits){
+            if (o.getClothesItems().contains(toRemove)){
+                o.removeClothesItem(toRemove);
+            }
+        }
+        return clothesItems.remove(toRemove);
+    }
+
+    public boolean removeOutfit(Outfit toRemove){
+        return outfits.remove(toRemove);
+    }
 }
