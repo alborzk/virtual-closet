@@ -23,7 +23,7 @@
       android:id="@+id/imgDisplay"
       android:layout_width="match_parent"
       android:layout_height="400dp"
-      android:layout_marginTop="80dp"
+      android:layout_marginTop="76dp"
       android:src="@drawable/placeholder_0"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
@@ -40,35 +40,35 @@
       android:text="name"
       android:textSize="36sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/imgDisplay" />
+
+  <!--      android:background="@drawable/undo"-->
 
   <TextView
       android:id="@+id/tagDisplay"
       android:layout_width="match_parent"
       android:layout_height="50dp"
       android:layout_marginStart="20dp"
-      android:layout_marginTop="20dp"
+      android:layout_marginTop="4dp"
       android:layout_marginEnd="20dp"
       android:text="tag 1  |  tag 2  |  tag 3"
       android:textSize="20sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />
-
-  <!--      android:background="@drawable/undo"-->
 
   <EditText
       android:id="@+id/editTags"
       android:layout_width="300dp"
       android:layout_height="57dp"
-      android:layout_marginStart="24dp"
+      android:layout_marginStart="76dp"
       android:layout_marginTop="12dp"
       android:autofillHints=""
       android:ems="10"
-      android:hint="Tag Name"
+      android:hint="New Tag"
       android:inputType="text"
       android:minHeight="36dp"
       android:textSize="20dp"
@@ -81,7 +81,7 @@
       android:id="@+id/addButton"
       android:layout_width="54dp"
       android:layout_height="54dp"
-      android:layout_marginStart="72dp"
+      android:layout_marginStart="68dp"
       android:layout_marginTop="12dp"
       android:background="@drawable/add"
       android:visibility="gone"
@@ -179,14 +179,14 @@
       android:id="@+id/tagSpinner"
       android:layout_width="300dp"
       android:layout_height="57dp"
-      android:layout_marginStart="28dp"
+      android:layout_marginStart="76dp"
       android:layout_marginTop="12dp"
       android:spinnerMode="dropdown"
       android:visibility="gone"
       app:layout_constraintBottom_toTopOf="@+id/editButton"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/editTags"
-      app:layout_constraintVertical_bias="0.0"
+      app:layout_constraintVertical_bias="0.006"
       tools:visibility="visible" />
 
   <Button
