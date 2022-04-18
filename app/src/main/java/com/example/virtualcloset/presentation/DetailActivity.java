@@ -1,6 +1,9 @@
 package com.example.virtualcloset.presentation;
 
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +39,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+//        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
@@ -222,30 +226,32 @@ public class DetailActivity extends AppCompatActivity {
         binding.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Removed " + item.getName() + " from your closet", Toast.LENGTH_SHORT).show();
+                builder.setCancelable(true);
+                builder.setTitle("Remove Item");
+                builder.setMessage("Are you sure you want to remove '" + item.getName() + "' from your closet?");
 
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//                builder.setMessage("Are you sure you want to delete")
-//                        .setTitle("Delete")
-//                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                            }
-//                        })
-//                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                // CANCEL
-//                            }
-//                        });
-//                // Create the AlertDialog object and return it
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
-//
-                closet.removeClothesItem(item);
-                Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
-                i2.putExtra("db", database);
-                i2.putExtra("aID", aID);
-                i2.putExtra("cID", cID);
-                startActivity(i2);
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        closet.removeClothesItem(item);
+                        Intent i2 = new Intent(DetailActivity.this, ClosetActivity.class);
+                        i2.putExtra("db", database);
+                        i2.putExtra("aID", aID);
+                        i2.putExtra("cID", cID);
+                        startActivity(i2);
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
             }
         });
 

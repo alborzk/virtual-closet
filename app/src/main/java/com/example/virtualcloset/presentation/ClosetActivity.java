@@ -25,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ClosetActivity extends AppCompatActivity {
 
     ActivityClosetBinding binding;
+    int selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,12 @@ public class ClosetActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         int aID = (int) intent.getSerializableExtra("aID");
         int cID = (int) intent.getSerializableExtra("cID");
-        int selection = (int) intent.getSerializableExtra("selection");  //
+        if (intent.getExtras().containsKey("selection")) {
+            selection = (int) intent.getSerializableExtra("selection");  //
+        }
+        else{
+            selection = -1;
+        }
 
         //Get Objects from IDs
         UserAccount account = database.getAccounts().get(aID);
