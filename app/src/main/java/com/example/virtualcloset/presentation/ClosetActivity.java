@@ -26,6 +26,7 @@ import java.util.List;
 public class ClosetActivity extends AppCompatActivity {
 
     ActivityClosetBinding binding;
+    GridAdapter gridAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class ClosetActivity extends AppCompatActivity {
         //Initialize GridView using GridAdapter
         String[] clothesNames = cm.getClothesNames();
         int[] imgs = cm.getClothesImgs();
-        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), clothesNames, imgs);
+        gridAdapter = new GridAdapter(getApplicationContext(), cm);
         binding.gridView.setAdapter(gridAdapter);
 
         //Set Up Tag Selection Dropdown
@@ -58,13 +59,12 @@ public class ClosetActivity extends AppCompatActivity {
         tagFilter.setAdapter(spinAdapter);
 
         //Navigation Bar
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_clothes);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     //Go to LoginActivity
                     case R.id.navigation_accounts:
                         Intent i1 = new Intent(getApplicationContext(), AccountActivity.class);
@@ -72,7 +72,7 @@ public class ClosetActivity extends AppCompatActivity {
                         i1.putExtra("aID", aID);
                         i1.putExtra("cID", cID);
                         startActivity(i1);
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     //Go to OutfitListActivity
                     case R.id.navigation_outfits:
@@ -81,7 +81,7 @@ public class ClosetActivity extends AppCompatActivity {
                         i2.putExtra("aID", aID);
                         i2.putExtra("cID", cID);
                         startActivity(i2);
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     //Go to ClosetActivity
                     case R.id.navigation_clothes:
@@ -116,6 +116,20 @@ public class ClosetActivity extends AppCompatActivity {
                 i4.putExtra("aID", aID);
                 i4.putExtra("cID", cID);
                 startActivity(i4);
+            }
+        });
+
+        binding.tagFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected (AdapterView < ? > adapterView, View view,int position,
+            long l){
+                String filter = adapterView.getItemAtPosition(position).toString();
+                gridAdapter.setFilter(filter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
