@@ -41,6 +41,17 @@ public class Closet implements Serializable {
         return outfits.size();
     }
 
+    public ClothesItem getItem(int id){
+        ClothesItem item = null;
+        for(int i = 0; i < clothesItems.size(); i++){
+            ClothesItem curr = clothesItems.get(i);
+            if(curr.getId() == id){
+                item = curr;
+            }
+        }
+        return item;
+    }
+
     //Setters
     public void setId(int id) {
         this.id = id;

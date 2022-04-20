@@ -39,13 +39,13 @@ public class DetailActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         int aID = (int) intent.getSerializableExtra("aID");
         int cID = (int) intent.getSerializableExtra("cID");
-        int curr = (int) intent.getSerializableExtra("curr");
+        int iID = (int) intent.getSerializableExtra("iID");
         int tab = (int) intent.getSerializableExtra("tab");
 
         //Get Objects from IDs
         UserAccount account = database.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
-        ClothesItem item = closet.getClothesItems().get(curr);
+        ClothesItem item = closet.getItem(iID);
 
         //Initialize Variables from Current Item
         name = item.getName();
@@ -135,14 +135,6 @@ public class DetailActivity extends AppCompatActivity {
                 editTags.setVisibility(View.VISIBLE);
                 addButton.setVisibility(View.VISIBLE);
                 removeButton.setVisibility(View.VISIBLE);
-
-//                Intent i2 = new Intent(getApplicationContext(), TagsActivity.class);
-//                i2.putExtra("db", database);
-//                i2.putExtra("aID", aID);
-//                i2.putExtra("cID", cID);
-//                i2.putExtra("curr", curr);
-//                i2.putExtra("tab", tab);
-//                startActivity(i2);
             }
         });
 
@@ -161,7 +153,7 @@ public class DetailActivity extends AppCompatActivity {
 
                 //Add Tag to Item
                 if (tag.trim().length() > 0){
-                    //if(item.findTagByName(tag) != null) {
+                    if(item.findTagByName(tag) == null) {
                         item.addTag(new Tag(newId, tag));
                         tagDisplay.setText(item.getTagsString());
                         editTags.setText("");
@@ -169,20 +161,14 @@ public class DetailActivity extends AppCompatActivity {
                         //Update Spinner
                         tagNames.add(tag);
                         adapter.notifyDataSetChanged();
-                    //}
-                    //else{
-                    //    Toast.makeText(DetailActivity.this, "Item already has the tag \"" + tag, Toast.LENGTH_SHORT).show();
-                    //}
+                    }
+                    else{
+                        Toast.makeText(DetailActivity.this, "Item already has the tag \"" + tag + "\"", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(DetailActivity.this, "Couldn't add tag, input is empty!", Toast.LENGTH_SHORT).show();
                 }
-
-//                editButton.setVisibility(View.VISIBLE);
-//                doneButton.setVisibility(View.VISIBLE);
-//                backButton.setVisibility(View.GONE);
-//                editTags.setVisibility(View.GONE);
-//                addButton.setVisibility(View.GONE);
             }
         });
 

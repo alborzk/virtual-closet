@@ -46,8 +46,6 @@ public class ClosetActivity extends AppCompatActivity {
         ClosetManager cm = new ClosetManager(closet);
 
         //Initialize GridView using GridAdapterCloset
-        String[] clothesNames = cm.getClothesNames();
-        int[] imgs = cm.getClothesImgs();
         gridAdapter = new GridAdapterCloset(getApplicationContext(), cm);
         binding.gridView.setAdapter(gridAdapter);
 
@@ -55,6 +53,7 @@ public class ClosetActivity extends AppCompatActivity {
         Spinner tagFilter = findViewById(R.id.tagFilter);
         List<String> allUniqueTags = cm.getAllTags(closet.getClothesItems());
         allUniqueTags.add(0, "All Clothing");
+        allUniqueTags.add(1, "Favourites");
         ArrayAdapter spinAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, allUniqueTags);
         tagFilter.setAdapter(spinAdapter);
 
@@ -97,10 +96,11 @@ public class ClosetActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Go to DetailActivity
                 Intent i3 = new Intent(getApplicationContext(), DetailActivity.class);
+                int currID = gridAdapter.getItemIDByPosition(position);
                 i3.putExtra("db", database);
                 i3.putExtra("aID", aID);
                 i3.putExtra("cID", cID);
-                i3.putExtra("curr", position);
+                i3.putExtra("iID", currID);
                 i3.putExtra("tab", 1);
                 startActivity(i3);
             }
@@ -119,6 +119,7 @@ public class ClosetActivity extends AppCompatActivity {
             }
         });
 
+        //Clicking on a tag from the dropdown list to filter the closet
         binding.tagFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > adapterView, View view,int position,

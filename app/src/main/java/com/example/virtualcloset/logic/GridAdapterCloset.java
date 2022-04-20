@@ -68,13 +68,11 @@ public class GridAdapterCloset extends BaseAdapter{
             convertView = inflater.inflate(R.layout.grid_item, null);
         }
 
-        int index = 0;
-        if(filter.equals("All Clothing")){
-            index = position;
+        int index;
+        if(filteredIndexes.size()>=position && !filter.equals("All Clothing")) {
+            index = filteredIndexes.get(position);
         } else {
-            if(filteredIndexes!=null && filteredIndexes.size()>position) {
-                index = filteredIndexes.get(position);
-            }
+            index = position;
         }
 
         ImageView imageView = convertView.findViewById(R.id.grid_image);
@@ -90,16 +88,34 @@ public class GridAdapterCloset extends BaseAdapter{
         filter = s;
         filteredIndexes.clear();
         numClothes = 0;
-        System.out.println("reset");
-        for(int i = 0; i < closet.size(); i++){
-            List<String> currTags = closet.get(i).getTagNames();
-            for(int j = 0; j < currTags.size(); j++){
-                if(currTags.get(j).equals(filter)){
+        if(filter.equals("Favourites")){
+            for(int i = 0; i < closet.size(); i++){
+                ClothesItem curr = closet.get(i);
+                if(curr.isFave()){
                     filteredIndexes.add(Integer.valueOf(i));
                     numClothes++;
                 }
             }
+        } else if (!filter.equals("All Clothing")) {
+            for(int i = 0; i < closet.size(); i++){
+                List<String> currTags = closet.get(i).getTagNames();
+                for(int j = 0; j < currTags.size(); j++){
+                    if(currTags.get(j).equals(filter)){
+                        filteredIndexes.add(Integer.valueOf(i));
+                        numClothes++;
+                    }
+                }
+            }
         }
         notifyDataSetChanged();
+    }
+
+    //converts from the position of the item in the grid to its id
+    public int getItemIDByPosition(int position){
+        int id = position;
+        if(!filter.equals("All Clothing")){
+            id = filteredIndexes.get(position);
+        }
+        return id;
     }
 }
