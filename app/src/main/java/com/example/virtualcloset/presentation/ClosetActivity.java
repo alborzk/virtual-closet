@@ -15,9 +15,9 @@ import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.logic.ClosetManager;
+import com.example.virtualcloset.logic.GridAdapterCloset;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.databinding.ActivityClosetBinding;
-import com.example.virtualcloset.logic.GridAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
 public class ClosetActivity extends AppCompatActivity {
 
     ActivityClosetBinding binding;
-    GridAdapter gridAdapter;
+    GridAdapterCloset gridAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +45,10 @@ public class ClosetActivity extends AppCompatActivity {
         Closet closet = account.getClosets().get(cID);
         ClosetManager cm = new ClosetManager(closet);
 
-        //Initialize GridView using GridAdapter
+        //Initialize GridView using GridAdapterCloset
         String[] clothesNames = cm.getClothesNames();
         int[] imgs = cm.getClothesImgs();
-        gridAdapter = new GridAdapter(getApplicationContext(), cm);
+        gridAdapter = new GridAdapterCloset(getApplicationContext(), cm);
         binding.gridView.setAdapter(gridAdapter);
 
         //Set Up Tag Selection Dropdown
