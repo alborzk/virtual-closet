@@ -1,57 +1,56 @@
-//package com.example.virtualcloset.logic;
-//
-//import static org.junit.Assert.*;
-//
-//import com.example.virtualcloset.ClothesItem;
-//import com.example.virtualcloset.R;
-//import com.example.virtualcloset.Tag;
-//import com.example.virtualcloset.storage.Database;
-//
-//import org.junit.After;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.util.ArrayList;
-//
-//public class DataManagerTest {
-//    Database db = new Database();
-//    ArrayList<ClothesItem> clothesItems;
-//    ArrayList<Tag> tags1;
-//    DataManager newDM;
-//
-//
-//    //String tags[];
-//    @Before
-//    public void setUp() throws Exception {
-//        clothesItems = new ArrayList<ClothesItem>();
-//        newDM = new ClosetManager(db);
-//    }
-//
-//    @After
-//    public void tearDown() throws Exception {
-//
-//    }
-//
+package com.example.virtualcloset.logic;
+
+import static org.junit.Assert.*;
+
+import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.R;
+import com.example.virtualcloset.Tag;
+import com.example.virtualcloset.storage.Database;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+
+public class DataManagerTest {
+    Database db = new Database(false);
+    DataManager newDM;
+
+
+    //String tags[];
+    @Before
+    public void setUp() throws Exception {
+        newDM=new DataManager(db);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
+
+    @Test
+    public void constructorTest() {
+        assertNotNull(db);
+        assertNotNull(newDM);
+
+    }
+
+    @Test
+    public void findAccount() {
+        assertNotNull(newDM.findAccount("user","password"));
+
+    }
+
 //    @Test
-//    public void constructorTest() {
-//        assertEquals("the first cloth's name should match", "Gymshark Joggers", newDM.getNames()[0]);
-//        assertEquals("the first tag should match", "|  Black  |  Pants  |  Workout  |  ", newDM.getTags()[0]);
-//        assertEquals("the int img should match", R.drawable.placeholder_1,newDM.getImgs()[1]);
+//    public void findAID() {
+//        assertEquals("Should return a account with ID:0",0,newDM.findAID("user","password").getID());
 //    }
-//
-//    @Test
-//    public void getNames() {
-//        assertEquals("the first cloth's name should match","Gymshark Joggers", newDM.getNames()[0]);
-//    }
-//
-//    @Test
-//    public void getTags() {
-//
-//        assertEquals("the first tag should match", "|  Black  |  Pants  |  Workout  |  ", newDM.getTags()[0]);
-//    }
-//
-//    @Test
-//    public void getImgs() {
-//        assertEquals("the int img should match", R.drawable.placeholder_1,newDM.getImgs()[1]);
-//    }
-//}
+
+    @Test
+    public void accountExists() {
+        assertTrue("Should return True if found an exist account", newDM.accountExists("user"));
+        assertFalse("Should return False if found an exist account", newDM.accountExists("user2"));
+    }
+}

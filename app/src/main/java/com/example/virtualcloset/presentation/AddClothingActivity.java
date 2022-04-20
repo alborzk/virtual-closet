@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
@@ -50,7 +51,6 @@ public class AddClothingActivity extends AppCompatActivity {
         //Get Objects from IDs
         UserAccount account = db.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
-        ClosetManager cm = new ClosetManager(closet);
 
         //Set Up UI Widgets
 //        Button selectImg = findViewById(R.id.selectImageButton);
@@ -106,13 +106,15 @@ public class AddClothingActivity extends AppCompatActivity {
                 //Add new item to closet
                 String name = nameInput.getText().toString();
                 int img = R.drawable.add_image;
-                cm.addClothesItem(name, tags, img);
+                ClothesItem newItem = new ClothesItem(closet.getNumClothes(), name, tags, img);
+                closet.addClothesItem(newItem);
 
                 //Go to ClosetActivity
                 Intent i1 = new Intent(AddClothingActivity.this, ClosetActivity.class);
                 i1.putExtra("db", db);
                 i1.putExtra("aID", aID);
                 i1.putExtra("cID", cID);
+                i1.putExtra("selection",-1);
                 startActivity(i1);
             }
         });

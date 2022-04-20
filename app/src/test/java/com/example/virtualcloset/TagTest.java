@@ -34,8 +34,14 @@ public class TagTest {
 
 
     @Test
-    public void getName() {
-        assert ("Red".equals(newTag.getName()));
+    public void getID() {
+        assertEquals("Tag retrieved should be the same", 1,newTag.getId());
+    }
+
+    @Test
+    public void setID() {
+        newTag.setId(2);
+        assertEquals("Tag retrieved should be the same", 2,newTag.getId());
     }
 
 //    @Test

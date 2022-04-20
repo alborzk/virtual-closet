@@ -70,11 +70,22 @@ public class ClothesItemTest {
 
     @Test
     public void testSetTags() {
-        Tag tag2 = null;
         ArrayList<Tag> tags2 = new ArrayList<Tag>();
-        tags2.add(tag2);
+        tags2.add(new Tag(11, "Black"));
+        tags2.add(new Tag(12, "Pants"));
+        tags2.add(new Tag(13, "Workout"));
         clothesItem.setTags(tags2);
         assertEquals("tags should be equal", tags2, clothesItem.getTags());
+    }
+
+    @Test
+    public void getTagsStr() {
+        ArrayList<Tag> tags2 = new ArrayList<Tag>();
+        tags2.add(new Tag(11, "Black"));
+        tags2.add(new Tag(12, "Pants"));
+        tags2.add(new Tag(13, "Workout"));
+        clothesItem.setTags(tags2);
+        assertEquals("the first clothes tags should match", "|  Black  |  Pants  |  Workout  |  ", clothesItem.getTagsString());
     }
 
     @Test
@@ -83,11 +94,28 @@ public class ClothesItemTest {
         assertEquals("image should be equal", R.drawable.placeholder_0, clothesItem.getImg());
     }
     
-    // Test Methods
+    // Iteration 2
     @Test
     public void testAddTags() { // ..?
         Tag tag3 = null;
         assertEquals("should add a tag", true, clothesItem.addTag(tag3));
+    }
+
+    @Test
+    public void testIsFave() { // ..?
+        assertEquals("should be unfavorited initially", false, clothesItem.isFave());
+    }
+
+    @Test
+    public void testFavorite() { // ..?
+        clothesItem.favorite();
+        assertEquals("should set the item to favorite", true, clothesItem.isFave());
+    }
+
+    @Test
+    public void testUnfavorite() { // ..?
+       clothesItem.unFavorite();
+        assertEquals("should set the item to unfavorite", false, clothesItem.isFave());
     }
 
     @After

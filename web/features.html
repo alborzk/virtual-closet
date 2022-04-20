@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-center: 200px;
+  background-attachment: fixed;
+}
+
+header {
+  background-color: rgb(136, 167, 136);
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+nav {
+  float: left;
+  width: 20%;
+  background:  lightgoldenrodyellow;
+  opacity: 0.7;
+  padding: 20px;
+  border: 2px solid #4CAF50;
+  height: 600px; /* remove later */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  border: 2px solid #4CAF50;
+  width: 80%;
+  height: 600px; /* remove later */
+}
+
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  background-color:  rgb(136,167,136);
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Virtual Closet</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>Features</h1>
+	<h2>Feature 1</h2>
+	<p>blablabla............</p>
+  </article>
+</section>
+
+<footer>
+  <p>[COMP-3350] Group 9</p>
+</footer>
+
+</body>
+</html>
