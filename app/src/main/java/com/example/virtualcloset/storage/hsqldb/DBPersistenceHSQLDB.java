@@ -33,19 +33,20 @@ public class DBPersistenceHSQLDB implements DBPersistence {
 
         try (final Connection con = connection()){
             //Get the set of ClothesItems
-            String selectString = "SELECT * FROM ClothesItems";
+            String selectString = "SELECT * FROM CLOTHESITEMS";
             Statement statement = con.createStatement();
             ResultSet resultClothes = statement.executeQuery(selectString);
-
+            System.out.println("made it to 40");
             //Build the ClothesItem objects for each item in the DB. Add them to the list
             while(resultClothes.next()){
                 int currClothesID = resultClothes.getInt("clothesID"); //gets the data from "clothesID" field
                 String currClothingName = resultClothes.getString("clothingName");
                 int currImg = resultClothes.getInt("clothingImg");//NOTE: many images are currently set to null in database. according to documentation, it sets the int to 0
-                ArrayList<Tag> currClothesTags = getTagsFromClothesID(currClothesID);
+                //ArrayList<Tag> currClothesTags = getTagsFromClothesID(currClothesID);
                 int currFav = resultClothes.getInt("fav");
 
-                ClothesItem currClothing = new ClothesItem(currClothesID, currClothingName, currClothesTags, currImg);
+                ClothesItem currClothing = new ClothesItem(currClothesID, currClothingName, null, currImg);         //For testing purposes
+                //ClothesItem currClothing = new ClothesItem(currClothesID, currClothingName, currClothesTags, currImg); //
                 if(currFav == 1){
                     //Fav is always set to 0 for newly constructed ClothesItems -> this will update that if necessary
                     currClothing.favorite();
@@ -75,9 +76,10 @@ public class DBPersistenceHSQLDB implements DBPersistence {
                 String currOutfitName = resultOutfits.getString("outfitName");
                 int currClosetID = resultOutfits.getInt("closetID");
 
-                ArrayList<ClothesItem> currOutfitSet = getClothesItemsFromOutfitID(currOutfitID);
+                //ArrayList<ClothesItem> currOutfitSet = getClothesItemsFromOutfitID(currOutfitID);
 
-                Outfit currOutfit = new Outfit(currOutfitID, currOutfitName, currOutfitSet);
+                Outfit currOutfit = new Outfit(currOutfitID, currOutfitName, null); //for testing purposes
+                //Outfit currOutfit = new Outfit(currOutfitID, currOutfitName, currOutfitSet);//
                 outfits.add(currOutfit);
             }
             statement.close();
@@ -111,7 +113,7 @@ public class DBPersistenceHSQLDB implements DBPersistence {
                 //<-------------------------------Right now accounts have a list of closets. this method I think will create a new account for each closet--------------
                 currAccountClosets.add(currCloset);
 
-                UserAccount currAccount = new UserAccount(currUserID, currUsername, currPassword, currEmail, currAccountClosets); //add currUserID once merged
+                UserAccount currAccount = new UserAccount(currUserID, currUsername, currPassword, currEmail, currAccountClosets);
                 accounts.add(currAccount);
             }
             statement.close();
@@ -122,7 +124,31 @@ public class DBPersistenceHSQLDB implements DBPersistence {
         return accounts;
     }
 
+    @Override
+    public ArrayList<Tag> getTags(){
+        ArrayList<Tag> tags = new ArrayList<Tag>();
+        try (final Connection con = connection()){
+            //Get the set of Tags
+            String selectString = "SELECT * FROM Tags";
+            Statement statement = con.createStatement();
+            ResultSet resultTags = statement.executeQuery(selectString);
 
+            //Build the Tag objects for each item in the DB. Add them to the list
+            while(resultTags.next()){
+                int currTagID = resultTags.getInt("tagID"); //gets the data from "tagID" field
+                String currTagName = resultTags.getString("tagName");
+//                String currTagType = resultTags.getString("tagType");
+
+                Tag currTag = new Tag(currTagID, currTagName);
+                tags.add(currTag);
+            }
+            statement.close();
+            resultTags.close();
+        } catch (SQLException e){
+            System.out.println(e);
+        }
+        return tags;
+    }
 
     /*
      * returns a list of tags that belong to a certain clothesItem

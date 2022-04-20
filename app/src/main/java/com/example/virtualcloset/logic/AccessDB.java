@@ -2,6 +2,7 @@ package com.example.virtualcloset.logic;
 
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.application.Services;
 import com.example.virtualcloset.storage.DBPersistence;
@@ -26,5 +27,9 @@ public class AccessDB {
 
     public List<UserAccount> getAccounts() {
         return Collections.unmodifiableList(dbPersistence.getAccounts());
+    }
+
+    public List<Tag> getTags(){
+        return Collections.unmodifiableList(dbPersistence.getTags());
     }
 }

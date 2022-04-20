@@ -18,9 +18,11 @@ import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
+import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.application.Main;
 import com.example.virtualcloset.databinding.ActivityLoginBinding;
+import com.example.virtualcloset.logic.AccessDB;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.storage.SQLDatabase;
@@ -31,6 +33,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,6 +46,21 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //Set up database
+        copyDatabaseToDevice();
+        //TESTING
+        AccessDB accessDB = new AccessDB();
+        List<ClothesItem> clothes = accessDB.getClothesItems();
+        System.out.println(clothes.get(0).getName());
+        System.out.println(clothes.get(3).getName());
+
+        List<Tag> tags = accessDB.getTags();
+        System.out.println(tags.get(0).getName());
+
+        List<Outfit> outfits = accessDB.getOutfits();
+        System.out.println(outfits.get(0).getName());
+        System.out.println(outfits.get(1).getName());
+        //TESTING
+
         Database database;
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
