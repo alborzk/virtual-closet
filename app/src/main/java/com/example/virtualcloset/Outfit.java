@@ -35,6 +35,9 @@ public class Outfit implements Serializable {
     }
 
     public int getImg() {
+        if(clothesItems.size()==0){
+            this.img = R.drawable.placeholder_outfit;
+        }
         return img;
     }
 
@@ -57,5 +60,9 @@ public class Outfit implements Serializable {
 
     public boolean addClothesItem(ClothesItem newItem){
         return clothesItems.add(newItem);
+    }
+
+    public boolean removeClothesItem(ClothesItem toRemove){
+        return clothesItems.remove(toRemove);
     }
 }

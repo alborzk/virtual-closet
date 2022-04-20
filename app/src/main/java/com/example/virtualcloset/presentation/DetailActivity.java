@@ -1,5 +1,10 @@
 package com.example.virtualcloset.presentation;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.virtualcloset.Closet;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
@@ -33,7 +39,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+//        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
@@ -76,6 +83,7 @@ public class DetailActivity extends AppCompatActivity {
         Button editButton = (Button) binding.getRoot().findViewById(R.id.editButton);
         Button addButton = (Button) binding.getRoot().findViewById(R.id.addButton);
         Button removeButton = (Button) binding.getRoot().findViewById(R.id.removeButton);
+        Button removeTagButton = (Button) binding.getRoot().findViewById(R.id.removeTagButton);
         EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
 
         //Check if already a favourite and make heart filled
@@ -104,6 +112,7 @@ public class DetailActivity extends AppCompatActivity {
                 i1.putExtra("db", database);
                 i1.putExtra("aID", aID);
                 i1.putExtra("cID", cID);
+                i1.putExtra("selection",-1);
                 startActivity(i1);
             }
         });
@@ -135,10 +144,11 @@ public class DetailActivity extends AppCompatActivity {
                 editTags.setVisibility(View.VISIBLE);
                 addButton.setVisibility(View.VISIBLE);
                 removeButton.setVisibility(View.VISIBLE);
+                removeTagButton.setVisibility(View.VISIBLE);
             }
         });
 
-        //Click "Add" Button While Editing Tags
+        //Click "Add" Button While Editing
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,8 +182,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Remove" Button While Editing Tags
-        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+        //Click "Remove Tag" Button While Editing Tags
+        binding.removeTagButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Get Tag Name
@@ -198,6 +208,38 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click "Remove" Button While Editing
+        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.setCancelable(true);
+                builder.setTitle("Remove Item");
+                builder.setMessage("Are you sure you want to remove '" + item.getName() + "' from your closet?");
+
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        closet.removeClothesItem(item);
+                        Intent i2 = new Intent(DetailActivity.this, ClosetActivity.class);
+                        i2.putExtra("db", database);
+                        i2.putExtra("aID", aID);
+                        i2.putExtra("cID", cID);
+                        startActivity(i2);
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+            }
+        });
 
         //Click "Back" Button While Editing Tags
         binding.backButton.setOnClickListener(new View.OnClickListener() {
@@ -210,6 +252,7 @@ public class DetailActivity extends AppCompatActivity {
                 editTags.setVisibility(View.GONE);
                 addButton.setVisibility(View.GONE);
                 removeButton.setVisibility(View.GONE);
+                removeTagButton.setVisibility(View.GONE);
             }
         });
     }

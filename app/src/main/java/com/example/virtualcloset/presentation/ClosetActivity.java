@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
 import com.example.virtualcloset.UserAccount;
 import com.example.virtualcloset.logic.ClosetManager;
@@ -27,6 +30,7 @@ public class ClosetActivity extends AppCompatActivity {
 
     ActivityClosetBinding binding;
     GridAdapterCloset gridAdapter;
+    int selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,12 @@ public class ClosetActivity extends AppCompatActivity {
         Database database = (Database) intent.getSerializableExtra("db");
         int aID = (int) intent.getSerializableExtra("aID");
         int cID = (int) intent.getSerializableExtra("cID");
+        if (intent.getExtras().containsKey("selection")) {
+            selection = (int) intent.getSerializableExtra("selection");  //
+        }
+        else{
+            selection = -1;
+        }
 
         //Get Objects from IDs
         UserAccount account = database.getAccounts().get(aID);
@@ -89,20 +99,42 @@ public class ClosetActivity extends AppCompatActivity {
                 return false;
             }
         });
+        if(selection!=-1){
+            binding.bottomNavigation.setVisibility(View.GONE);
+            binding.addItemButton.setVisibility(View.GONE);
+        }
 
         //Clicking an item in the grid
         binding.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Go to DetailActivity
-                Intent i3 = new Intent(getApplicationContext(), DetailActivity.class);
-                int currID = gridAdapter.getItemIDByPosition(position);
-                i3.putExtra("db", database);
-                i3.putExtra("aID", aID);
-                i3.putExtra("cID", cID);
-                i3.putExtra("iID", currID);
-                i3.putExtra("tab", 1);
-                startActivity(i3);
+                if(selection!=-1){
+                    UserAccount account = database.getAccounts().get(aID);
+                    Closet closet = account.getClosets().get(cID);
+                    ClothesItem item = closet.getClothesItems().get(position);
+                    Outfit outfit = closet.getOutfits().get(selection);
+                    if(outfit.addClothesItem(item)){
+                        outfit.setImg(item.getImg());
+                        Toast.makeText(ClosetActivity.this, "Added New clothes to a Outfit", Toast.LENGTH_SHORT).show();
+                    };
+                    Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
+                    i2.putExtra("db", database);
+                    i2.putExtra("aID", aID);
+                    i2.putExtra("cID", cID);
+                    startActivity(i2);
+                    overridePendingTransition(0,0);
+                }else{
+                    //Go to DetailActivity
+                    Intent i3 = new Intent(getApplicationContext(), DetailActivity.class);
+                    int currID = gridAdapter.getItemIDByPosition(position);
+                    i3.putExtra("db", database);
+                    i3.putExtra("aID", aID);
+                    i3.putExtra("cID", cID);
+                    i3.putExtra("iID", currID);
+                    i3.putExtra("tab", 1);
+                    startActivity(i3);
+                }
             }
         });
 

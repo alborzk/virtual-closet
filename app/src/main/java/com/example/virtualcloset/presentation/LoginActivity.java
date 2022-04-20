@@ -1,7 +1,9 @@
 package com.example.virtualcloset.presentation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +18,22 @@ import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.Outfit;
 import com.example.virtualcloset.R;
+import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.application.Main;
 import com.example.virtualcloset.databinding.ActivityLoginBinding;
+import com.example.virtualcloset.logic.AccessDB;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.example.virtualcloset.storage.SQLDatabase;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,6 +46,21 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //Set up database
+        copyDatabaseToDevice();
+        //TESTING
+        AccessDB accessDB = new AccessDB();
+        List<ClothesItem> clothes = accessDB.getClothesItems();
+        System.out.println(clothes.get(0).getName());
+        System.out.println(clothes.get(3).getName());
+
+        List<Tag> tags = accessDB.getTags();
+        System.out.println(tags.get(0).getName());
+
+        List<Outfit> outfits = accessDB.getOutfits();
+        System.out.println(outfits.get(0).getName());
+        System.out.println(outfits.get(1).getName());
+        //TESTING
+
         Database database;
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -78,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     i1.putExtra("aID", aID);
                     i1.putExtra("cID", 0);
                     i1.putExtra("db", database);
+                    i1.putExtra("selection",-1);
                     startActivity(i1);
                 }
                 //If account doesn't exist, can't log in
@@ -124,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                     i2.putExtra("aID", aID);
                     i2.putExtra("cID", 0);
                     i2.putExtra("db", database);
+                    i2.putExtra("selection",-1);
                     startActivity(i2);
 
                 }
@@ -144,4 +171,58 @@ public class LoginActivity extends AppCompatActivity {
     private Database initializeDatabase() {
         return new Database(true);
     }
+
+
+    private void copyDatabaseToDevice() {
+        final String DB_PATH = "db";
+
+        String[] assetNames;
+        Context context = getApplicationContext();
+        File dataDirectory = context.getDir(DB_PATH, Context.MODE_PRIVATE);
+        AssetManager assetManager = getAssets();
+
+        try {
+
+            assetNames = assetManager.list(DB_PATH);
+            for (int i = 0; i < assetNames.length; i++) {
+                assetNames[i] = DB_PATH + "/" + assetNames[i];
+            }
+
+            copyAssetsToDirectory(assetNames, dataDirectory);
+
+            Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
+
+        } catch (final IOException ioe) {
+            System.out.println(ioe);
+        }
+    }
+
+    public void copyAssetsToDirectory(String[] assets, File directory) throws IOException {
+        AssetManager assetManager = getAssets();
+
+        for (String asset : assets) {
+            String[] components = asset.split("/");
+            String copyPath = directory.toString() + "/" + components[components.length - 1];
+
+            char[] buffer = new char[1024];
+            int count;
+
+            File outFile = new File(copyPath);
+
+            if (!outFile.exists()) {
+                InputStreamReader in = new InputStreamReader(assetManager.open(asset));
+                FileWriter out = new FileWriter(outFile);
+
+                count = in.read(buffer);
+                while (count != -1) {
+                    out.write(buffer, 0, count);
+                    count = in.read(buffer);
+                }
+
+                out.close();
+                in.close();
+            }
+        }
+    }
+
 }

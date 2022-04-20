@@ -31,14 +31,20 @@ public class SQLDatabase implements Serializable, IDatabase{
     public boolean getConnection(){
         boolean connectionEstablished = false;
 
-        //Class.forName("org.sqlite.JDBC");
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch(ClassNotFoundException e){
+            System.out.println(e);
+        }
+
         String jdbcURL = "jdbc:sqlite:VirtualClosetDatabase.db";
         try{
             con = DriverManager.getConnection(jdbcURL);
             connectionEstablished = true;
-            //System.out.println("Connection Established");
+            System.out.println("Connection Established");
         } catch (SQLException e) {
             System.out.println(e);
+            System.out.println(e.getStackTrace());
         }
 
         return connectionEstablished;

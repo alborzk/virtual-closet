@@ -1,5 +1,6 @@
 package com.example.virtualcloset;
 
+
 import com.example.virtualcloset.logic.ClosetManagerTest;
 import com.example.virtualcloset.logic.DataManagerTest;
 import com.example.virtualcloset.logic.GridAdapterTest;
@@ -17,6 +18,7 @@ import org.junit.runners.Suite;
         TagTest.class,
         UserAccountTest.class,
         GridAdapterTest.class,
+
         DataManagerTest.class,
         ClosetManagerTest.class,
         SQLDatabaseTest.class

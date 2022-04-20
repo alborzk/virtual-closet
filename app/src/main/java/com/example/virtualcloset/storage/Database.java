@@ -55,6 +55,9 @@ public class Database implements Serializable, IDatabase{
         ArrayList<UserAccount> result;
         if(useSQL){
             result = sqlDatabase.getAccounts();
+            if(result == null){
+                System.out.println("get accounts is returning null");
+            }
         }
         else {
             result = accounts;
