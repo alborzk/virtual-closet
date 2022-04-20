@@ -47,18 +47,18 @@ public class LoginActivity extends AppCompatActivity {
 
         //Set up database
         copyDatabaseToDevice();
-        //TESTING
-        AccessDB accessDB = new AccessDB();
-        List<ClothesItem> clothes = accessDB.getClothesItems();
-        System.out.println(clothes.get(0).getName());
-        System.out.println(clothes.get(3).getName());
-
-        List<Tag> tags = accessDB.getTags();
-        System.out.println(tags.get(0).getName());
-
-        List<Outfit> outfits = accessDB.getOutfits();
-        System.out.println(outfits.get(0).getName());
-        System.out.println(outfits.get(1).getName());
+//        //TESTING
+//        AccessDB accessDB = new AccessDB();
+//        List<ClothesItem> clothes = accessDB.getClothesItems();
+//        System.out.println(clothes.get(0).getName());
+//        System.out.println(clothes.get(3).getName());
+//
+//        List<Tag> tags = accessDB.getTags();
+//        System.out.println(tags.get(0).getName());
+//
+//        List<Outfit> outfits = accessDB.getOutfits();
+//        System.out.println(outfits.get(0).getName());
+//        System.out.println(outfits.get(1).getName());
         //TESTING
 
         Database database;

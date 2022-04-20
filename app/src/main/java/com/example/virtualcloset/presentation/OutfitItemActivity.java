@@ -143,7 +143,7 @@ public class OutfitItemActivity extends AppCompatActivity {
                 i3.putExtra("db", database);
                 i3.putExtra("aID", aID);
                 i3.putExtra("cID", cID);
-                i3.putExtra("curr", itemID);
+                i3.putExtra("iID", itemID);
                 i3.putExtra("tab", 0);
                 startActivity(i3);
             }
