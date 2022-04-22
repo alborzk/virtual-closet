@@ -1,5 +1,4 @@
 package com.example.virtualcloset;
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -20,10 +19,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class viewClothesTest {
+public class sortClothTest {
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
-
     @Before
     public void setupDB() {
         //here we will delete the account that will be created
@@ -38,20 +36,8 @@ public class viewClothesTest {
     }
 
     @Test
-    public void viewClothes() {
-        //check the first item on GridView
-        onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0)
-                .onChildView(withId(R.id.item_name))
-                .check(matches(withText("Gymshark Joggers")));
+    public void sortClothes(){
+        onView(withId(R.id.tagFilter)).perform(click());
 
-    }
-
-    @Test
-    public void viewClothesDetails() {
-        //click the first item on GridView
-        //check the details of item
-        onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
-        onView(withId(R.id.nameDisplay)).check(matches(withText("Gymshark Joggers")));
-        onView(withId(R.id.tagDisplay)).check(matches(withText("|  Black  |  Pants  |  Workout  |  ")));
     }
 }

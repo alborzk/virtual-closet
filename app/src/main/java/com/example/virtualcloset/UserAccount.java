@@ -6,15 +6,23 @@ import java.util.ArrayList;
 public class UserAccount implements Serializable {
 
     //Instance Variables
+<<<<<<< HEAD
     int id;
     String username;
     String password;
     String email;
     ArrayList<Closet> closets;
     int img;
+=======
+    private int id;
+    private String username;
+    private String password;
+    private String email;
+    private ArrayList<Closet> closets;
+>>>>>>> origin/sysTest2
 
     //Constructor
-    public UserAccount(int id, String username, String password, String email){
+    public UserAccount(int id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -23,7 +31,7 @@ public class UserAccount implements Serializable {
         this.img = R.drawable.user_icon;
     }
 
-    public UserAccount(int id, String username, String password, String email, ArrayList<Closet> closets){
+    public UserAccount(int id, String username, String password, String email, ArrayList<Closet> closets) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -49,11 +57,11 @@ public class UserAccount implements Serializable {
         return email;
     }
 
-    public ArrayList<Closet> getClosets(){
+    public ArrayList<Closet> getClosets() {
         return closets;
     }
 
-    public int getNumClosets(){
+    public int getNumClosets() {
         return closets.size();
     }
 
@@ -78,12 +86,11 @@ public class UserAccount implements Serializable {
         this.password = password;
     }
 
-    //Add a new closet to the account
     public void setImg(int img) {
         this.img = img;
     }
 
-    //Other Methods
+    //Add a new closet to the account
     public boolean addCloset(Closet newCloset){
         return closets.add(newCloset);
     }

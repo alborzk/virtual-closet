@@ -19,23 +19,42 @@
   <!--      app:layout_constraintRight_toRightOf="parent"-->
   <!--      app:layout_constraintTop_toBottomOf="@+id/tagDisplay" />-->
 
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline9"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.9" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline8"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_begin="68dp" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.1" />
+
   <ImageView
       android:id="@+id/imgDisplay"
-      android:layout_width="match_parent"
-      android:layout_height="400dp"
-      android:layout_marginTop="76dp"
+      android:layout_width="444dp"
+      android:layout_height="260dp"
       android:src="@drawable/placeholder_0"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.356"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
   <TextView
       android:id="@+id/nameDisplay"
       android:layout_width="match_parent"
       android:layout_height="50dp"
       android:layout_marginStart="20dp"
-      android:layout_marginTop="20dp"
       android:layout_marginEnd="120dp"
       android:text="name"
       android:textSize="36sp"
@@ -51,7 +70,7 @@
       android:layout_width="match_parent"
       android:layout_height="50dp"
       android:layout_marginStart="20dp"
-      android:layout_marginTop="4dp"
+      android:layout_marginTop="24dp"
       android:layout_marginEnd="20dp"
       android:text="tag 1  |  tag 2  |  tag 3"
       android:textSize="20sp"
@@ -62,9 +81,8 @@
 
   <EditText
       android:id="@+id/editTags"
-      android:layout_width="300dp"
+      android:layout_width="0dp"
       android:layout_height="57dp"
-      android:layout_marginStart="76dp"
       android:layout_marginTop="12dp"
       android:autofillHints=""
       android:ems="10"
@@ -73,7 +91,8 @@
       android:minHeight="36dp"
       android:textSize="20dp"
       android:visibility="gone"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/addButton"
+      app:layout_constraintStart_toStartOf="@+id/guideline10"
       app:layout_constraintTop_toBottomOf="@+id/tagDisplay"
       tools:visibility="visible" />
 
@@ -81,29 +100,28 @@
       android:id="@+id/addButton"
       android:layout_width="54dp"
       android:layout_height="54dp"
-      android:layout_marginStart="68dp"
       android:layout_marginTop="12dp"
+      android:layout_marginEnd="28dp"
       android:background="@drawable/add"
       android:visibility="gone"
-      app:layout_constraintStart_toEndOf="@+id/editTags"
+      app:layout_constraintBottom_toBottomOf="@+id/editTags"
+      app:layout_constraintEnd_toStartOf="@+id/buttonGuide"
       app:layout_constraintTop_toBottomOf="@+id/tagDisplay"
+      app:layout_constraintVertical_bias="0.0"
       tools:visibility="visible" />
 
   <Button
       android:id="@+id/removeButton"
       android:layout_width="54dp"
       android:layout_height="54dp"
-      android:layout_marginStart="24dp"
-      android:layout_marginTop="32dp"
-      android:layout_marginEnd="224dp"
-      android:layout_marginBottom="42dp"
       android:background="@drawable/remove"
       android:visibility="gone"
-      app:layout_constraintBottom_toTopOf="@+id/imgDisplay"
+      app:layout_constraintBottom_toTopOf="@+id/guideline8"
       app:layout_constraintEnd_toStartOf="@+id/guideline"
       app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/guideline10"
       app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
       tools:visibility="visible" />
 
   <Button
@@ -113,20 +131,25 @@
       android:layout_marginBottom="20dp"
       android:text="DONE"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintHorizontal_bias="0.639"
+      app:layout_constraintHorizontal_bias="0.471"
       app:layout_constraintLeft_toRightOf="@id/guideline"
-      app:layout_constraintRight_toRightOf="parent" />
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline9"
+      app:layout_constraintVertical_bias="0.583" />
 
   <Button
       android:id="@+id/backButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="132dp"
       android:layout_marginBottom="20dp"
       android:text="DONE"
       android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/guideline"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.474"
+      app:layout_constraintStart_toStartOf="@+id/guideline"
+      app:layout_constraintTop_toTopOf="@+id/guideline9"
+      app:layout_constraintVertical_bias="0.586"
       tools:visibility="visible" />
 
   <Button
@@ -140,7 +163,9 @@
       app:layout_constraintHorizontal_bias="0.466"
       app:layout_constraintLeft_toRightOf="@+id/guideline"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline9"
+      app:layout_constraintVertical_bias="0.515" />
 
   <ToggleButton
       android:id="@+id/favourite"
@@ -177,28 +202,28 @@
 
   <Spinner
       android:id="@+id/tagSpinner"
-      android:layout_width="300dp"
-      android:layout_height="57dp"
-      android:layout_marginStart="76dp"
+      android:layout_width="0dp"
+      android:layout_height="62dp"
       android:layout_marginTop="12dp"
       android:spinnerMode="dropdown"
       android:visibility="gone"
       app:layout_constraintBottom_toTopOf="@+id/editButton"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/removeTagButton"
+      app:layout_constraintStart_toStartOf="@+id/guideline10"
       app:layout_constraintTop_toBottomOf="@+id/editTags"
-      app:layout_constraintVertical_bias="0.006"
+      app:layout_constraintVertical_bias="0.003"
       tools:visibility="visible" />
 
   <Button
       android:id="@+id/removeTagButton"
       android:layout_width="54dp"
       android:layout_height="54dp"
-      android:layout_marginStart="68dp"
       android:layout_marginTop="16dp"
+      android:layout_marginEnd="28dp"
       android:background="@drawable/ic_baseline_remove_circle_24"
       android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/tagSpinner"
+      app:layout_constraintEnd_toStartOf="@+id/buttonGuide"
       app:layout_constraintTop_toBottomOf="@+id/addButton"
       app:layout_constraintVertical_bias="0.0"
       tools:visibility="visible" />

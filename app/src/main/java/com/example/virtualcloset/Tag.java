@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Tag implements Serializable {
 
     //Instance Variables
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     //Constructor
-    public Tag(int id, String name){
+    public Tag(int id, String name) {
         this.id = id;
         this.name = name;
     }

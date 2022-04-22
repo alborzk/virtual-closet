@@ -1,23 +1,24 @@
 package com.example.virtualcloset;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Outfit implements Serializable {
 
     //Instance Variables
-    int id;
-    String name;
-    ArrayList<ClothesItem> clothesItems;
-    int img;
+    private int id;
+    private String name;
+    private ArrayList<ClothesItem> clothesItems;
+    private int img;
 
     //Constructor
-    public Outfit(int id, String name){
+    public Outfit(int id, String name) {
         this.id = id;
         this.name = name;
         this.clothesItems = new ArrayList<ClothesItem>();
     }
 
-    public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems){
+    public Outfit(int id, String name, ArrayList<ClothesItem> clothesItems) {
         this.id = id;
         this.name = name;
         this.clothesItems = clothesItems;
@@ -33,10 +34,10 @@ public class Outfit implements Serializable {
     }
 
     public int getImg() {
-        if(clothesItems.size()==0){
+        if (clothesItems.size() == 0) {
             this.img = R.drawable.placeholder_outfit;
         } else
-            this.img=clothesItems.get(0).getImg();
+            this.img = clothesItems.get(0).getImg();
         return img;
     }
 
@@ -62,7 +63,7 @@ public class Outfit implements Serializable {
         return clothesItems.add(newItem);
     }
 
-    public boolean removeClothesItem(ClothesItem toRemove){
+    public boolean removeClothesItem(ClothesItem toRemove) {
         return clothesItems.remove(toRemove);
     }
 }
