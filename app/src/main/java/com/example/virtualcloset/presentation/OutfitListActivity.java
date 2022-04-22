@@ -120,8 +120,9 @@ public class OutfitListActivity extends AppCompatActivity {
                     //=================================================================
                     //data base involved here
                     //=================================================================
-                    Outfit newOutfit = new Outfit(closet.getNumOutfits() + 1, outfitName);
-                    closet.getOutfits().add(newOutfit);
+                    //new outfit id== the last outfit id +1
+                    Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits()-1).getID() + 1, outfitName);
+                    closet.addOutfit(newOutfit);//
                     editTags.setText("");
                     GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
                     binding.gridOutfitList.setAdapter(gridAdapter);
