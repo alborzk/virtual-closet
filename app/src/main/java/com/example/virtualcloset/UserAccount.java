@@ -6,20 +6,14 @@ import java.util.ArrayList;
 public class UserAccount implements Serializable {
 
     //Instance Variables
-<<<<<<< HEAD
-    int id;
-    String username;
-    String password;
-    String email;
-    ArrayList<Closet> closets;
-    int img;
-=======
+
+
     private int id;
     private String username;
     private String password;
     private String email;
     private ArrayList<Closet> closets;
->>>>>>> origin/sysTest2
+    private int img;
 
     //Constructor
     public UserAccount(int id, String username, String password, String email) {
