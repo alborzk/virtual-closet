@@ -2,10 +2,6 @@ package com.example.virtualcloset;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/*Notes:
-- int ID or String name to keep track of closets?
-*/
-
 public class Closet implements Serializable {
 
     //Instance Variables
@@ -65,7 +61,7 @@ public class Closet implements Serializable {
         this.outfits = outfits;
     }
 
-    //Other Methods
+    //Adding and removing from closet
     public boolean addClothesItem(ClothesItem newItem){
         return clothesItems.add(newItem);
     }

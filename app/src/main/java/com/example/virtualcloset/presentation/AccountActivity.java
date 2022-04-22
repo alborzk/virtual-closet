@@ -18,6 +18,7 @@ import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+// The AccountActivity class displays details about the user's account
 public class AccountActivity extends AppCompatActivity {
 
     ActivityAccountBinding binding;
@@ -101,7 +102,6 @@ public class AccountActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                 }
-
                 return false;
             }
         });

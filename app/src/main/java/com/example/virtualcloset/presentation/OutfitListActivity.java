@@ -26,7 +26,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
+//Displays all the outfits in a closet (groups of clothing items)
 public class OutfitListActivity extends AppCompatActivity {
 
     ActivityOutfitListBinding binding;
@@ -96,7 +96,8 @@ public class OutfitListActivity extends AppCompatActivity {
         //Click on an item in the Grid
         clickOnGrid( database,  aID, cID );
 
-        //click on addButton(+) on list page
+        //Click on addButton(+) on list page
+        //Shows the editing elements to create a new outfit
         binding.outfitAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +109,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
             }
         });
-        //click on add_one_outfit while in add mode
+        //Click on add_one_outfit while in add mode
+        //Creates a new Outfit by getting the name from user input to text box
         binding.addOneOutfit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +132,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
             }
         });
-        //click on removeButton (-)
+        //Click on removeButton (-)
+        //Turns delete mode on and allows removing an outfit
         final int[] delete = {0}; //determine if in delete mode.
         binding.outfitDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +157,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
             }
         });
-        //click on backButton while in add mode.
+        //Click on backButton while in add mode.
+        //Hides the editing elements and shuts off delete mode
         binding.outfitBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,6 +180,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
 
     }
+    //Click on an outfit in the grid
+    //Navigate to OutfitItemActivity
     void clickOnGrid(Database database, int aID,int cID ){
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

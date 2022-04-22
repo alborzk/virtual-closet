@@ -1,9 +1,6 @@
 package com.example.virtualcloset.presentation;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +24,8 @@ import com.example.virtualcloset.storage.Database;
 
 import java.util.List;
 
+// Displays a single item of clothing (image, name, tags)
+// Can toggle to Edit mode to add/remove tags, delete the item
 public class DetailActivity extends AppCompatActivity {
 
     ActivityDetailBinding binding;
@@ -87,7 +86,7 @@ public class DetailActivity extends AppCompatActivity {
         EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
 
         //Check if already a favourite and make heart filled
-        if(item.isFave()){
+        if(item.getFave()){
             binding.favourite.setChecked(true);
             binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
         } else {
@@ -95,7 +94,24 @@ public class DetailActivity extends AppCompatActivity {
             binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
         }
 
+        //Click "Favourite" Button
+        binding.favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.favourite.isChecked()){
+                    item.favorite();
+                    Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
+                } else {
+                    item.unFavorite();
+                    Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                }
+            }
+        });
+
         //Click "Done" Button
+        //Navigates back to the Outfit or Closet activity
         binding.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,23 +133,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Favourite" Button
-        binding.favourite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(binding.favourite.isChecked()){
-                    item.favorite();
-                    Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
-                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
-                } else {
-                    item.unFavorite();
-                    Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
-                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
-                }
-            }
-        });
-
         //Click "Edit" Button
+        //Shows the editing elements to allow to modify tags or delete the item
         binding.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +149,24 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click "Back" Button While Editing Tags
+        //Hides the editing elements to allow to modify tags or delete the item
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editButton.setVisibility(View.VISIBLE);
+                doneButton.setVisibility(View.VISIBLE);
+                tagSpinner.setVisibility(View.GONE);
+                backButton.setVisibility(View.GONE);
+                editTags.setVisibility(View.GONE);
+                addButton.setVisibility(View.GONE);
+                removeButton.setVisibility(View.GONE);
+                removeTagButton.setVisibility(View.GONE);
+            }
+        });
+
         //Click "Add" Button While Editing
+        //Gets string from user input into the editTags text box and adds to list of tags
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,7 +200,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Remove Tag" Button While Editing Tags
+        //Click "Remove Tag" Button While Editing Tags (minus sign)
+        //Gets string from user selection in tagSpinner and removes from list of tags
         binding.removeTagButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,7 +227,8 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Remove" Button While Editing
+        //Click "Remove" Button While Editing (trashcan)
+        //Removes the clothing item from the closet
         binding.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,23 +256,6 @@ public class DetailActivity extends AppCompatActivity {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-
-            }
-        });
-
-        //Click "Back" Button While Editing Tags
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editButton.setVisibility(View.VISIBLE);
-                doneButton.setVisibility(View.VISIBLE);
-                tagSpinner.setVisibility(View.GONE);
-                backButton.setVisibility(View.GONE);
-                editTags.setVisibility(View.GONE);
-                addButton.setVisibility(View.GONE);
-                removeButton.setVisibility(View.GONE);
-                removeTagButton.setVisibility(View.GONE);
             }
         });
     }

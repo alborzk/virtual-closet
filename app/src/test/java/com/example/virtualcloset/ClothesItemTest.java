@@ -4,10 +4,8 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -103,19 +101,19 @@ public class ClothesItemTest {
 
     @Test
     public void testIsFave() { // ..?
-        assertEquals("should be unfavorited initially", false, clothesItem.isFave());
+        assertEquals("should be unfavorited initially", false, clothesItem.getFave());
     }
 
     @Test
     public void testFavorite() { // ..?
         clothesItem.favorite();
-        assertEquals("should set the item to favorite", true, clothesItem.isFave());
+        assertEquals("should set the item to favorite", true, clothesItem.getFave());
     }
 
     @Test
     public void testUnfavorite() { // ..?
        clothesItem.unFavorite();
-        assertEquals("should set the item to unfavorite", false, clothesItem.isFave());
+        assertEquals("should set the item to unfavorite", false, clothesItem.getFave());
     }
 
     @After

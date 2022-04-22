@@ -35,6 +35,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+//Displays interface to enter credentials for logging into or creating an account
+//Landing page when app first opened
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
@@ -84,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         TextView passTV = (TextView) binding.getRoot().findViewById(R.id.editTextTextPassword);
 
         //Click "Log In"
+        //Checks if user and pw entered are associated with an account
+        //If yes, navigates to that closet
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Click "Sign Up"
+        //Creates a new account if user and pw are valid
         binding.signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

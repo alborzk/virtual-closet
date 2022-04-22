@@ -4,18 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.virtualcloset.ClothesItem;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.presentation.ClosetActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// Used to display clothing items in a grid
+// Each item in the grid has an image and a title
+// Also is able to find clothing with a certain tags and filter what is displayed
 public class GridAdapterCloset extends BaseAdapter{
 
     Context context;
@@ -68,6 +69,9 @@ public class GridAdapterCloset extends BaseAdapter{
             convertView = inflater.inflate(R.layout.grid_item, null);
         }
 
+        // if the closet is being filtered, get the converted indexes
+        // e.g. the item in the 2nd space in the filtered grid
+        // is the 5th item in the image & clothesNames arrays, so filteredIndexes.get(2) = 5
         int index;
         if(filteredIndexes.size()>=position && !filter.equals("All Clothing")) {
             index = filteredIndexes.get(position);
@@ -84,6 +88,7 @@ public class GridAdapterCloset extends BaseAdapter{
         return convertView;
     }
 
+    // Gets a String from the dropdown menu of tags and finds the IDs of clothing with that tag
     public void setFilter(String s){
         filter = s;
         filteredIndexes.clear();
@@ -91,7 +96,7 @@ public class GridAdapterCloset extends BaseAdapter{
         if(filter.equals("Favourites")){
             for(int i = 0; i < closet.size(); i++){
                 ClothesItem curr = closet.get(i);
-                if(curr.isFave()){
+                if(curr.getFave()){
                     filteredIndexes.add(Integer.valueOf(i));
                     numClothes++;
                 }
@@ -110,7 +115,7 @@ public class GridAdapterCloset extends BaseAdapter{
         notifyDataSetChanged();
     }
 
-    //converts from the position of the item in the grid to its id
+    //converts from the position of the item in the grid to its ID
     public int getItemIDByPosition(int position){
         int id = position;
         if(!filter.equals("All Clothing")){

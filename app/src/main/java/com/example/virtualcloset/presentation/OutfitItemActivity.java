@@ -22,6 +22,7 @@ import com.example.virtualcloset.storage.Database;
 
 import java.util.ArrayList;
 
+//Displays the items of clothing in an outfit
 public class OutfitItemActivity extends AppCompatActivity {
 
     ActivityOutfitItemBinding binding;
@@ -70,6 +71,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         binding.gridview2.setAdapter(gridAdapter);
 
         //Click "Done" Button
+        //Navigate back to OutfitListActivity
         doneButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
@@ -79,10 +81,10 @@ public class OutfitItemActivity extends AppCompatActivity {
                 startActivity(i2);
             }
         });
-        //click "add" Button
+        //Click "add" Button
+        //Switch to ClosetActivity page to select a clothing item to add to outfit
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //switch to ClosetActivity page to select a clothes
                 Intent i2 = new Intent(getApplicationContext(), ClosetActivity.class);
                 i2.putExtra("db", database);
                 i2.putExtra("aID", aID);
@@ -93,9 +95,9 @@ public class OutfitItemActivity extends AppCompatActivity {
             }
         });
 
-        //click "delete" Button
+        //Click "delete" Button
+        //Turns on delete mode and allows removing items of clothing from the outfit
         deleteButton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
                 addButton.setVisibility(View.GONE);
                 doneButton.setVisibility(View.GONE);
@@ -114,7 +116,8 @@ public class OutfitItemActivity extends AppCompatActivity {
 
             }
         });
-        //click on BackButton while deleting clothes
+        //Click on BackButton while deleting clothes
+        //Turns delete mode off
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +133,8 @@ public class OutfitItemActivity extends AppCompatActivity {
          clickOnGrid( database, aID, cID);
 
     }
+    //Click on item of clothing
+    //Navigate to DetailView for that clothing item
     void clickOnGrid(Database database, int aID,int cID){
         binding.gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -149,5 +154,4 @@ public class OutfitItemActivity extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -28,6 +28,7 @@ import com.example.virtualcloset.storage.Database;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// Displays the interface for adding a new item of clothing to the closet
 public class AddClothingActivity extends AppCompatActivity {
 
     ActivityAddClothingBinding binding;
@@ -99,7 +100,7 @@ public class AddClothingActivity extends AppCompatActivity {
             }
         });
 
-        //Click "Done"
+        //Click "Done" to navigate back to ClosetActivity
         binding.doneAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

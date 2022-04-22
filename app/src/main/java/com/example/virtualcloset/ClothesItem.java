@@ -49,10 +49,11 @@ public class ClothesItem implements Serializable {
         return img;
     }
 
-    public boolean isFave(){
+    public boolean getFave(){
         return fave;
     }
 
+    //Get but in a particular format
     public String getTagsString() {
         String str = "";
         if (tags.size() > 0){
@@ -84,6 +85,7 @@ public class ClothesItem implements Serializable {
         this.img = img;
     }
 
+    //Tag management
     public boolean addTag(Tag newTag) {
         return tags.add(newTag);
     }
@@ -99,13 +101,11 @@ public class ClothesItem implements Serializable {
         return null;
     }
 
+    //Favourite management
     public boolean favorite(){
         return fave = true;
     }
-
     public boolean unFavorite(){
         return fave = false;
     }
-
-
 }

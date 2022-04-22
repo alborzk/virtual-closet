@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// The AccessDB class provides methods for accessing persistence data
 public class AccessDB {
     private DBPersistence dbPersistence;
 

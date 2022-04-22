@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+// The ClosetManager class provides methods for accessing data from a closet
+// They also format the data in various ways to be used in a grid, spinner
 public class ClosetManager implements Serializable {
 
     public Closet c;
@@ -18,10 +20,10 @@ public class ClosetManager implements Serializable {
         this.c = c;
     }
 
+    // return arrays to be used by a GridAdapter
     public String[] getClothesNames() {
         return getClothesNames(c.getClothesItems());
     }
-
     public String[] getClothesNames(ArrayList<ClothesItem> clothesItems){
         String[] str = new String[clothesItems.size()];
         for (int i = 0; i < clothesItems.size(); i++) {
@@ -33,7 +35,6 @@ public class ClosetManager implements Serializable {
     public int[] getClothesImgs(){
         return getClothesImgs(c.getClothesItems());
     }
-
     public int[] getClothesImgs(ArrayList<ClothesItem> clothesItems){
         int[] imgs = new int[clothesItems.size()];
         for (int i = 0; i < clothesItems.size(); i++) {
@@ -75,5 +76,4 @@ public class ClosetManager implements Serializable {
         }
         return allTags;
     }
-
 }

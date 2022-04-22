@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+// The DataManager class provides supplementary methods for account management
+
 public class DataManager implements Serializable {
 
     public Database db;

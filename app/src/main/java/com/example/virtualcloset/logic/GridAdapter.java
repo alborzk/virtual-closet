@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.virtualcloset.R;
 
+// Used to display outfits in a grid
+// Each item in the grid has an image and a title
 public class GridAdapter extends BaseAdapter {
 
     Context context;

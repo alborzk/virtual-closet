@@ -25,7 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-
+// The ClosetActivity class displays the the clothing items in the closet
 public class ClosetActivity extends AppCompatActivity {
 
     ActivityClosetBinding binding;
@@ -44,7 +44,7 @@ public class ClosetActivity extends AppCompatActivity {
         int aID = (int) intent.getSerializableExtra("aID");
         int cID = (int) intent.getSerializableExtra("cID");
         if (intent.getExtras().containsKey("selection")) {
-            selection = (int) intent.getSerializableExtra("selection");  //
+            selection = (int) intent.getSerializableExtra("selection");
         }
         else{
             selection = -1;
@@ -106,9 +106,10 @@ public class ClosetActivity extends AppCompatActivity {
 
         //Clicking an item in the grid
         binding.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Select item to add to an outfit then navigate back to OutfitListActivity
+                //Only if coming from outfit already!
                 if(selection!=-1){
                     UserAccount account = database.getAccounts().get(aID);
                     Closet closet = account.getClosets().get(cID);
@@ -117,7 +118,7 @@ public class ClosetActivity extends AppCompatActivity {
                     if(outfit.addClothesItem(item)){
                         outfit.setImg(item.getImg());
                         Toast.makeText(ClosetActivity.this, "Added New clothes to a Outfit", Toast.LENGTH_SHORT).show();
-                    };
+                    }
                     Intent i2 = new Intent(getApplicationContext(), OutfitListActivity.class);
                     i2.putExtra("db", database);
                     i2.putExtra("aID", aID);
@@ -139,6 +140,7 @@ public class ClosetActivity extends AppCompatActivity {
         });
 
         //Clicking the add item button
+        //Navigates to the AddClothingActivity
         binding.addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +153,9 @@ public class ClosetActivity extends AppCompatActivity {
             }
         });
 
-        //Clicking on a tag from the dropdown list to filter the closet
+        //Selecting and option from the dropdown list
+        //Gets the tag the user selected from the list
+        // and tells gridAdapter to filter clothing items by that tag
         binding.tagFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected (AdapterView < ? > adapterView, View view,int position,

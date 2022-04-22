@@ -3,10 +3,6 @@ package com.example.virtualcloset;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/*Notes:
-- Not sure if email is necessary
-*/
-
 public class UserAccount implements Serializable {
 
     //Instance Variables
@@ -75,8 +71,7 @@ public class UserAccount implements Serializable {
         this.password = password;
     }
 
-    //Other Methods
-
+    //Add a new closet to the account
     public boolean addCloset(Closet newCloset){
         return closets.add(newCloset);
     }

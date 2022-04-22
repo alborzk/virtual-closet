@@ -58,6 +58,7 @@ public class Outfit implements Serializable {
         this.img = img;
     }
 
+    //Add & remove items from outfit
     public boolean addClothesItem(ClothesItem newItem){
         return clothesItems.add(newItem);
     }
