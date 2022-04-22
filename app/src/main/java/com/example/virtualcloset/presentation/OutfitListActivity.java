@@ -84,7 +84,7 @@ public class OutfitListActivity extends AppCompatActivity {
                         i2.putExtra("db", database);
                         i2.putExtra("aID", aID);
                         i2.putExtra("cID", cID);
-                        i2.putExtra("selection",-1);
+                        i2.putExtra("selection", -1);
                         startActivity(i2);
                         overridePendingTransition(0, 0);
                         return true;
@@ -94,7 +94,7 @@ public class OutfitListActivity extends AppCompatActivity {
         });
 
         //Click on an item in the Grid
-        clickOnGrid( database,  aID, cID );
+        clickOnGrid(database, aID, cID);
 
         //click on addButton(+) on list page
         binding.outfitAddButton.setOnClickListener(new View.OnClickListener() {
@@ -119,12 +119,16 @@ public class OutfitListActivity extends AppCompatActivity {
                     //data base involved here
                     //=================================================================
                     //new outfit id== the last outfit id +1
-                    Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits()-1).getID() + 1, outfitName);
-                    closet.addOutfit(newOutfit);//
+                    Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits() - 1).getID() + 1, outfitName);
+                    if (closet.addOutfit(newOutfit)) {
+                        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
+                        binding.gridOutfitList.setAdapter(gridAdapter);
+                        Toast.makeText(OutfitListActivity.this, "Added New Outfit: " + outfitName, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(OutfitListActivity.this, "The Outfit Name: <" + outfitName + "> already exist", Toast.LENGTH_SHORT).show();
+                    }
                     editTags.setText("");
-                    GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
-                    binding.gridOutfitList.setAdapter(gridAdapter);
-                    Toast.makeText(OutfitListActivity.this, "Added New Outfit: " + outfitName, Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(OutfitListActivity.this, "Couldn't add New Outfit, input is empty!", Toast.LENGTH_SHORT).show();
                 }
@@ -140,7 +144,7 @@ public class OutfitListActivity extends AppCompatActivity {
                 outfitAddButton.setVisibility(View.GONE);
                 outfitBackButton.setVisibility(View.VISIBLE);
                 Toast.makeText(OutfitListActivity.this, "DELETE MODE ON!", Toast.LENGTH_SHORT).show();
-                delete[0] =1;
+                delete[0] = 1;
                 //delete the item selected on grid
                 binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -165,11 +169,11 @@ public class OutfitListActivity extends AppCompatActivity {
                 editTags.setVisibility(View.GONE);
                 outfitBackButton.setVisibility(View.GONE);
 
-                if(delete[0]==1){
+                if (delete[0] == 1) {
                     Toast.makeText(OutfitListActivity.this, "DELETE MODE OFF!", Toast.LENGTH_SHORT).show();
                     //set listener back to default action
-                    clickOnGrid( database,  aID, cID );
-                    delete[0]=0;
+                    clickOnGrid(database, aID, cID);
+                    delete[0] = 0;
                 }
 
             }
@@ -177,7 +181,8 @@ public class OutfitListActivity extends AppCompatActivity {
 
 
     }
-    void clickOnGrid(Database database, int aID,int cID ){
+
+    void clickOnGrid(Database database, int aID, int cID) {
         binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class addOutfitTest {
+public class removeOutfitTest {
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -44,15 +44,17 @@ public class addOutfitTest {
     }
 
     @Test
-    public void addOutfit() {
-        onView(withId(R.id.outfit_add_button)).perform(click());
-        onView(withId(R.id.editOutfit)).perform(typeText("NewOutfit")).perform(closeSoftKeyboard());
-        onView(withId(R.id.add_one_outfit)).perform(click());
-
-        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0) //adding to the front or size of Outfit
+    public void removeOutfit(){
+        //before remove
+        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
-                .check(matches(withText("NewOutfit")));
-
-
+                .check(matches(withText("Work")));
+        //after removed "Work"
+        onView(withId(R.id.outfit_delete_button)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
+                .onChildView(withId(R.id.item_name))
+                .check(matches(withText("Casual")));
     }
+
 }

@@ -1,4 +1,5 @@
 package com.example.virtualcloset;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class Closet implements Serializable {
     ArrayList<Outfit> outfits;
 
     //Constructor
-    public Closet(int id, ArrayList<ClothesItem> clothesItems, ArrayList<Outfit> outfits){
+    public Closet(int id, ArrayList<ClothesItem> clothesItems, ArrayList<Outfit> outfits) {
         this.id = id;
         this.clothesItems = clothesItems;
         this.outfits = outfits;
@@ -33,19 +34,19 @@ public class Closet implements Serializable {
         return outfits;
     }
 
-    public int getNumClothes(){
+    public int getNumClothes() {
         return clothesItems.size();
     }
 
-    public int getNumOutfits(){
+    public int getNumOutfits() {
         return outfits.size();
     }
 
-    public ClothesItem getItem(int id){
+    public ClothesItem getItem(int id) {
         ClothesItem item = null;
-        for(int i = 0; i < clothesItems.size(); i++){
+        for (int i = 0; i < clothesItems.size(); i++) {
             ClothesItem curr = clothesItems.get(i);
-            if(curr.getId() == id){
+            if (curr.getId() == id) {
                 item = curr;
             }
         }
@@ -66,24 +67,31 @@ public class Closet implements Serializable {
     }
 
     //Other Methods
-    public boolean addClothesItem(ClothesItem newItem){
+    public boolean addClothesItem(ClothesItem newItem) {
         return clothesItems.add(newItem);
     }
 
-    public boolean addOutfit(Outfit newOutfit){
-        return outfits.add(newOutfit);
+    public boolean addOutfit(Outfit newOutfit) {
+        String name = newOutfit.getName();
+        for (Outfit o : outfits) {
+            if (o.getName().equals(name)) {
+                return false;
+            }
+        }
+        outfits.add(0, newOutfit);
+        return true;
     }
 
-    public boolean removeClothesItem(ClothesItem toRemove){
-        for (Outfit o : outfits){
-            if (o.getClothesItems().contains(toRemove)){
+    public boolean removeClothesItem(ClothesItem toRemove) {
+        for (Outfit o : outfits) {
+            if (o.getClothesItems().contains(toRemove)) {
                 o.removeClothesItem(toRemove);
             }
         }
         return clothesItems.remove(toRemove);
     }
 
-    public boolean removeOutfit(Outfit toRemove){
+    public boolean removeOutfit(Outfit toRemove) {
         return outfits.remove(toRemove);
     }
 }

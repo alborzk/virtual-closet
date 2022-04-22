@@ -9,11 +9,11 @@ import java.util.List;
 public class ClothesItem implements Serializable {
 
     //Instance Variables
-    int id;
-    String name;
-    ArrayList<Tag> tags;
-    int img;
-    boolean fave;
+    private int id;
+    private String name;
+    private ArrayList<Tag> tags;
+    private int img;
+    private boolean fave;
 
     //Constructor
     public ClothesItem(int id, String name, int img) {
@@ -49,23 +49,24 @@ public class ClothesItem implements Serializable {
         return img;
     }
 
-    public boolean isFave(){
+    public boolean isFave() {
         return fave;
     }
 
     public String getTagsString() {
         String str = "";
-        if (tags.size() > 0){
+        if (tags.size() > 0) {
             str = "|  ";
-            for(int j = 0; j < tags.size(); j++){
+            for (int j = 0; j < tags.size(); j++) {
                 str = str + tags.get(j).getName() + "  |  ";
             }
         }
         return str;
     }
-    public List getTagNames(){
+
+    public List getTagNames() {
         List<String> names = new ArrayList();
-        for(int j = 0; j < tags.size(); j++){
+        for (int j = 0; j < tags.size(); j++) {
             names.add(tags.get(j).getName());
         }
         return names;
@@ -88,22 +89,24 @@ public class ClothesItem implements Serializable {
         return tags.add(newTag);
     }
 
-    public boolean removeTag(Tag r){ return tags.remove(r);}
+    public boolean removeTag(Tag r) {
+        return tags.remove(r);
+    }
 
-    public Tag findTagByName(String name){
-        for(int j = 0; j < tags.size(); j++){
-            if(name.equalsIgnoreCase(tags.get(j).getName())){
+    public Tag findTagByName(String name) {
+        for (int j = 0; j < tags.size(); j++) {
+            if (name.equalsIgnoreCase(tags.get(j).getName())) {
                 return tags.get(j);
             }
         }
         return null;
     }
 
-    public boolean favorite(){
+    public boolean favorite() {
         return fave = true;
     }
 
-    public boolean unFavorite(){
+    public boolean unFavorite() {
         return fave = false;
     }
 

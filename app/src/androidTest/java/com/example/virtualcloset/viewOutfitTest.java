@@ -44,6 +44,7 @@ public class viewOutfitTest {
     }
     @Test
     public void viewOutfitDetail(){
+        //view Clothes in outfit
         onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0).perform(click());
         onData(anything()).inAdapterView(withId(R.id.gridview2)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
