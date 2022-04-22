@@ -133,6 +133,22 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click Image Display
+        binding.imgDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Go to EditAccountActivity
+                Intent i4 = new Intent(getApplicationContext(), AddImageActivity.class);
+                i4.putExtra("db", database);
+                i4.putExtra("aID", aID);
+                i4.putExtra("cID", cID);
+                i4.putExtra("mode", 0);
+                i4.putExtra("curr", curr);
+                i4.putExtra("tab", tab);
+                startActivity(i4);
+            }
+        });
+
         //Click "Edit" Button
         binding.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
