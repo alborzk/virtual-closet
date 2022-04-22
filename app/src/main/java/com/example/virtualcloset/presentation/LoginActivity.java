@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
     //Initializes a new database, with a default user account
     //Injection occurs here
     private Database initializeDatabase() {
-        return new Database(true);
+        return new Database(false);
     }
 
 

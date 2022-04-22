@@ -133,6 +133,38 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //Click "Favourite" Button
+        binding.favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.favourite.isChecked()){
+                    item.favorite();
+                    Toast.makeText(DetailActivity.this, "Added to Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_24));
+                } else {
+                    item.unFavorite();
+                    Toast.makeText(DetailActivity.this, "Removed from Favourites", Toast.LENGTH_SHORT).show();
+                    binding.favourite.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                }
+            }
+        });
+
+        //Click Image Display
+        binding.imgDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Go to EditAccountActivity
+                Intent i4 = new Intent(getApplicationContext(), AddImageActivity.class);
+                i4.putExtra("db", database);
+                i4.putExtra("aID", aID);
+                i4.putExtra("cID", cID);
+                i4.putExtra("mode", 0);
+                i4.putExtra("iID", iID);
+                i4.putExtra("tab", tab);
+                startActivity(i4);
+            }
+        });
+
         //Click "Edit" Button
         //Shows the editing elements to allow to modify tags or delete the item
         binding.editButton.setOnClickListener(new View.OnClickListener() {

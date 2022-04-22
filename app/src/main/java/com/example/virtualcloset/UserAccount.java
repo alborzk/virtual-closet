@@ -11,6 +11,7 @@ public class UserAccount implements Serializable {
     String password;
     String email;
     ArrayList<Closet> closets;
+    int img;
 
     //Constructor
     public UserAccount(int id, String username, String password, String email){
@@ -19,6 +20,7 @@ public class UserAccount implements Serializable {
         this.password = password;
         this.email = email;
         this.closets = new ArrayList<Closet>();
+        this.img = R.drawable.user_icon;
     }
 
     public UserAccount(int id, String username, String password, String email, ArrayList<Closet> closets){
@@ -27,6 +29,7 @@ public class UserAccount implements Serializable {
         this.password = password;
         this.email = email;
         this.closets = closets;
+        this.img = R.drawable.user_icon;
     }
 
     //Getters
@@ -54,6 +57,10 @@ public class UserAccount implements Serializable {
         return closets.size();
     }
 
+    public int getImg() {
+        return img;
+    }
+
     //Setters
     public void setId(int id) {
         this.id = id;
@@ -72,6 +79,11 @@ public class UserAccount implements Serializable {
     }
 
     //Add a new closet to the account
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+    //Other Methods
     public boolean addCloset(Closet newCloset){
         return closets.add(newCloset);
     }

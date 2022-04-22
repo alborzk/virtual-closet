@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualCloset">
         <activity
+            android:name=".presentation.AddImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.EditAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.AccountActivity"
             android:exported="false" />
         <activity

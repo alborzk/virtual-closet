@@ -43,7 +43,7 @@ public class AccountActivity extends AppCompatActivity {
         String name = account.getUsername();
         int numClothes = closet.getNumClothes();
         int numOutfits = closet.getNumOutfits();
-        int img = R.drawable.user_icon;
+        int img = account.getImg();
 
         //Set Up Name Display
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.nameDisplay);
@@ -69,6 +69,19 @@ public class AccountActivity extends AppCompatActivity {
                 Intent i1 = new Intent(getApplicationContext(), LoginActivity.class);
                 i1.putExtra("db", database);
                 startActivity(i1);
+            }
+        });
+
+        //Click Avatar Button
+        binding.imgDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Go to EditAccountActivity
+                Intent i4 = new Intent(getApplicationContext(), EditAccountActivity.class);
+                i4.putExtra("db", database);
+                i4.putExtra("aID", aID);
+                i4.putExtra("cID", cID);
+                startActivity(i4);
             }
         });
 

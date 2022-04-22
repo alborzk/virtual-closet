@@ -36,6 +36,7 @@ public class AddClothingActivity extends AppCompatActivity {
     ArrayList<Tag> tags;
     int numTags;
     String tagsString;
+    int img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +49,21 @@ public class AddClothingActivity extends AppCompatActivity {
         Database db = (Database) intent.getSerializableExtra("db");
         int aID = (int) intent.getSerializableExtra("aID");
         int cID = (int) intent.getSerializableExtra("cID");
+        if (intent.getExtras().containsKey("img")) {
+            img = (int) intent.getSerializableExtra("img");  //
+        }
+        else{
+            img = R.drawable.add_image;
+        }
 
         //Get Objects from IDs
         UserAccount account = db.getAccounts().get(aID);
         Closet closet = account.getClosets().get(cID);
 
         //Set Up UI Widgets
-//        Button selectImg = findViewById(R.id.selectImageButton);
-        ImageView imgInput = (ImageView) binding.getRoot().findViewById(R.id.addImgDisplay);
+        Button selectImg = findViewById(R.id.selectImageButton);
+        ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.addImgDisplay);
+        imgDisplay.setImageResource(img);
         TextView tagsDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
         EditText nameInput = (EditText) binding.getRoot().findViewById(R.id.editTextAdd);
         Button addButton = (Button) binding.getRoot().findViewById(R.id.addTagButton);
@@ -65,13 +73,18 @@ public class AddClothingActivity extends AppCompatActivity {
         tags = new ArrayList<Tag>();
 
         //Click "Upload Image"
-//        selectImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Open Image Chooser
-//                imageChooser();
-//            }
-//        });
+        selectImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Open Image Chooser
+                Intent i2 = new Intent(AddClothingActivity.this, AddImageActivity.class);
+                i2.putExtra("db", db);
+                i2.putExtra("aID", aID);
+                i2.putExtra("cID", cID);
+                i2.putExtra("mode",1);
+                startActivity(i2);
+            }
+        });
 
         //Click "Add" Button While Editing Tags
         binding.addTagButton.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +119,6 @@ public class AddClothingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Add new item to closet
                 String name = nameInput.getText().toString();
-                int img = R.drawable.add_image;
                 ClothesItem newItem = new ClothesItem(closet.getNumClothes(), name, tags, img);
                 closet.addClothesItem(newItem);
 
@@ -115,7 +127,7 @@ public class AddClothingActivity extends AppCompatActivity {
                 i1.putExtra("db", db);
                 i1.putExtra("aID", aID);
                 i1.putExtra("cID", cID);
-                i1.putExtra("selection",-1);
+//                i1.putExtra("selection",-1);
                 startActivity(i1);
             }
         });
