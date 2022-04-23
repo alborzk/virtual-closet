@@ -1,6 +1,7 @@
 package com.example.virtualcloset;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 import org.junit.After;
 import org.junit.Before;
@@ -64,13 +65,6 @@ public class OutfitTest {
     }
 
     @Test
-    public void setImg() {
-        assertNotNull(newOutfit);
-        newOutfit.setImg(R.drawable.placeholder_2);
-        assertEquals("Outfit's clothes item should match after set", R.drawable.placeholder_2,newOutfit.getImg());
-    }
-
-    @Test
     public void setClothesItems() {
         assertNotNull(newOutfit);
         newOutfit.setClothesItems(clothesItems2);
@@ -79,6 +73,7 @@ public class OutfitTest {
 
     @Test
     public void addClothesItem() {
+        item1=mock(ClothesItem.class);
         assertEquals("return true if addClothesItem pass", true, newOutfit.addClothesItem(item1));
     }
 

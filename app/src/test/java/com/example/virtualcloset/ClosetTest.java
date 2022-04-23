@@ -1,15 +1,17 @@
 package com.example.virtualcloset;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.Assert.*;
 
 public class ClosetTest {
     Closet closet;
@@ -19,9 +21,11 @@ public class ClosetTest {
     private Outfit outfit1;
     @Before
     public void setUp() throws IOException {
+        clothesItem1=mock(ClothesItem.class);
         clothesItems = new ArrayList<ClothesItem>();
         clothesItems.add(clothesItem1);
         outfits = new ArrayList<Outfit>();
+        outfit1=new Outfit(1,"ABCD");
         outfits.add(outfit1);
         this.closet = new Closet(2, clothesItems, outfits);
     }
@@ -93,11 +97,26 @@ public class ClosetTest {
 
     @Test
     public void testAddOutfit() {
-        Outfit outfit3=null;
+        Outfit outfit3=new Outfit(99,"1234");
         assertEquals("should add a outfit", true, closet.addOutfit(outfit3));
     }
+    @Test
+    public void findOutfit() {
+        assertEquals("return Outfit",outfit1,closet.findOutfit("ABCD"));;
+    }
 
+    @Test
+    public void removeClothesItem() {
+        assertEquals("return true if removed", true,closet.removeClothesItem(clothesItem1));
+    }
+
+    @Test
+    public void removeOutfit() {
+        assertEquals("return true if removed outfit",true,closet.removeOutfit(outfit1));
+    }
     @After
     public void tearDown() {
     }
+
+
 }

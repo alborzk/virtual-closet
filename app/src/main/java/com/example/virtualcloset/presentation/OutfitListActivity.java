@@ -117,9 +117,6 @@ public class OutfitListActivity extends AppCompatActivity {
                 String outfitName = editTags.getText().toString();
 
                 if (outfitName.trim().length() > 0) {
-                    //=================================================================
-                    //data base involved here
-                    //=================================================================
                     //new outfit id== the last outfit id +1
                     Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits() - 1).getID() + 1, outfitName);
                     if (closet.addOutfit(newOutfit)) {

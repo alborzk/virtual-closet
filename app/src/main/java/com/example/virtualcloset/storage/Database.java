@@ -162,26 +162,22 @@ public class Database implements Serializable, IDatabase{
         clothesList1.add(clothesItems.get(5));
         clothesList1.add(clothesItems.get(1));
         outfits.add(new Outfit(0,"Work", clothesList1));
-        outfits.get(0).setImg(clothesItems.get(5).getImg());
 
         ArrayList<ClothesItem> clothesList2 = new ArrayList<ClothesItem>();
         clothesList2.add(clothesItems.get(3));
         clothesList2.add(clothesItems.get(2));
         outfits.add(new Outfit(1,"Casual", clothesList2));
-        outfits.get(1).setImg(clothesItems.get(3).getImg());
 
         ArrayList<ClothesItem> clothesList3 = new ArrayList<ClothesItem>();
         clothesList3.add(clothesItems.get(4));
         clothesList3.add(clothesItems.get(2));
         clothesList3.add(clothesItems.get(9));
         outfits.add(new Outfit(2,"Party", clothesList3));
-        outfits.get(2).setImg(clothesItems.get(4).getImg());
 
         ArrayList<ClothesItem> clothesList4 = new ArrayList<ClothesItem>();
         clothesList4.add(clothesItems.get(8));
         clothesList4.add(clothesItems.get(6));
         clothesList4.add(clothesItems.get(1));
         outfits.add(new Outfit(3,"Winter", clothesList4));
-        outfits.get(3).setImg(clothesItems.get(8).getImg());
     }
 }

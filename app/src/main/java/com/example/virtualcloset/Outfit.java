@@ -54,10 +54,6 @@ public class Outfit implements Serializable {
         this.clothesItems = clothesItems;
     }
 
-    public void setImg(int img) {
-        this.img = img;
-    }
-
     //Add & remove items from outfit
     //avoid adding same clothes in one outfit
     public boolean addClothesItem(ClothesItem newItem){

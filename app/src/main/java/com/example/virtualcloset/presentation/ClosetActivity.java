@@ -115,7 +115,7 @@ public class ClosetActivity extends AppCompatActivity {
                     ClothesItem item = closet.getClothesItems().get(position);
                     Outfit outfit = closet.getOutfits().get(selection);
                     if (outfit.addClothesItem(item)) {
-                        outfit.setImg(item.getImg());
+                        //outfit.setImg(item.getImg());
                         Toast.makeText(ClosetActivity.this, "Add New clothes to the Outfit", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(ClosetActivity.this, "This clothes has already been added", Toast.LENGTH_SHORT).show();
