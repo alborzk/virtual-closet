@@ -60,7 +60,7 @@ public class ClosetManagerTest {
     public void getOutfitImg() {
         int[] cmOutfitsImgs = cm.getOutfitsImgs();
         assertEquals("the retrieved int[] and the actual arraylist should be same size", cmOutfitsImgs.length, outfits.size());
-        assertEquals("the first cloth's img should match", R.drawable.placeholder_outfit, cmOutfitsImgs[0]);
+        assertEquals("the first cloth's img should match", R.drawable.placeholder_0, cmOutfitsImgs[0]);
     }
 
     @Test

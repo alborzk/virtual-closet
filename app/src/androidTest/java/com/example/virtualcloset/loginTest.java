@@ -10,8 +10,11 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.presentation.LoginActivity;
 import com.example.virtualcloset.presentation.MainActivity;
+import com.example.virtualcloset.storage.Database;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -26,8 +29,12 @@ public class loginTest {
     //    public ActivityScenarioRule<LoginActivity> activityRule =new ActivityScenarioRule<>(LoginActivity.class);
     @Before
     public void setupDB() {
-        //here we will delete the account that will be created
-        //delete "NewAccount" with password "PASSWORD"
+        Database database=new Database(false);
+        DataManager dm=new DataManager(database);
+        UserAccount account=dm.findAccount("NewAccount","PASSWORD");
+        if(account!=null){
+            database.getAccounts().remove(account);
+        }
     }
 
     @Test
@@ -59,6 +66,8 @@ public class loginTest {
         onView(withId(R.id.nameDisplay)).check(matches(withText("NewAccount")));
         onView(withId(R.id.numClothes)).check(matches(withText("Clothes: 0")));
         onView(withId(R.id.numOutfits)).check(matches(withText("Outfits: 0")));
+        //sign out
+        onView(withId(R.id.signOutButton)).perform(click());
 
     }
 
