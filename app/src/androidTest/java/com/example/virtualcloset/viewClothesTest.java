@@ -43,7 +43,9 @@ public class viewClothesTest {
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Gymshark Joggers")));
-
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 
     @Test
@@ -53,5 +55,9 @@ public class viewClothesTest {
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
         onView(withId(R.id.nameDisplay)).check(matches(withText("Gymshark Joggers")));
         onView(withId(R.id.tagDisplay)).check(matches(withText("|  Black  |  Pants  |  Workout  |  ")));
+        onView(withId(R.id.doneButton)).perform(click());
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 }

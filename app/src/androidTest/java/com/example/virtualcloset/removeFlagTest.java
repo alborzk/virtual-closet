@@ -28,10 +28,6 @@ public class removeFlagTest {
 
     @Before
     public void setupDB() {
-        //here we will delete the account that will be created
-        //make sure we have Gymshark Joggers in our closet at position 0
-        //flag
-
         //login default account
         onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("user"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password"))
@@ -60,6 +56,9 @@ public class removeFlagTest {
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
         onView(withId(R.id.nameDisplay)).check(matches(withText("Gymshark Joggers")));
         onView(withId(R.id.tagDisplay)).check(matches(withText("|  Black  |  Pants  |  ")));
-
+        onView(withId(R.id.doneButton)).perform(click());
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 }

@@ -11,7 +11,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.presentation.MainActivity;
+import com.example.virtualcloset.storage.Database;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -26,21 +28,27 @@ public class favouriteTest {
 
     @Before
     public void setupDB() {
-        //here we will delete the account that will be created
-        //make sure we have Gymshark Joggers in our closet at position 0
-        //set to not favourite
+        Database database=new Database(false);
+        DataManager dm=new DataManager(database);
+        //remove NewAccount from db
+        UserAccount account=dm.findAccount("user","password");
+        ClothesItem theClothes=account.getClosets().get(0).getClothesItems().get(0);
+        if(theClothes.getFave()){
+            theClothes.unFavorite(); //set back to unfavorite
+        }
+
+
+    }
+
+    @Test
+    public void favouriteButton() {
         //login default account
         onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("user"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password"))
                 .perform(closeSoftKeyboard()); //close the keyboard after text input
         onView(withId(R.id.loginButton)).perform(click());
         onView(withId(R.id.navigation_clothes)).perform(click());
-
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
-    }
-
-    @Test
-    public void favouriteButton() {
         //before click isNotChecked()
         onView(withId(R.id.favourite)).check(matches(isNotChecked()));
 
@@ -52,6 +60,10 @@ public class favouriteTest {
         onView(withId(R.id.doneButton)).perform(click());
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
         onView(withId(R.id.favourite)).check(matches(isChecked()));
+        onView(withId(R.id.doneButton)).perform(click());
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 
 }

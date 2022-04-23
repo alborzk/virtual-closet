@@ -41,6 +41,10 @@ public class viewOutfitTest {
         onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Work")));
+
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
     @Test
     public void viewOutfitDetail(){
@@ -49,5 +53,9 @@ public class viewOutfitTest {
         onData(anything()).inAdapterView(withId(R.id.gridview2)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("White H&M Tee")));
+        onView(withId(R.id.done_outfit)).perform(click());
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 }

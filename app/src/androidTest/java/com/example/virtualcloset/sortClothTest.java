@@ -4,7 +4,10 @@ import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 import static androidx.test.espresso.action.ViewActions.*;
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -37,7 +40,16 @@ public class sortClothTest {
 
     @Test
     public void sortClothes(){
+        //select Pants
+        //check the first item of selected Tag
         onView(withId(R.id.tagFilter)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Pants"))).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0)
+                .onChildView(withId(R.id.item_name))
+                .check(matches(withText("Gymshark Joggers")));
 
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 }

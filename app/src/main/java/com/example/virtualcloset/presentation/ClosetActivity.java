@@ -98,6 +98,7 @@ public class ClosetActivity extends AppCompatActivity {
                 return false;
             }
         });
+        //set the visibility of Navigation and addButton to GONE
         if (selection != -1) {
             binding.bottomNavigation.setVisibility(View.GONE);
             binding.addItemButton.setVisibility(View.GONE);
@@ -108,14 +109,16 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(selection!=-1){ //If coming from outfit already!
-                    //Select item to add to an outfit then navigate back to OutfitListActivity
+                    //Select item to add to an outfit then navigate back to OutfitItemActivity
                     UserAccount account = database.getAccounts().get(aID);
                     Closet closet = account.getClosets().get(cID);
                     ClothesItem item = closet.getClothesItems().get(position);
                     Outfit outfit = closet.getOutfits().get(selection);
                     if (outfit.addClothesItem(item)) {
                         outfit.setImg(item.getImg());
-                        Toast.makeText(ClosetActivity.this, "Added New clothes to a Outfit", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ClosetActivity.this, "Add New clothes to the Outfit", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(ClosetActivity.this, "This clothes has already been added", Toast.LENGTH_SHORT).show();
                     }
                     //going back to OutfitItem page.
                     Intent i2 = new Intent(getApplicationContext(), OutfitItemActivity.class);
@@ -125,7 +128,6 @@ public class ClosetActivity extends AppCompatActivity {
                     i2.putExtra("curr", selection);
                     i2.putExtra("tab", 0);
                     startActivity(i2);
-                    overridePendingTransition(0,0);
                 } else {
                     //Go to DetailActivity for the selected item
                     Intent i3 = new Intent(getApplicationContext(), DetailActivity.class);
