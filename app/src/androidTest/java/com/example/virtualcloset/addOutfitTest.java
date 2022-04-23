@@ -56,8 +56,8 @@ public class addOutfitTest {
         onView(withId(R.id.outfit_add_button)).perform(click());
         onView(withId(R.id.editOutfit)).perform(typeText("NewOutfit")).perform(closeSoftKeyboard());
         onView(withId(R.id.add_one_outfit)).perform(click());
-
-        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0) //adding to the front or size of Outfit
+        //adding to the front or size of Outfit
+        onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("NewOutfit")));
 
