@@ -52,11 +52,15 @@ public class AddImageActivity extends AppCompatActivity {
 
         //Initialize GridView using GridAdapter
         String[] clothesNames = {"T-Shirt 1", "T-Shirt 2",  "Shirt", "Coat", "Sweater", "Hoodie", "Jacket", "Shorts", "Pants", "Skirt", "Dress", "Sports Bra",
-                "Bikini", "Boxers", "Tank Top", "Sweatshorts", "Sweatpants"};
+                "Underwear 1", "Underwear 2", "Tank Top", "Sweatshorts", "Sweatpants", "Robe", "Swimsuit", "Sleepwear 1", "Sleepwear 2", "Tie", "Socks", "Mitts", "Shoes",
+                "Heels", "Sneakers", "Sandals", "Flip Flops", "Backpack", "Purse", "Wallet", "Toque", "Hat", "Cap"};
         int[] imgs = {R.drawable.clothing_mtee, R.drawable.clothing_ftee, R.drawable.clothing_shirt, R.drawable.clothing_coat, R.drawable.clothing_sweater, R.drawable.clothing_hoodie,
                 R.drawable.clothing_jacket, R.drawable.clothing_shorts, R.drawable.clothing_jeans, R.drawable.clothing_skirt, R.drawable.clothing_dress, R.drawable.clothing_sportsbra,
-                R.drawable.clothing_bikini, R.drawable.clothing_boxers, R.drawable.clothing_tank, R.drawable.clothing_sweatshorts, R.drawable.clothing_sweats};
-        GridAdapter gridAdapter = new GridAdapter(AddImageActivity.this, clothesNames, imgs);
+                R.drawable.clothing_bikini, R.drawable.clothing_boxers, R.drawable.clothing_tank, R.drawable.clothing_sweatshorts, R.drawable.clothing_sweats, R.drawable.clothing_robe,
+                R.drawable.clothing_swimsuit, R.drawable.clothing_fsleep, R.drawable.clothing_msleep, R.drawable.clothing_tie, R.drawable.clothing_socks, R.drawable.clothing_mitts,
+                R.drawable.clothing_shoes, R.drawable.clothing_heels, R.drawable.clothing_sneakers, R.drawable.clothing_sandals, R.drawable.clothing_flipflops, R.drawable.clothing_backpack,
+                R.drawable.clothing_purse, R.drawable.clothing_wallet, R.drawable.clothing_toque, R.drawable.clothing_hat, R.drawable.clothing_cap};
+                GridAdapter gridAdapter = new GridAdapter(AddImageActivity.this, clothesNames, imgs);
         binding.addImageGrid.setAdapter(gridAdapter);
 
         //Clicking an item in the grid

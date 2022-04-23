@@ -104,59 +104,59 @@ public class Database implements Serializable, IDatabase{
         tags1.add(new Tag(0, "Black"));
         tags1.add(new Tag(1, "Pants"));
         tags1.add(new Tag(2, "Workout"));
-        clothesItems.add(new ClothesItem(0, "Gymshark Joggers", tags1, R.drawable.placeholder_0));
+        clothesItems.add(new ClothesItem(0, "Gymshark Joggers", tags1, R.drawable.clothing_sweats));
 
         ArrayList<Tag> tags2 = new ArrayList<Tag>();
         tags2.add(new Tag(10, "Blue"));
         tags2.add(new Tag(11, "Pants"));
-        clothesItems.add(new ClothesItem(1, "Blue Levi's Jeans", tags2, R.drawable.placeholder_1));
+        clothesItems.add(new ClothesItem(1, "Blue Levi's Jeans", tags2, R.drawable.clothing_jeans));
 
         ArrayList<Tag> tags3 = new ArrayList<Tag>();
         tags3.add(new Tag(20,"Black"));
         tags3.add(new Tag(21,"Pants"));
-        clothesItems.add(new ClothesItem(2, "Black Hollister Jeans", tags3, R.drawable.placeholder_2));
+        clothesItems.add(new ClothesItem(2, "Black Hollister Jeans", tags3, R.drawable.clothing_jeans));
 
         ArrayList<Tag> tags4 = new ArrayList<Tag>();
         tags4.add(new Tag(30,"Brown"));
         tags4.add(new Tag(31,"T-Shirt"));
-        clothesItems.add(new ClothesItem(3, "Brown Zara Tee", tags4, R.drawable.placeholder_3));
+        clothesItems.add(new ClothesItem(3, "Brown Zara Tee", tags4, R.drawable.clothing_mtee));
 
         ArrayList<Tag> tags5 = new ArrayList<Tag>();
         tags5.add(new Tag(40,"Grey"));
         tags5.add(new Tag(41,"T-Shirt"));
-        clothesItems.add(new ClothesItem(4, "Marvel Graphic Tee", tags5, R.drawable.placeholder_4));
+        clothesItems.add(new ClothesItem(4, "Marvel Graphic Tee", tags5, R.drawable.clothing_mtee));
 
         ArrayList<Tag> tags6 = new ArrayList<Tag>();
         tags6.add(new Tag(50,"White"));
         tags6.add(new Tag(51,"T-Shirt"));
         tags6.add(new Tag(52,"Basic"));
-        clothesItems.add(new ClothesItem(5, "White H&M Tee", tags6, R.drawable.placeholder_5));
+        clothesItems.add(new ClothesItem(5, "White H&M Tee", tags6, R.drawable.clothing_mtee));
 
         ArrayList<Tag> tags7 = new ArrayList<Tag>();
         tags7.add(new Tag(60,"Green"));
         tags7.add(new Tag(61,"Sweater"));
         tags7.add(new Tag(62,"Camping"));
-        clothesItems.add(new ClothesItem(6, "Beaver Canoe Hoodie", tags7, R.drawable.placeholder_6));
+        clothesItems.add(new ClothesItem(6, "Beaver Canoe Hoodie", tags7, R.drawable.clothing_hoodie));
 
         ArrayList<Tag> tags8 = new ArrayList<Tag>();
         tags8.add(new Tag(70,"Cream"));
         tags8.add(new Tag(71,"Sweater"));
         tags8.add(new Tag(72,"Oversized"));
-        clothesItems.add(new ClothesItem(7, "Vintage Crewneck", tags8, R.drawable.placeholder_7));
+        clothesItems.add(new ClothesItem(7, "Vintage Crewneck", tags8, R.drawable.clothing_sweater));
 
         ArrayList<Tag> tags9 = new ArrayList<Tag>();
         tags9.add(new Tag(80,"Black"));
         tags9.add(new Tag(81,"Jacket"));
         tags9.add(new Tag(82,"Winter"));
         tags9.add(new Tag(83,"Cold"));
-        clothesItems.add(new ClothesItem(8, "Canada Goose Jacket", tags9, R.drawable.placeholder_8));
+        clothesItems.add(new ClothesItem(8, "Canada Goose Jacket", tags9, R.drawable.clothing_coat));
 
         ArrayList<Tag> tags10 = new ArrayList<Tag>();
         tags10.add(new Tag(90,"Black"));
         tags10.add(new Tag(91,"Shoes"));
         tags10.add(new Tag(92,"Summer"));
         tags10.add(new Tag(93,"Spring"));
-        clothesItems.add(new ClothesItem(9, "Black Vans Sneakers", tags10, R.drawable.placeholder_9));
+        clothesItems.add(new ClothesItem(9, "Black Vans Sneakers", tags10, R.drawable.clothing_sneakers));
 
         ArrayList<ClothesItem> clothesList1 = new ArrayList<ClothesItem>();
         clothesList1.add(clothesItems.get(5));
