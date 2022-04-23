@@ -15,7 +15,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.presentation.MainActivity;
+import com.example.virtualcloset.storage.Database;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -30,21 +32,27 @@ public class addOutfitTest {
 
     @Before
     public void setupDB() {
-        //here we will delete the account that will be created
-        //make sure we have Gymshark Joggers in our closet at position 0
-        //flag
+        Database database=new Database(false);
+        DataManager dm=new DataManager(database);
+        //remove NewAccount from db
+        UserAccount account=dm.findAccount("user","password");
+        //if exist an outfit called NewOutfit remove it.
+        Outfit outfit=account.getClosets().get(0).findOutfit("NewOutfit");
+        if(outfit!=null){
+            account.getClosets().get(0).removeOutfit(outfit);
+        }
 
+    }
+
+    @Test
+    public void addOutfit() {
         //login default account
         onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("user"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password"))
                 .perform(closeSoftKeyboard()); //close the keyboard after text input
         onView(withId(R.id.loginButton)).perform(click());
         onView(withId(R.id.navigation_outfits)).perform(click());
-
-    }
-
-    @Test
-    public void addOutfit() {
+        //perform check here
         onView(withId(R.id.outfit_add_button)).perform(click());
         onView(withId(R.id.editOutfit)).perform(typeText("NewOutfit")).perform(closeSoftKeyboard());
         onView(withId(R.id.add_one_outfit)).perform(click());
@@ -53,6 +61,8 @@ public class addOutfitTest {
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("NewOutfit")));
 
-
+        //sign out
+        onView(withId(R.id.navigation_accounts)).perform(click());
+        onView(withId(R.id.signOutButton)).perform(click());
     }
 }
