@@ -31,7 +31,6 @@ public class loginTest {
     public void setupDB() {
         Database database=new Database(false);
         DataManager dm=new DataManager(database);
-        //remove NewAccount from db
         UserAccount account=dm.findAccount("NewAccount","PASSWORD");
         if(account!=null){
             database.getAccounts().remove(account);

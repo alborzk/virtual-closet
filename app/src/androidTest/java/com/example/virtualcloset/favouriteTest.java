@@ -30,7 +30,6 @@ public class favouriteTest {
     public void setupDB() {
         Database database=new Database(false);
         DataManager dm=new DataManager(database);
-        //remove NewAccount from db
         UserAccount account=dm.findAccount("user","password");
         ClothesItem theClothes=account.getClosets().get(0).getClothesItems().get(0);
         if(theClothes.getFave()){

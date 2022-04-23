@@ -26,7 +26,6 @@ public class viewClothesTest {
 
     @Before
     public void setupDB() {
-        //here we will delete the account that will be created
         //login default account
         onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("user"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password"))
@@ -34,7 +33,6 @@ public class viewClothesTest {
         onView(withId(R.id.loginButton)).perform(click());
         onView(withId(R.id.navigation_clothes)).perform(click());
 
-        //make sure we have Gymshark Joggers in our closet
     }
 
     @Test

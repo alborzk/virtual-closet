@@ -34,7 +34,6 @@ public class addOutfitTest {
     public void setupDB() {
         Database database=new Database(false);
         DataManager dm=new DataManager(database);
-        //remove NewAccount from db
         UserAccount account=dm.findAccount("user","password");
         //if exist an outfit called NewOutfit remove it.
         Outfit outfit=account.getClosets().get(0).findOutfit("NewOutfit");

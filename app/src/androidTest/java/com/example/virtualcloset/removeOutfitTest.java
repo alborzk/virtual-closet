@@ -55,6 +55,7 @@ public class removeOutfitTest {
         onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Casual")));
+        onView(withId(R.id.outfit_backButton)).perform(click());
         //sign out
         onView(withId(R.id.navigation_accounts)).perform(click());
         onView(withId(R.id.signOutButton)).perform(click());

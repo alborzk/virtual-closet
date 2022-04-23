@@ -14,7 +14,11 @@ import org.junit.runners.Suite;
         removeOutfitTest.class,
         sortClothTest.class,
         viewClothesTest.class,
-        viewOutfitTest.class
+        viewOutfitTest.class,
+        addClothesTest.class,
+        addCinOutfitTest.class,
+        deleteClothesTest.class,
+        removeCinOutfitTest.class
 })
 
 public class AllSystemTest {
