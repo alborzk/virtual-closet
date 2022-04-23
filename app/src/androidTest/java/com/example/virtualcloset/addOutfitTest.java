@@ -7,15 +7,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.*;
 import static androidx.test.espresso.action.ViewActions.*;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
-import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.virtualcloset.logic.DataManager;
+import com.example.virtualcloset.objects.Outfit;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.presentation.MainActivity;
 import com.example.virtualcloset.storage.Database;
 

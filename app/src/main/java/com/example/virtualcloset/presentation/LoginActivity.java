@@ -2,30 +2,23 @@ package com.example.virtualcloset.presentation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.application.Main;
 import com.example.virtualcloset.databinding.ActivityLoginBinding;
-import com.example.virtualcloset.logic.AccessDB;
 import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
-import com.example.virtualcloset.storage.SQLDatabase;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
@@ -33,7 +26,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 //Displays interface to enter credentials for logging into or creating an account
 //Landing page when app first opened

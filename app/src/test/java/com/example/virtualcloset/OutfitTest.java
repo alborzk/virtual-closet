@@ -3,6 +3,9 @@ package com.example.virtualcloset;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

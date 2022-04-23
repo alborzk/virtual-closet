@@ -5,6 +5,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

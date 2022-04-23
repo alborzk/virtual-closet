@@ -10,11 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.objects.Closet;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityAccountBinding;
-import com.example.virtualcloset.logic.DataManager;
 import com.example.virtualcloset.storage.Database;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

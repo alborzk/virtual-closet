@@ -12,6 +12,8 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.virtualcloset.logic.DataManager;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.presentation.MainActivity;
 import com.example.virtualcloset.storage.Database;
 

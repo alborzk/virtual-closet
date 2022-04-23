@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Tag;
+
 public class ClothesItemTest {
 
     private ArrayList<Tag> tags;

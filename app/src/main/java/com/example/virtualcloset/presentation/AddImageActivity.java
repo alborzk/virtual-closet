@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityAddImageBinding;
 import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.GridAdapter;

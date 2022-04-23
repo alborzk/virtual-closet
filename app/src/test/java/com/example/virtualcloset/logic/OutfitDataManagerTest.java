@@ -2,10 +2,10 @@
 //
 //import static org.junit.Assert.*;
 //
-//import com.example.virtualcloset.ClothesItem;
-//import com.example.virtualcloset.Outfit;
+//import com.example.virtualcloset.objects.ClothesItem;
+//import com.example.virtualcloset.objects.Outfit;
 //import com.example.virtualcloset.R;
-//import com.example.virtualcloset.Tag;
+//import com.example.virtualcloset.objects.Tag;
 //import com.example.virtualcloset.storage.Database;
 //
 //import org.junit.After;

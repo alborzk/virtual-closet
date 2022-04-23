@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.virtualcloset.Closet;
+import com.example.virtualcloset.objects.Closet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.objects.ClothesItem;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.Tag;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityDetailBinding;
 import com.example.virtualcloset.storage.Database;
 

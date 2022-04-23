@@ -1,6 +1,4 @@
-package com.example.virtualcloset;
-
-import android.graphics.drawable.Drawable;
+package com.example.virtualcloset.objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;

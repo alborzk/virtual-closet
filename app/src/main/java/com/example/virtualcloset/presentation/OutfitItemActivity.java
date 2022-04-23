@@ -10,11 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityOutfitItemBinding;
 import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.GridAdapter;

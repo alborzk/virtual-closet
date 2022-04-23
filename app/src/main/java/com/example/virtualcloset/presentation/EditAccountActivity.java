@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.example.virtualcloset.Closet;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityEditAccountBinding;
-import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.logic.GridAdapter;
 import com.example.virtualcloset.storage.Database;
 

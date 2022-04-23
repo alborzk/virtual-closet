@@ -1,12 +1,9 @@
 package com.example.virtualcloset.logic;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.storage.Database;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // The DataManager class provides supplementary methods for account management

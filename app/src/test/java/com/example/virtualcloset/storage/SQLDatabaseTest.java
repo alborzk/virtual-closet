@@ -4,8 +4,8 @@
 //
 //import android.accounts.Account;
 //
-//import com.example.virtualcloset.ClothesItem;
-//import com.example.virtualcloset.UserAccount;
+//import com.example.virtualcloset.objects.ClothesItem;
+//import com.example.virtualcloset.objects.UserAccount;
 //
 //import org.junit.After;
 //import org.junit.Before;

@@ -1,17 +1,14 @@
 package com.example.virtualcloset.storage;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.Tag;
+import com.example.virtualcloset.objects.UserAccount;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import android.os.Parcelable;
-import android.os.Parcel;
 
 public class Database implements Serializable, IDatabase{
 

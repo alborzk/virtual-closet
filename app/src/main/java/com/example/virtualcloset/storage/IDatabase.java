@@ -1,9 +1,8 @@
 package com.example.virtualcloset.storage;
 
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
+import com.example.virtualcloset.objects.UserAccount;
 
 import java.util.ArrayList;
 

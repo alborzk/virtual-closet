@@ -3,12 +3,7 @@ package com.example.virtualcloset.presentation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,16 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
 import com.example.virtualcloset.R;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.UserAccount;
+import com.example.virtualcloset.objects.Tag;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.databinding.ActivityAddClothingBinding;
-import com.example.virtualcloset.logic.ClosetManager;
 import com.example.virtualcloset.storage.Database;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 // Displays the interface for adding a new item of clothing to the closet

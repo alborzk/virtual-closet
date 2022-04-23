@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.virtualcloset.ClothesItem;
+import com.example.virtualcloset.objects.ClothesItem;
 import com.example.virtualcloset.R;
 
 import java.util.ArrayList;

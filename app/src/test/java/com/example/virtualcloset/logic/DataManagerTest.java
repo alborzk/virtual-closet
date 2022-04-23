@@ -2,17 +2,11 @@ package com.example.virtualcloset.logic;
 
 import static org.junit.Assert.*;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.R;
-import com.example.virtualcloset.Tag;
 import com.example.virtualcloset.storage.Database;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class DataManagerTest {
     Database db = new Database(false);

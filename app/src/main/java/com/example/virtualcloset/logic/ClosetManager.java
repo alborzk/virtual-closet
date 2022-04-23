@@ -1,10 +1,8 @@
 package com.example.virtualcloset.logic;
 
-import com.example.virtualcloset.Closet;
-import com.example.virtualcloset.ClothesItem;
-import com.example.virtualcloset.Outfit;
-import com.example.virtualcloset.Tag;
-import com.example.virtualcloset.storage.Database;
+import com.example.virtualcloset.objects.Closet;
+import com.example.virtualcloset.objects.ClothesItem;
+import com.example.virtualcloset.objects.Outfit;
 
 import java.io.Serializable;
 import java.util.ArrayList;

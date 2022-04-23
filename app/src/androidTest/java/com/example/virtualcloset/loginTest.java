@@ -6,13 +6,12 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 import static androidx.test.espresso.action.ViewActions.*;
 
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.virtualcloset.logic.DataManager;
-import com.example.virtualcloset.presentation.LoginActivity;
+import com.example.virtualcloset.objects.UserAccount;
 import com.example.virtualcloset.presentation.MainActivity;
 import com.example.virtualcloset.storage.Database;
 

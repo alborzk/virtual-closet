@@ -1,4 +1,6 @@
-package com.example.virtualcloset;
+package com.example.virtualcloset.objects;
+
+import com.example.virtualcloset.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
