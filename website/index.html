@@ -1,165 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
-<title>CSS Template</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-image: url('background.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-center: 200px;
-  background-attachment: fixed;
-  height: 100vh;
-  background-size: cover;
-}
-
-header {
-  background-color: rgb(136, 167, 136);
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
-
-nav {
-  float: left;
-  width: 20%;
-  background:  lightgoldenrodyellow;
-  position: sticky;
-  top: 0;
-  opacity: 0.7;
-  padding: 20px;
-  border: 2px solid #4CAF50;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-
-article {
-  float: left;
-  padding: 20px;
-  border: 2px solid #4CAF50;
-  width: 80%;
-}
-
-section::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-footer {
-  background-color:  rgb(136,167,136);
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
-
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Closet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/9871e208a5.js" crossorigin="anonymous"></script>
+    <link rel='icon' href='./images/favicon.ico' type='image/x-icon' >
+    <style>
 </style>
 </head>
 <body>
 
-<header>
-  <h2>Virtual Closet</h2>
-</header>
-
-<section>
-  <nav>
-    <ul>
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#postmortem">Postmortem</a></li>
-      <li><a href="#velocity">Velocity</a></li>
-    </ul>
-  </nav>
-  
-  <article>
-<div class="section" id="overview">
-    <h2>Overview</h2>
-    <h3>Vision statement</h3>
-    <p>Virtual Closet is an app that allows people to view and organize the clothes and outfits in their closet from their mobile device. The app will organize the user’s clothing and outfits by categories such as style, colour, and seasonal trends. The app allows users to create outfits based on clothes in their virtual closet, and helps them design their outfits with recommendations and suggestions about complementary colours.</p>
-    <p>The system is currently being designed as a mobile application, so people will be able to create, manage, or view their virtual closet, from anywhere they go.</p>
-    <p>The project will be considered successful based on two criteria. First, we will measure user activity on the app over a prolonged period of time. If our users develop a habit of using our app, that must mean we’ve provided a useful service. However, if they only try the app a few times, that must mean they prefer using existing solutions to our app. This usage statistic will help us understand the usefulness of the app to the average user. The second criteria we will measure is how robust our organizational tools are, based on surveys provided to our users. Because more dedicated users are the ones most likely to respond to surveys, this metric will show us how our expert users responded to our app.</p>
-
-<h3>Intended users</h3>
-<p>The system is primarily designed for the average person who wants a tool to improve the organization of their closet. The people who will use this system are those who want to spend less time in the morning getting dressed, and would use this system to more efficiently choose their outfits. Users of the system will also be able to use the app to improve their style, regardless of whether or not they have previous fashion experience.</p>
-
-<p>In addition to average people, people who have a strong sense of style can still use this app to enhance their experience. Those people with a large collection of clothes, can utilize this system to help manage their large closets by categorizing their clothes as outfits or by creating custom labels to sort their collection. Virtual Closet will be simple enough so average users can understand it, while also including robust tools to manage large wardrobes.</p>
-
-<h3>Major functionality</h3>
-<p>The value of this project is in its function as an organizational tool, allowing people to see all of the clothes they own, without manually digging through their clothes. Virtual Closet will provide our users with the experience of having a walk-in closet, without requiring them to own an expensive home with one included. It provides an experience that was previously only available to the wealthy, and puts into the hands of everyone. The system is also valuable because everyone wears clothes meaning our system is applicable to all people, but not everyone has proper organization for their wardrobe, so our system solves that problem as well. Furthermore, this is a useful application because there aren’t very many similar apps meaning we provide a unique service to our users.</p>
-
-<h3>Contributors</h3>
-<h4>Asia Miyai</h4>
-<h4>Mitchel Aguilera</h4>
-<h4>Alborz Khakbazan</h4>
-<p>Developing this application taught me a lot about how to use Git and work together as a team, and opened my eyes up to the importance of structure when it comes to building a project. By having a concrete plan of what features to prioritise, what features we were building in the future, and what interactions these features would need to function, we avoided a great deal of technical debt and tedious refactoring.
-</p>
-<h4>Xiaohong Zhou (Leo)</h4>
-<p>Developing this application taught me how to work with a team. With one of the biggest advantages of git, which is branching capabilities, we can easily distribute features among team members into different branches and then merge all work results into one branch. I learned using Espresso library with Junit to transfer written acceptance tests to system tests and to create automated testing to simulate user behaviour. </p>
-<h4>Gyuri Kim</h4>
-
-<h3>Sales pitch</h3>
-<p>Sales pitch: Why does someone want to install your software</p>
-
-</div>
-
-<div class="section" id="video">
-<h2>Video</h2>
-    <p>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/y3E1GDSzIak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </p>
-</div>
-
-<div class="section" id="postmortem">
-<h2>Postmortem</h2>
-<h3>What was the overall architecture of your system (particularly if it is different from the demo system)?</h3>
-<h3>What went right in the development process?</h3>
-<h3>What went wrong in the development process?</h3>
-<p>Our team ran into a fair bit of trouble when it came to setting up databases – both in terms of the stub database and the persistent SQL database. After initially adding the ability to see a single account’s clothes in the first iteration, we went into the second iteration hoping to add the ability to modify an account’s clothes and to switch between accounts, only to find that upon switching accounts, none of the changes would be saved. It turns out that we had actually set up our stub database incorrectly, and hadn’t noticed because the features for us to be able to notice hadn’t been implemented yet. With a good bit of time spent revisiting old code, we were able to modify the app to properly implement a database and actually pass around information as it is updated. However, it did present us with our first major bit of technical debt – and taught us all lessons on why we should spend time ironing out the little details before marking features as complete. - Alborz Khakbazan
-</p>
-<h3>What would you do differently, if you had the chance to start over?</h3>
-<h3>How large is the project (number of methods, classes, etc)? How much of this is (roughly) devoted to each major system component? And any other quantifiables (e.g. if you have a record of hours spent on tasks).</h3>
-<h3>What took the most time? The least? Any surprises?</h3>
-<h3>Are there any particular design smells, or brilliant design decisions?</h3>
-<h3>Are there any outstanding bugs?</h3>
-<h3>Did any features work better than expected?</h3>
-<h3>Are you using any technologies other than what was required (e.g. JMock, GUI builders, etc.)?</h3>
-<h3>Are you using any specific techniques covered in the course (TDD, pair programming, scrums, etc)?</h3>
-<h3>How did the project change from your initial (iteration 0) vision or stories, or did it work out as predicted?</h3>
-<h3>What did you learn about team or large project development? What will you start doing, keep doing, or stop doing next time?</h3>
-<h3>Can you draw any conclusions from what you’ve done?</h3>
-</div>
-
-<div class="section" id="velocity">
-<h2>Velocity</h2>
-<img src="velocity.png">
-<p>with a 1 paragraph description of why it looks the way it does.</p>
-</div>
-
-
-  </article>
+<!--Title and Video-->
+<section class="hero is-black is-medium is-link">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <img class="" src="./title.png">
+            <h2 class="subtitle">
+                A new way to keep track of what's in your closet!
+            </h2>
+        </div>
+    </div>
 </section>
 
-<footer>
-  <p>[COMP-3350] A01-Group 9</p>
-</footer>
+<!--Sales Pitch-->
+<div class="content is-fluid has-text-centered">
+    <br/>
+    <br/>
+    <div class="columns is-centered">
+        <div class="column is-5">
+    <h1 class="title">
+        What's In Your Closet?
+    </h1>
+    <p>VirtualCloset is a simple, flexible, and easy-to-use organisational tool. You wear clothes every day, and between a closet, dresser, laundry basket, washing machine, that chair in your room that accumulates clothes that you’ve worn once but don’t need to be washed yet, it's easy to lose track of parts of your wardrobe. On top of that, it can be difficult to come up with outfits that are stylish in the mornings before your busy day.</p>
+        <p>Our app can help you stay on top of your wardrobe and be your most fashionable self. It lets you keep track of all the items in your closet, from sneakers to sundresses to sweaters. Your clothes can be further categorised by their attributes, like colour or season. VirtualCloset also lets you combine items into outfits to keep track of your best style ideas.</p>
+    </p>
+            </div>
+        </div>
+    <br/>
+    <br/>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/r73C0N8FDek" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
+
+<!--Vision Statement and Target Audience-->
+<div class="container is-fluid">
+    <br/>
+    <br/>
+    <div class="content has-text-centered">
+        <div class="columns">
+            <div class="column is-6 ">
+                <h1>Our Vision</h1>
+                <p>Virtual Closet is an app that allows people to view and organize the clothes and outfits in their closet from their mobile device. The app will organize the user’s clothing and outfits by categories such as style, colour, and seasonal trends. The app allows users to create outfits based on clothes in their virtual closet, and helps them plan out what to wear tomorrow or the week after quickly and painlessly.</p>
+                <p>Virtual Closet is a mobile application currently being developed for Android, so people will be able to create, manage, or view their virtual closet, from anywhere they go.</p>
+                <p>The project will be considered successful based on two criteria. First, we will measure user activity on the app over a prolonged period of time. If our users develop a habit of using our app, that must mean we’ve provided a useful service. However, if they only try the app a few times, that must mean they prefer using existing solutions to our app. This usage statistic will help us understand the usefulness of the app to the average user. The second criteria we will measure is how robust our organizational tools are, based on surveys provided to our users. Because more dedicated users are the ones most likely to respond to surveys, this metric will show us how our expert users responded to our app.</p>            </div>
+            <div class="column">
+            </div>
+                <div class="column is-6">
+                <h1>Target Audience</h1>
+                <p>Virtual Closet is primarily designed for the average person who wants a tool to improve the organization of their closet. The people who will use this system are those who want to spend less time in the morning getting dressed, and would use this system to more efficiently choose their outfits.</p>
+                <p>In addition to average people, people who have a strong sense of style can still use this app to enhance their experience. Those people with a large collection of clothes, can utilize this system to help manage their large closets by categorizing their clothes as outfits or by creating custom labels to sort their collection. Virtual Closet will be simple enough so average users can understand it, while also including robust tools to manage large wardrobes.</p>
+            </div>
+        </div>
+    </div>
+    <br/>
+</div>
+<br/>
+<br/>
+
+<!-- Major Functionality-->
+<div class="container is-fluid has-text-centered has-background-light">
+    <br/>
+    <br/>
+    <h1 class="title">
+        Major Functionality
+    </h1>
+    <div class="columns is-centered">
+        <div class="column is-6">
+    <p>The value of this project is in its function as an organizational tool, allowing people to see all of the clothes they own, without manually digging through them. It also allows users to figure out when and where to best wear their clothes, by allowing them to apply labels to them and create outfits with them. Virtual Closet will provide our users with the experience of having a walk-in closet, without requiring them to own an expensive home with one included.</p>
+        </div></div><br/>
+    <br/>
+    <div class="columns">
+        <div class="column is-one-third">
+            <i class="fa-solid fa-2x fa-shirt"></i>
+            <br/>
+            <br/>
+            <h2 class="subtitle">Your Clothes at a Glance</h2>
+            Add clothes to your closet and view them anytime, anywhere
+            <br/>
+            <br/>
+            <img class="" src="./feature_clothes.png">
+        </div>
+        <div class="column is-one-third">
+            <i class="fa-solid fa-2x fa-pencil-alt"></i>
+            <br/>
+            <br/>
+            <h2 class="subtitle">Label & Organize Clothes</h2>
+            Organize clothes by color, by style, by whatever
+            <br/>
+            <br/>
+            <img class="" src="./feature_tag.png">
+        </div>
+        <div class="column is-one-third">
+            <i class="fa-solid fa-2x fa-user-tie"></i>
+            <br/>
+            <br/>
+            <h2 class="subtitle">Build Tomorrow's Outfit Today</h2>
+            Build and view outfits from your closet so you can be ready for any occasion
+            <br/>
+            <br/>
+            <img class="" src="./feature_outfit.png">
+        </div>
+    </div>
+    <br/>
+</div>
+<br/>
+<br/>
+
+<!--The Team-->
+<div class="container is-fluid has-text-centered">
+    <h1 class="title">
+        The Team
+    </h1>
+    <div class="columns">
+
+<!--Asia Miyai-->
+        <div class="column is-one-third">
+            <div class="card">
+                <br/>
+                <br/>
+                <div class="card-image is-flex is-horizontal-center" style="justify-content: center;">
+                    <figure class="image is-128x128 ">
+                        <img class="is-rounded" src="./asia.png">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4">Asia Miyai</p>
+                    <p>Working on this app taught me how to manage large software projects. This included practising how to implement Agile design and SOLID principles to ensure that the code is flexible when things need to change, as well as learning the importance of teamwork. Good organisation and communication are critical to the success of a project like this.</p>
+                </div>
+            </div>
+        </div>
+
+<!--Mitchel Aguilera-->
+        <div class="column is-one-third">
+            <div class="card">
+                <br/>
+                <br/>
+                <div class="card-image is-flex is-horizontal-center" style="justify-content: center;">
+                    <figure class="image is-128x128 ">
+                        <img class="is-rounded" src="./mitch.png">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4">Mitchel Aguilera</p>
+
+                    <p>While developing this project I learned a lot about databases, and more specifically HSQLDB development in Android Studio. Working with a team on a project of this size also taught me tools and strategies for software development such as git and agile development.</p>
+
+                </div>
+            </div>
+        </div>
+
+<!--Alborz Khakbazan-->
+        <div class="column is-one-third">
+            <div class="card">
+                <br/>
+                <br/>
+                <div class="card-image is-flex is-horizontal-center" style="justify-content: center;">
+                    <figure class="image is-128x128 ">
+                        <img class="is-rounded" src="./alborz.png">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4">Alborz Khakbazan</p>
+                    <p>Developing this application taught me a lot about how to use Git and work together as a team, and opened my eyes up to the importance of structure when it comes to building a project. By having a concrete plan of what features to prioritize, what features we were building in the future, and what interactions these features would need to function, we avoided a great deal of technical debt and tedious refactoring.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<!--Leo Zhou-->
+    <div class="columns is-centered">
+        <div class="column is-4">
+            <div class="card">
+                <br/>
+                <br/>
+                <div class="card-image is-flex is-horizontal-center" style="justify-content: center;">
+                    <figure class="image is-128x128 ">
+                        <img class="is-rounded" src="./leo.png">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4">Xiahong Zhou (Leo)</p>
+                    <p>Developing this application taught me how to work with a team. With one of the biggest advantages of git, which is branching capabilities, we can easily distribute features among team members into different branches and then merge all work results into one branch. I learned using Espresso library with Junit to transfer written acceptance tests to system tests and to create automated testing to simulate user behaviour.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+
+<!--Gyuri Kim-->
+        <div class="column is-4">
+            <div class="card">
+                <br/>
+                <br/>
+                <div class="card-image is-flex is-horizontal-center" style="justify-content: center;">
+                    <figure class="image is-128x128 ">
+                        <img class="is-rounded" src="./gyuri.png">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4">Gyuri Kim</p>
+                    <p> While working on this project, I learned a lot of knowledge about git, android studio, html, and teamwork. Especially I learned how to test the app using android studio. Working as a team, I felt I should be more active and it is important to find myself the things that I can do.</p>
+                <br/>
+            </div>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+</div>
+
+<div class="container is-fluid">
+    <br/>
+    <br/>
+    <div class="content has-text-centered">
+        <div class="columns is-centered">
+            <div class="column is-6">
+        <h1>Project Velocity</h1>
+        <p>Below is a chart of our team's velocity over the development process. It looks like this because after the 1st iteration, our team had a better understanding of working with android studio so we believed we could implement features much faster. Although we had a better understanding of Android Studio, our team experienced unexpected complexity later on in the project causing things to take longer than expected.</p>
+                <br/><img class="" src="./velocity.png">
+    </div>
+        </div>
+    </div>
+    <br/>
+</div>
+<br/>
+
+<!--Postmortem-->
+<div class="container is-fluid has-background-light">
+    <br/>
+    <br/>
+    <div class="content has-text-centered">
+        <div class="columns is-centered">
+            <div class="column is-6">
+        <h1 class="title">Postmortem</h1>
+        <p>Looking back on our experience developing Virtual Closet, there are plenty of things we can learn. In our Iteration 2 retrospective, we noticed that we weren’t quite following principles of test-driven-development, and ended up writing tests and working out bugs in our features relatively last minute. For iteration 3, we wanted to impose internal deadlines and keep our tests up to date so that we could finalize our features before the project due date. Although we still had some features we ended up implementing before their tests, we did a better job with being prepared before the deadline and had plenty of time to spare to work out small kinks and bugs.</p>
+        </p><br/><h2 class="subtitle is-5">Where in development did we run into trouble?</h2><p>
+        Our team ran into a fair bit of trouble when it came to setting up databases – both in terms of the stub database and the persistent SQL database. After initially adding the ability to see a single account’s clothes in the first iteration, we went into the second iteration hoping to add the ability to modify an account’s clothes and to switch between accounts, only to find that upon switching accounts, none of the changes would be saved. It turns out that we had actually set up our stub database incorrectly, and hadn’t noticed because the features for us to be able to notice hadn’t been implemented yet. With a good bit of time spent revisiting old code, we were able to modify the app to properly implement a database and actually pass around information as it is updated. However, it did present us with our first major bit of technical debt – and taught us all lessons on why we should spend time ironing out the little details before marking features as complete.
+    </p><br/><h2 class="subtitle is-5">What did we learn about project management, and how to approach it in the future?</h2>
+        <p>Version control is one of the strategies that we most used in our project. For a larger deployment project, these two strategies are particularly helpful to maintain workflow efficiency. Version controls keep tracking and managing changes to software code for developers. We, as developers, can easily identify the mistake of code by comparing earlier versions of the code while minimizing the unpredicted effect to all team members. Every time our team decides to merge all the branches with multiple changes on the same files, version control keeps track of every individual change by each team member on each file and this effectively prevents conflicts on the same file or program crash.
+    </div>
+        </div>
+    </div>
+    <br/><br/>
+</div>
+
+<section class="hero is-small is-primary is-bold ">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <p>COMP3350 A01 - Group 9</p>
+        </div>
+    </div>
+</section>
 </body>
 </html>
