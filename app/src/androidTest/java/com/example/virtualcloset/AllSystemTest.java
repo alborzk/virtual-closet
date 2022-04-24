@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        //need to disable three types of animation scale before running the test
         addFlagTest.class,
         addOutfitTest.class,
         favouriteTest.class,

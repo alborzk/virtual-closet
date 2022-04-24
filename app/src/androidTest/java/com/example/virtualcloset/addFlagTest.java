@@ -37,17 +37,17 @@ public class addFlagTest {
         if(tag!=null){
             theClothes.getTags().remove(tag);
         }
-
-
-    }
-    @Test
-    public void addFlag(){
         //login default account
         onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("user"));
         onView(withId(R.id.editTextTextPassword)).perform(typeText("password"))
                 .perform(closeSoftKeyboard()); //close the keyboard after text input
         onView(withId(R.id.loginButton)).perform(click());
         onView(withId(R.id.navigation_clothes)).perform(click());
+
+
+    }
+    @Test
+    public void addFlag(){
 
         //before add a flag
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
