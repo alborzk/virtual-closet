@@ -18,7 +18,9 @@ import org.junit.runners.Suite;
         addClothesTest.class,
         addCinOutfitTest.class,
         deleteClothesTest.class,
-        removeCinOutfitTest.class
+        removeCinOutfitTest.class,
+        changePasswordTest.class,
+        changeUserNameTest.class
 })
 
 public class AllSystemTest {
