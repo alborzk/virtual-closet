@@ -109,7 +109,10 @@ footer {
 <h4>Asia Miyai</h4>
 <h4>Mitchel Aguilera</h4>
 <h4>Alborz Khakbazan</h4>
+<p>Developing this application taught me a lot about how to use Git and work together as a team, and opened my eyes up to the importance of structure when it comes to building a project. By having a concrete plan of what features to prioritise, what features we were building in the future, and what interactions these features would need to function, we avoided a great deal of technical debt and tedious refactoring.
+</p>
 <h4>Xiaohong Zhou (Leo)</h4>
+<p>Developing this application taught me how to work with a team. With one of the biggest advantages of git, which is branching capabilities, we can easily distribute features among team members into different branches and then merge all work results into one branch. I learned using Espresso library with Junit to transfer written acceptance tests to system tests and to create automated testing to simulate user behaviour. </p>
 <h4>Gyuri Kim</h4>
 
 <h3>Sales pitch</h3>
@@ -129,6 +132,8 @@ footer {
 <h3>What was the overall architecture of your system (particularly if it is different from the demo system)?</h3>
 <h3>What went right in the development process?</h3>
 <h3>What went wrong in the development process?</h3>
+<p>Our team ran into a fair bit of trouble when it came to setting up databases – both in terms of the stub database and the persistent SQL database. After initially adding the ability to see a single account’s clothes in the first iteration, we went into the second iteration hoping to add the ability to modify an account’s clothes and to switch between accounts, only to find that upon switching accounts, none of the changes would be saved. It turns out that we had actually set up our stub database incorrectly, and hadn’t noticed because the features for us to be able to notice hadn’t been implemented yet. With a good bit of time spent revisiting old code, we were able to modify the app to properly implement a database and actually pass around information as it is updated. However, it did present us with our first major bit of technical debt – and taught us all lessons on why we should spend time ironing out the little details before marking features as complete. - Alborz Khakbazan
+</p>
 <h3>What would you do differently, if you had the chance to start over?</h3>
 <h3>How large is the project (number of methods, classes, etc)? How much of this is (roughly) devoted to each major system component? And any other quantifiables (e.g. if you have a record of hours spent on tasks).</h3>
 <h3>What took the most time? The least? Any surprises?</h3>
