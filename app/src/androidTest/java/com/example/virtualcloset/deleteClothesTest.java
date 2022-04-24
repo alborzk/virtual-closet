@@ -48,7 +48,6 @@ public class deleteClothesTest {
                 .check(matches(withText("Gymshark Joggers")));
 
         onData(anything()).inAdapterView(withId(R.id.gridView)).atPosition(0).perform(click());
-        onView(withId(R.id.editButton)).perform(click());
         onView(withId(R.id.removeButton)).perform(click());
         //after deletion
         onView(withText("Confirm")).perform(click());
@@ -56,4 +55,5 @@ public class deleteClothesTest {
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Blue Levi's Jeans")));
     }
+
 }

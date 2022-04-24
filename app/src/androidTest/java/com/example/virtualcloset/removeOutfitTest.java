@@ -50,12 +50,13 @@ public class removeOutfitTest {
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Work")));
         //after removed "Work"
-        onView(withId(R.id.outfit_delete_button)).perform(click());
         onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0).perform(click());
+        onView(withId(R.id.removeButton)).perform(click());
+        //after deletion
+        onView(withText("Confirm")).perform(click());
         onData(anything()).inAdapterView(withId(R.id.gridOutfitList)).atPosition(0)
                 .onChildView(withId(R.id.item_name))
                 .check(matches(withText("Casual")));
-        onView(withId(R.id.outfit_backButton)).perform(click());
         //sign out
         onView(withId(R.id.navigation_accounts)).perform(click());
         onView(withId(R.id.signOutButton)).perform(click());

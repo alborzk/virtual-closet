@@ -2,6 +2,8 @@ package com.example.virtualcloset.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +36,7 @@ public class OutfitItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOutfitItemBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         //Receive Database and IDs
         Intent intent = this.getIntent();
@@ -60,9 +63,9 @@ public class OutfitItemActivity extends AppCompatActivity {
         TextView nameDisplay = (TextView) binding.getRoot().findViewById(R.id.outfit_item_title);
 
         //Display Outfit Number & Name
-        String id = String.valueOf(curr + 1);
-        id = id + ":  " + oName;
-        nameDisplay.setText(id);
+//        String id = String.valueOf(curr + 1);
+//        id = id + ":  " + oName;
+        nameDisplay.setText(oName);
 
         //Initialize GridAdapter
         String[] clothesNames = cm.getClothesNames(clothesList);
@@ -92,6 +95,38 @@ public class OutfitItemActivity extends AppCompatActivity {
                 i2.putExtra("selection",curr);
                 startActivity(i2);
                 overridePendingTransition(0, 0);
+            }
+        });
+
+        //Click "Remove" Button While Editing (trashcan)
+        //Removes the clothing item from the closet
+        binding.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.setCancelable(true);
+                builder.setTitle("Remove Item");
+                builder.setMessage("Are you sure you want to remove '" + oName + "' from your closet?");
+
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        closet.removeOutfit(outfit);
+                        Intent i2 = new Intent(OutfitItemActivity.this, OutfitListActivity.class);
+                        i2.putExtra("db", database);
+                        i2.putExtra("aID", aID);
+                        i2.putExtra("cID", cID);
+                        startActivity(i2);
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -154,4 +189,5 @@ public class OutfitItemActivity extends AppCompatActivity {
             }
         });
     }
+
 }

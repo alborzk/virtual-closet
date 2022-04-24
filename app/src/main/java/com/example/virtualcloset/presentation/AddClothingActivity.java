@@ -54,19 +54,17 @@ public class AddClothingActivity extends AppCompatActivity {
         Closet closet = account.getClosets().get(cID);
 
         //Set Up UI Widgets
-        Button selectImg = findViewById(R.id.selectImageButton);
         ImageView imgDisplay = (ImageView) binding.getRoot().findViewById(R.id.addImgDisplay);
         imgDisplay.setImageResource(img);
         TextView tagsDisplay = (TextView) binding.getRoot().findViewById(R.id.tagDisplay);
         EditText nameInput = (EditText) binding.getRoot().findViewById(R.id.editTextAdd);
-        Button addButton = (Button) binding.getRoot().findViewById(R.id.addTagButton);
         EditText editTags = (EditText) binding.getRoot().findViewById(R.id.editTags);
         numTags = 0;
         tagsString = "";
         tags = new ArrayList<Tag>();
 
         //Click "Upload Image"
-        selectImg.setOnClickListener(new View.OnClickListener() {
+        binding.addImgDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Open Image Chooser
@@ -120,41 +118,8 @@ public class AddClothingActivity extends AppCompatActivity {
                 i1.putExtra("db", db);
                 i1.putExtra("aID", aID);
                 i1.putExtra("cID", cID);
-//                i1.putExtra("selection",-1);
                 startActivity(i1);
             }
         });
     }
-
-//    //Choose Image
-//    void imageChooser() {
-//        Intent i = new Intent();
-//        i.setType("image/*");
-//        i.setAction(Intent.ACTION_GET_CONTENT);
-//        // pass the constant to compare it with the returned requestCode
-//        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
-//    }
-//
-//    //Triggered after user selects an image
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-//            // compare the resultCode with the SELECT_PICTURE constant
-//            if (requestCode == SELECT_PICTURE) {
-//                // Get the url of the image from data
-//                Uri selectedImageUri = data.getData();
-//                if (null != selectedImageUri) {
-//                    // update the preview image in the layout
-//                    try {
-//                        ImageView imgInput = findViewById(R.id.addImgDisplay);
-//                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
-//                        Drawable d = new BitmapDrawable(getResources(), bitmap);
-//                        imgInput.setImageDrawable(d);
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        }
-//    }
 }

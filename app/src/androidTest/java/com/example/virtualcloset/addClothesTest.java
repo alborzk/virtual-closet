@@ -45,7 +45,7 @@ public class addClothesTest {
     @Test
     public void addClothes(){
         onView(withId(R.id.addItemButton)).perform(click());
-        onView(withId(R.id.selectImageButton)).perform(click());
+        onView(withId(R.id.addImgDisplay)).perform(click());
         onData(anything()).inAdapterView(withId(R.id.addImageGrid)).atPosition(0).perform(click());
         onView(withId(R.id.editTextAdd)).perform(typeText("NewClothes")).perform(closeSoftKeyboard());
         onView(withId(R.id.editTags)).perform(typeText("TagsforNewClothes")).perform(closeSoftKeyboard());

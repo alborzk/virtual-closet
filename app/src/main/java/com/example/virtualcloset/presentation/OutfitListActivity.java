@@ -54,7 +54,7 @@ public class OutfitListActivity extends AppCompatActivity {
         binding.gridOutfitList.setAdapter(gridAdapter);
 
         //Get Other UI Widgets
-        final FloatingActionButton outfitDeleteButton = findViewById(R.id.outfit_delete_button);
+//        final FloatingActionButton outfitDeleteButton = findViewById(R.id.outfit_delete_button);
         final FloatingActionButton outfitAddButton = findViewById(R.id.outfit_add_button);
         final Button outfitAddOne = (Button) findViewById(R.id.add_one_outfit);
         final Button outfitBackButton = (Button) findViewById(R.id.outfit_backButton);
@@ -101,7 +101,6 @@ public class OutfitListActivity extends AppCompatActivity {
         binding.outfitAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                outfitDeleteButton.setVisibility(View.GONE);
                 outfitAddButton.setVisibility(View.GONE);
                 outfitAddOne.setVisibility(View.VISIBLE);
                 editTags.setVisibility(View.VISIBLE);
@@ -118,65 +117,32 @@ public class OutfitListActivity extends AppCompatActivity {
 
                 if (outfitName.trim().length() > 0) {
                     //new outfit id== the last outfit id +1
-                    Outfit newOutfit = new Outfit(closet.getOutfits().get(closet.getNumOutfits() - 1).getID() + 1, outfitName);
+                    Outfit newOutfit = new Outfit((closet.getNumOutfits() + 1), outfitName);
                     if (closet.addOutfit(newOutfit)) {
                         GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
                         binding.gridOutfitList.setAdapter(gridAdapter);
-                        Toast.makeText(OutfitListActivity.this, "Added New Outfit: " + outfitName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OutfitListActivity.this, "Added new outfit '" + outfitName + "' to your closet!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(OutfitListActivity.this, "The Outfit Name: <" + outfitName + "> already exist", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OutfitListActivity.this, "Couldn't add '" + outfitName + "', that outfit already exists!", Toast.LENGTH_SHORT).show();
                     }
                     editTags.setText("");
 
                 } else {
-                    Toast.makeText(OutfitListActivity.this, "Couldn't add New Outfit, input is empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OutfitListActivity.this, "Couldn't add new outfit, input is empty!", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-        //Click on removeButton (-)
-        //Turns delete mode on and allows removing an outfit
-        final int[] delete = {0}; //determine if in delete mode.
-        binding.outfitDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                outfitDeleteButton.setVisibility(View.GONE);
-                outfitAddButton.setVisibility(View.GONE);
-                outfitBackButton.setVisibility(View.VISIBLE);
-                Toast.makeText(OutfitListActivity.this, "DELETE MODE ON!", Toast.LENGTH_SHORT).show();
-                delete[0] = 1;
-                //delete the item selected on grid
-                binding.gridOutfitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //need to update here.
-                        closet.getOutfits().remove(position);
-                        GridAdapter gridAdapter = new GridAdapter(getApplicationContext(), cm.getOutfitsNames(), cm.getOutfitsImgs());
-                        binding.gridOutfitList.setAdapter(gridAdapter);
-                    }
-                });
 
-
-            }
-        });
         //Click on backButton while in add mode.
         //Hides the editing elements and shuts off delete mode
         binding.outfitBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                outfitDeleteButton.setVisibility(View.VISIBLE);
                 outfitAddButton.setVisibility(View.VISIBLE);
                 outfitAddOne.setVisibility(View.GONE);
                 editTags.setVisibility(View.GONE);
                 outfitBackButton.setVisibility(View.GONE);
-
-                if (delete[0] == 1) {
-                    Toast.makeText(OutfitListActivity.this, "DELETE MODE OFF!", Toast.LENGTH_SHORT).show();
-                    //set listener back to default action
-                    clickOnGrid(database, aID, cID);
-                    delete[0] = 0;
-                }
-
             }
         });
 

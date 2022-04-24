@@ -38,8 +38,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         //Receive Database and IDs
         Intent intent = this.getIntent();
         Database database = (Database) intent.getSerializableExtra("db");
@@ -176,7 +176,6 @@ public class DetailActivity extends AppCompatActivity {
                 backButton.setVisibility(View.VISIBLE);
                 editTags.setVisibility(View.VISIBLE);
                 addButton.setVisibility(View.VISIBLE);
-                removeButton.setVisibility(View.VISIBLE);
                 removeTagButton.setVisibility(View.VISIBLE);
             }
         });
@@ -192,7 +191,6 @@ public class DetailActivity extends AppCompatActivity {
                 backButton.setVisibility(View.GONE);
                 editTags.setVisibility(View.GONE);
                 addButton.setVisibility(View.GONE);
-                removeButton.setVisibility(View.GONE);
                 removeTagButton.setVisibility(View.GONE);
             }
         });
@@ -266,7 +264,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 builder.setCancelable(true);
                 builder.setTitle("Remove Item");
-                builder.setMessage("Are you sure you want to remove '" + item.getName() + "' from your closet?");
+                builder.setMessage("Are you sure you want to remove '" + item.getName() + "' from your closet? This will also remove it from any outfits you've created.");
 
                 builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override

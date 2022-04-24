@@ -37,7 +37,7 @@ public class Outfit implements Serializable {
 
     public int getImg() {
         if (clothesItems.size() == 0) {
-            this.img = R.drawable.placeholder_outfit;
+            this.img = R.drawable.add_image;
         } else
             this.img = clothesItems.get(0).getImg();
         return img;

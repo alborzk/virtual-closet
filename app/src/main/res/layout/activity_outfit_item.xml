@@ -27,6 +27,18 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <Button
+        android:id="@+id/removeButton"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/remove"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <Button
         android:id="@+id/outfitItem_back"
         android:layout_width="59dp"
         android:layout_height="49dp"
@@ -41,7 +53,7 @@
         android:id="@+id/outfit_deleItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DELETE"
+        android:text="DELETE ITEMS"
         app:layout_constraintEnd_toStartOf="@+id/done_outfit"
         app:layout_constraintStart_toEndOf="@+id/outfit_additem"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
@@ -51,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="ADD"
+        android:text="ADD ITEMS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
@@ -59,13 +71,15 @@
 
     <TextView
         android:id="@+id/outfit_item_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
         android:text="Outfit ID"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="34sp"
+        android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
