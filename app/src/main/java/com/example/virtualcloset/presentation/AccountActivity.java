@@ -107,6 +107,7 @@ public class AccountActivity extends AppCompatActivity {
                 final EditText input = new EditText(AccountActivity.this);
                 // Specify the type of input expected
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setContentDescription("user name");
                 builder.setView(input);
                 // Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -154,6 +155,7 @@ public class AccountActivity extends AppCompatActivity {
                 final EditText input = new EditText(AccountActivity.this);
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                input.setContentDescription("password");
                 builder.setView(input);
                 // Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
