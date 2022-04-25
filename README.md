@@ -17,6 +17,6 @@ https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/blob/ma
 # Iteration 2 Worksheet
 https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/blob/main/i2_worksheet.md
 
-# Iteration 2 Worksheet
+# Iteration 3 Worksheet
 https://code.cs.umanitoba.ca/winter-2022-a01/group-9/virtualcloset-A01/-/blob/main/i3_worksheet.md
 
